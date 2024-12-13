@@ -2,32 +2,48 @@
 #define TSPSOLVER_H
 
 #include <vector>
+#include <deque>
 #include "TSPSolution.h"
-#include "TSPMove.h"
+#include "TSP.h"
 
 class TSPSolver {
 public:
-    TSPSolver() {}
+    // Existing constructors and methods
+    TSPSolver() : tabu_tenure(7), max_iterations(1000) {}
 
-    // Solution evaluation
+    // Original evaluation method
     double evaluate(const TSPSolution& sol, const TSP& tsp) const;
-
-    // Initialize random solution
     bool initRnd(TSPSolution& sol);
 
-    // Main solving method
-    bool solve(const TSP& tsp, const TSPSolution& initSol, int tabuLength, int maxIter, TSPSolution& bestSol);
+    // New Tabu Search methods
+    bool solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol);
+
+    // Configuration methods
+    void setTabuTenure(int tenure) { tabu_tenure = tenure; }
+    void setMaxIterations(int iterations) { max_iterations = iterations; }
 
 protected:
-    double findBestNeighbor(const TSP& tsp, const TSPSolution& currSol, int currIter, TSPMove& move);
-    TSPSolution& swap(TSPSolution& tspSol, const TSPMove& move);
+    // Tabu Search components
+    struct Move {
+        int from;
+        int to;
+        double cost_change;
 
-    // Tabu list management
-    int tabuLength;
-    std::vector<int> tabuList;
-    void initTabuList(int n);
-    void updateTabuList(int nodeFrom, int nodeTo, int iter);
-    bool isTabu(int nodeFrom, int nodeTo, int iter);
+        Move(int f = -1, int t = -1, double cost = 0.0)
+            : from(f), to(t), cost_change(cost) {}
+    };
+
+    // Tabu Search parameters
+    int tabu_tenure;
+    int max_iterations;
+    std::deque<std::pair<int, int>> tabu_list;
+
+    // Helper methods
+    Move findBestNeighbor(const TSP& tsp, const TSPSolution& currSol, int iteration);
+    bool isTabu(int from, int to, int iteration);
+    void updateTabuList(int from, int to, int iteration);
+    TSPSolution& applyMove(TSPSolution& tspSol, const Move& move);
+    double calculateMoveCost(const TSP& tsp, const TSPSolution& sol, const Move& move);
 };
 
-#endif /* TSPSOLVER_H */
+#endif

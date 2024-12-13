@@ -12,17 +12,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\cpxmacro.h" />
+    <ClInclude Include="include\data_generator.h" />
+    <ClInclude Include="include\parameter_calibration.h" />
     <ClInclude Include="include\TSP.h" />
-    <ClInclude Include="include\TSPMove.h" />
     <ClInclude Include="include\TSPSolution.h" />
     <ClInclude Include="include\TSPSolver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\TSP.cpp" />
-    <ClCompile Include="src\TSPMove.cpp" />
+    <ClCompile Include="src\parameter_calibration.cpp" />
     <ClCompile Include="src\TSPSolution.cpp" />
     <ClCompile Include="src\TSPSolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A5334DE3-5DEE-4223-9634-3468597998BB}</ProjectGuid>

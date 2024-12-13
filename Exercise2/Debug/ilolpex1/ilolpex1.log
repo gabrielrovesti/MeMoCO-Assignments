@@ -1,7 +1,39 @@
 ﻿  main.cpp
-  TSP.cpp
-  TSPMove.cpp
-  TSPSolution.cpp
-  TSPSolver.cpp
+  parameter_calibration.cpp
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\main.cpp(81,49): error C2440: 'inizializzazione': impossibile convertire da 'void' a 'ParameterCalibration::Parameters'
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\main.cpp(81,49):
+      Impossibile convertire un'espressione di tipo void in altri tipi
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(36,27): error C2065: 'TSP': identificatore non dichiarato
+  (compilazione del file di origine 'src/parameter_calibration.cpp')
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(36,20): error C2923: 'std::vector': 'TSP' non è un argomento di tipo modello valido per il parametro '_Ty'
+  (compilazione del file di origine 'src/parameter_calibration.cpp')
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(36,27):
+      vedere la dichiarazione di 'TSP'
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(36,20): error C2976: 'std::vector': argomenti modello insufficienti
+  (compilazione del file di origine 'src/parameter_calibration.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\vector(429,7):
+      vedere la dichiarazione di 'std::vector'
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(36,33): error C2955: 'std::vector': l'utilizzo di classe modello richiede un elenco di argomenti di modello
+  (compilazione del file di origine 'src/parameter_calibration.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\vector(429,7):
+      vedere la dichiarazione di 'std::vector'
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\parameter_calibration.cpp(36,40): error C2664: 'ParameterCalibration::CalibrationResult ParameterCalibration::testParameterCombination(const std::vector &,int,int)': impossibile convertire l'argomento 1 da 'std::vector<TSP,std::allocator<TSP>>' a 'const std::vector &'
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\parameter_calibration.cpp(37,17):
+      Motivo: impossibile convertire da 'std::vector<TSP,std::allocator<TSP>>' a 'const std::vector'
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\parameter_calibration.cpp(37,17):
+      Non è disponibile alcun operatore di conversione definito dall'utente oppure non è possibile chiamare l'operatore
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(35,23):
+      vedere la dichiarazione di 'ParameterCalibration::testParameterCombination'
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\parameter_calibration.cpp(36,40):
+      durante la ricerca di corrispondenza con l'elenco di argomenti '(std::vector<TSP,std::allocator<TSP>>, int, int)'
+  
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\parameter_calibration.cpp(48,63): error C2511: 'ParameterCalibration::CalibrationResult ParameterCalibration::testParameterCombination(const std::vector<TSP,std::allocator<TSP>> &,int,int)': funzione membro in overload non trovata in 'ParameterCalibration'
+      C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\include\parameter_calibration.h(7,7):
+      vedere la dichiarazione di 'ParameterCalibration'
+  
   Generazione del codice in corso...
-  ilolpex1.vcxproj -> C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\ilolpex1.exe

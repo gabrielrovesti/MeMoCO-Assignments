@@ -15,24 +15,21 @@
     <ClInclude Include="include\TSP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\TSPMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\TSPSolution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TSPSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\data_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\parameter_calibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TSPMove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TSPSolution.cpp">
@@ -41,5 +38,11 @@
     <ClCompile Include="src\TSPSolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\parameter_calibration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
   </ItemGroup>
 </Project>
