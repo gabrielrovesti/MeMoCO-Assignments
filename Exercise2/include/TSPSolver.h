@@ -1,3 +1,20 @@
+/**
+* @file TSPSolver.h
+* @brief Tabu Search implementation for TSP
+*
+* Implements a Tabu Search metaheuristic for solving TSP instances.
+* Features:
+* - Tabu list mechanism to prevent cycling
+* - 2-opt neighborhood structure
+* - Configurable tabu tenure and iteration limits
+* - Solution quality tracking
+*
+* The implementation follows standard Tabu Search principles with:
+* - Short-term memory (tabu list)
+* - Fixed tabu tenure
+* - Simple aspiration criterion (better than best known)
+*/
+
 #ifndef TSPSOLVER_H
 #define TSPSOLVER_H
 

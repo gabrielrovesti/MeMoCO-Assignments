@@ -6,13 +6,15 @@
 #include <cmath>
 #include <iostream>
 
-void ParameterCalibration::calibrateParameters(
+ParameterCalibration::Parameters ParameterCalibration::calibrateParameters(
     const std::vector<std::tuple<int, int, int>>& board_configs) {
 
+    Parameters best_params;
     std::vector<TSP> training_instances;
 
+    // Generate training instances
     for (const auto& config : board_configs) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {  // 5 instances per configuration
             auto costs = TSPGenerator::generateCircuitBoard(
                 std::get<0>(config),
                 std::get<1>(config),
@@ -27,22 +29,43 @@ void ParameterCalibration::calibrateParameters(
         }
     }
 
-    std::cout << "\n=== Parameter Calibration Results ===\n";
-    std::cout << "Testing " << tenure_values.size() * iteration_multipliers.size()
-        << " parameter combinations\n";
+    // Test parameter combinations
+    double best_quality = std::numeric_limits<double>::infinity();
 
     for (int tenure : tenure_values) {
         for (int iter_mult : iteration_multipliers) {
             CalibrationResult result = testParameterCombination(
                 training_instances, tenure, iter_mult);
 
-            std::cout << "\nTenure: " << tenure
-                << ", Iteration Multiplier: " << iter_mult << "\n";
-            std::cout << "Average solution quality: " << result.avg_solution_quality << "\n";
-            std::cout << "Average time (ms): " << result.avg_time_ms << "\n";
-            std::cout << "Quality std dev: " << result.std_dev_quality << "\n";
+            std::cout << "\nTesting tenure=" << tenure
+                << ", iterations=" << iter_mult * training_instances[0].n << "\n";
+            std::cout << "Quality: " << result.avg_solution_quality
+                << " (circa" << result.std_dev_quality << ")\n";
+            std::cout << "Time: " << result.avg_time_ms << "ms\n";
+
+            // Update parameters based on instance size
+            if (result.avg_solution_quality < best_quality) {
+                best_quality = result.avg_solution_quality;
+
+                for (const auto& instance : training_instances) {
+                    if (instance.n <= 20) {
+                        best_params.small_tenure = tenure;
+                        best_params.small_iterations = iter_mult * instance.n;
+                    }
+                    else if (instance.n <= 35) {
+                        best_params.medium_tenure = tenure;
+                        best_params.medium_iterations = iter_mult * instance.n;
+                    }
+                    else {
+                        best_params.large_tenure = tenure;
+                        best_params.large_iterations = iter_mult * instance.n;
+                    }
+                }
+            }
         }
     }
+
+    return best_params;
 }
 
 ParameterCalibration::CalibrationResult ParameterCalibration::testParameterCombination(

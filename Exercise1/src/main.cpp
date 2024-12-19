@@ -1,35 +1,50 @@
 ﻿/**
-* @file main.cpp
-* @brief Optimized implementation of flow-based TSP for drilling problem
-*
-* This implementation uses the simplified flow-based formulation from
-* "The travelling salesman problem and related problems" (Gavish & Graves, 1978).
-* The formulation removes redundant constraints and variables to origin.
-*
-* Mathematical Model:
-* Min Σ(i,j∈A) cij * yij                                 (9) - Minimize total travel cost
-* s.t.
-* Σ(i:(i,k)∈A) xik - Σ(j:(k,j),j≠0) xkj = 1            (10) - Flow conservation excluding origin
-* Σ(j:(i,j)∈A) yij = 1                                  (11) - One outgoing arc per node
-* Σ(i:(i,j)∈A) yij = 1                                  (12) - One incoming arc per node
-* xij ≤ (|N|-1)yij                     ∀(i,j)∈A, j≠0    (13) - Linking x and y variables
-* xij ∈ R+                             ∀(i,j)∈A, j≠0    (14) - Flow variables non-negative
-* yij ∈ {0,1}                          ∀(i,j)∈A         (15) - Binary path variables
-*
-* Variables:
-* xij: Amount of flow on arc (i,j), j≠0 (no flow to origin)
-* yij: 1 if arc (i,j) is in the tour, 0 otherwise
-*
-* Parameters:
-* N: Number of nodes (including depot)
-* cij: Cost/distance between nodes i and j
-*
-* Key Optimizations:
-* 1. Removed redundant origin flow constraint
-* 2. Eliminated variables for flow to origin (xi0)
-* 3. Simplified flow conservation constraint
-* 4. Reduced number of linking constraints
-*/
+ * @file main.cpp
+ * @brief Circuit Board Drilling Optimization Implementation with CPLEX
+ *
+ * This program implements an exact solution approach for optimizing drilling sequences
+ * on circuit boards using CPLEX. It handles multiple board configurations and provides
+ * detailed performance analysis.
+ *
+ * Features:
+ * - Automated instance generation for different board sizes
+ * - Hierarchical data organization by instance size
+ * - Comprehensive performance metrics tracking
+ * - Manufacturing constraint validation
+ *
+ * Program Flow:
+ * 1. Instance Generation:
+ *    - Creates test boards of varying sizes (50x50 to 200x200)
+ *    - Applies industry-standard manufacturing constraints
+ *    - Categorizes instances by complexity (small/medium/large)
+ *
+ * 2. Solution Process:
+ *    - Configures CPLEX parameters based on instance size
+ *    - Implements adaptive time limits (10s-300s)
+ *    - Tracks setup and solution times separately
+ *
+ * 3. Results Management:
+ *    - Organizes results in hierarchical directory structure
+ *    - Generates detailed performance metrics
+ *    - Provides manufacturing-relevant statistics
+ *
+ * Usage:
+ * The program automatically processes multiple board configurations:
+ * - Small boards (50x50, ~10-15 holes)
+ * - Medium boards (100x100, ~25-30 holes)
+ * - Large boards (150x150, ~45-50 holes)
+ * - Extra large boards (200x200, ~80-85 holes)
+ *
+ * Performance Metrics Generated:
+ * - Model setup time
+ * - Solution time
+ * - Total drilling path length
+ * - Average distance between holes
+ * - Complete drilling sequence
+ *
+ * @note Directory structure is automatically created and managed
+ * @note Error handling is implemented for both file operations and solver execution
+ */
 
 #include <iostream>
 #include <iomanip>
@@ -177,11 +192,6 @@ int main(int argc, char const* argv[]) {
                     std::cout << "Solution Quality:\n";
                     std::cout << "- Total drilling path length: " << objval << " mm\n";
                     std::cout << "- Average distance between holes: " << objval / N << " mm\n";
-
-                    double gap;
-                    if (CPXgetmiprelgap(env, lp, &gap) == 0) {
-                        std::cout << "- Optimality gap: " << gap * 100 << "%\n";
-                    }
 
                     std::cout << "\nDrilling sequence: ";
                     for (int node : tour) {

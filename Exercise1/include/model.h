@@ -1,4 +1,25 @@
-﻿#ifndef MODEL_H
+﻿/**
+* @file model.h
+* @brief Flow-based TSP model implementation for circuit board drilling optimization
+*
+* This module implements a compact flow-based formulation for solving the Traveling
+* Salesman Problem (TSP) as applied to circuit board drilling optimization. The
+* implementation uses CPLEX to solve the following model:
+*
+* Features:
+* - Network flow formulation with subtour elimination via flow constraints
+* - Compact model with polynomial number of variables and constraints
+* - Based on Gavish & Graves (1978) formulation
+*
+* The model handles:
+* - Flow variables (x_ij): Amount of flow from node i to j
+* - Path variables (y_ij): Binary variables indicating selected arcs
+* - Flow conservation constraints
+* - Assignment constraints ensuring each node is visited exactly once
+* - Linking constraints between flow and path variables
+*/
+
+#ifndef MODEL_H
 #define MODEL_H
 
 #include <ilcplex/cplex.h>  

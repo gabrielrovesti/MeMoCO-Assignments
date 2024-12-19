@@ -1,3 +1,28 @@
+/**
+* @file data_generator.h
+* @brief Circuit board drilling instance generator with manufacturing constraints
+*
+* Generates realistic test instances for the circuit board drilling problem by:
+* - Creating board layouts following manufacturing specifications
+* - Placing standard components (DIP, SOIC, connectors) with proper spacing
+* - Enforcing industry-standard constraints:
+*   - Minimum hole spacing (2.54mm/0.1 inch)
+*   - Edge clearance requirements
+*   - Component-specific placement rules
+*
+* Supported Component Types:
+* - DIP (Dual In-line Package) ICs
+* - SOIC (Small Outline Integrated Circuit)
+* - Edge connectors
+* - Mounting holes
+*
+* Manufacturing Constants:
+* - MIN_HOLE_DIAMETER: 0.8mm
+* - MIN_HOLE_SPACING: 2.54mm
+* - MOUNTING_HOLE_SIZE: 3.2mm
+* - EDGE_MARGIN: 5.0mm
+*/
+
 #ifndef DATA_GENERATOR_H
 #define DATA_GENERATOR_H
 

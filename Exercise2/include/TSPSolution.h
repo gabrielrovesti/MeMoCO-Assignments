@@ -1,3 +1,19 @@
+/**
+* @file TSPSolution.h
+* @brief Solution representation for TSP
+*
+* Represents a TSP solution as a sequence of nodes (drilling points).
+* Provides:
+* - Construction from TSP instance
+* - Deep copy functionality
+* - Solution printing
+* - Assignment operations
+*
+* The solution is represented as a vector of indices where:
+* - First and last elements are always 0 (depot)
+* - Intermediate elements represent the visiting sequence
+*/
+
 #ifndef TSPSOLUTION_H
 #define TSPSOLUTION_H
 

@@ -1,8 +1,24 @@
+/**
+* @file parameter_calibration.h
+* @brief Parameter calibration system for the TSP solver
+*
+* This class handles automated parameter tuning for the Tabu Search solver.
+* It performs systematic testing of different parameter combinations on training
+* instances to determine optimal settings for different problem sizes.
+*
+* Features:
+* - Separate parameter sets for small/medium/large instances
+* - Tests multiple tenure/iteration combinations
+* - Statistical analysis of solution quality
+* - Automated quality/runtime tradeoff evaluation
+*/
+
 #ifndef PARAMETER_CALIBRATION_H
 #define PARAMETER_CALIBRATION_H
 
 #include <vector>
 #include <tuple>
+#include "TSP.h"
 
 class ParameterCalibration {
 public:
@@ -15,8 +31,8 @@ public:
         int large_iterations;
 
         Parameters() :
-            small_tenure(0), medium_tenure(0), large_tenure(0),
-            small_iterations(0), medium_iterations(0), large_iterations(0) {}
+            small_tenure(5), medium_tenure(7), large_tenure(9),
+            small_iterations(100), medium_iterations(200), large_iterations(300) {}
     };
 
     struct CalibrationResult {
@@ -30,7 +46,7 @@ public:
             : tenure(t), iterations(i), avg_solution_quality(q), avg_time_ms(time), std_dev_quality(dev) {}
     };
 
-    void calibrateParameters(const std::vector<std::tuple<int, int, int>>& board_configs);
+    Parameters calibrateParameters(const std::vector<std::tuple<int, int, int>>& board_configs);
 
 private:
     const std::vector<int> tenure_values = { 5, 7, 9, 11, 13 };
