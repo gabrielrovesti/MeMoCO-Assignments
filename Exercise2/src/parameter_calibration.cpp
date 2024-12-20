@@ -9,7 +9,7 @@
 ParameterCalibration::Parameters ParameterCalibration::calibrateParameters(
     const std::vector<std::tuple<int, int, int>>& board_configs) {
 
-    Parameters best_params;
+    Parameters best_params; 
     std::vector<TSP> training_instances;
 
     // Generate training instances

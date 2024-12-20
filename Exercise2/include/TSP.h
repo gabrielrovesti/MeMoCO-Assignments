@@ -6,8 +6,6 @@
 * While it includes a read() method for file input, the current implementation
 * primarily uses the TSPGenerator for instance creation.
 *
-* @note The read() method is currently not actively used but kept for potential
-* future file-based instance handling.
 */
 
 #ifndef TSP_H
