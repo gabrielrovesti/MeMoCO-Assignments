@@ -23,7 +23,6 @@ void generateInstanceSet(const std::vector<std::tuple<int, int, int>>& board_con
     createDirectory("data/small");
     createDirectory("data/medium");
     createDirectory("data/large");
-    createDirectory("data/results");
 
     for (const auto& config : board_configs) {
         int width = std::get<0>(config);
