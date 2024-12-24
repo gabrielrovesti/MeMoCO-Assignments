@@ -130,7 +130,7 @@ int main(int argc, char const* argv[]) {
             std::string filename = directory + "/board_" +
                 std::to_string(width) + "x" +
                 std::to_string(height) + "_" +
-                std::to_string(timestamp) + ".txt";
+                std::to_string(timestamp) + ".dat";
 
             // Save metadata about the board configuration
             std::string metadata = "Circuit board instance\n"

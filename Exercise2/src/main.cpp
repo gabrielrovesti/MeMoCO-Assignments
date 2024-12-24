@@ -43,7 +43,7 @@ void generateInstanceSet(const std::vector<std::tuple<int, int, int>>& board_con
                 std::to_string(width) + "x" +
                 std::to_string(height) + "_" +
                 std::to_string(timestamp) + "_" +
-                std::to_string(i) + ".txt";
+                std::to_string(i) + ".dat";
 
             try {
                 TSPGenerator::saveToFile(filename, costs,

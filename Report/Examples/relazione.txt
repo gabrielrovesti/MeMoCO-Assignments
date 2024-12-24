@@ -1,0 +1,2746 @@
+PARAGRAFO - 5 MINUTES BEST solo
+
+PARTE 2
+E' stato scelto un metodo euristico per risolvere la seconda parte dell'esercizio. E' stata presa questa decisione in quanto i
+metodi esatti nonostante la varie ottimizzazioni come la generazione non esaustica dei vincoli SEC richiedono tempo esponenziale addirittura anche nella risoluzione di ogni sottoproblema risallato. Anche decidendo di stoppare l'algoritmo dopo un determinato quantitativo di tempo, non si avrebbe una soluzione feasible in quanto potrebbe avere piu' sub-tour. Nell'alg della parte 1 in caso di early stop cmq disponiamo di una soluzione feasible, ma non ottimale quindi in qualche modo accettabile. In conclusione ho ritenuto piu' interessante esplorare metodi meta-euristici, soprattutto in un'ottica di confronto con i metodi esatti quando questi terminano e l'incumbent solution di questi in caso di ecessivo sforzo computazionale.
+s
+
+
+EURISTICHE COSTRUTTIVE PER INIT SOL
+TSP: euristiche costruttiveCon il termine “euristiche costruttive” si identifica una ampia famiglia di euristiche che arrivano allasoluzione procedendo un vertice alla volta seguendo delle regole prefissate. Lo schema generale diqueste euristiche è composto da tre passi:
+1.Inizializzazione:scelta del ciclo parziale iniziale (o del punto di partenza);
+2.Selezione:scelta del prossimo vertice da inserire nella soluzione parziale;
+3.Inserimento:scelta della posizione dove inserire il nuovo vertice.Vediamo ora come queste regole vengono istanziate in cinque euristiche costruttive diverse.
+Nearest Neighbor ------------------
+1.Inizializzazione:si parte con il cammino composto dal solo vertice 0
+2.Selezione:sia(v0,...,vk)il cammino corrente. Trova il verticevk+1non ancora inseritonel circuito a distanza minima davk;
+3.Inserimento:inseriscivk+1subito dopovknel cammino;
+4.  ripeti da (2) finché non hai inserito tutti i vertici nel cammino;
+5.  chiudi il circuito inserendo il vertice iniziale 0 alla fine del cammino(0,...,vn).
+Random Insertion --------------------
+1.Inizializzazione:considera il circuito parziale composto dal solo vertice0.  Trova unverticejche minimizzaw(0,j)e costruisci il circuito parziale(0,j,0);
+2.Selezione:seleziona in modo casuale un verticeknon ancora inserito nel circuito;
+3.Inserimento:trova l’arco{i,j}del circuito parziale che minimizza il valorew(i,k) +w(k,j)−w(i,j)e inserisciktraiej;
+4.  ripeti da (2) finché non hai inserito tutti i vertici nel circuito.Le euristiche “Closest Insertion”, “Farthest Insertion” e “Cheapest Insertion” si differenzianoda Random Insertion nella selezione del vertice, che non è più arbitrario ma segue una regolaprecisa. Inizializzazione e Inserimento non variano.
+Cheapest Insertion ---------------------------
+1.Inizializzazione:considera il circuito parziale composto dal solo vertice0.  Trova unverticejche minimizzaw(0,j)e costruisci il circuito parziale(0,j,0);
+2.Selezione:trova un verticeknon presente nel circuito parziale e un arco{i,j}del circuitoparziale che minimizzano il valorew(i,k)+w(k,j)−w(i,j);
+3.Inserimento:inserisciktraiej;
+4.  ripeti da (2) finché non hai inserito tutti i vertici nel circuito.Dato un insieme di verticiC⊆Vche rappresentano un circuito parziale, ed un verticek6∈C,definiamo ladistanzadikdaCcome il minimo peso di un arco che collegakaC:δ(k,C) =minh∈Cw(h,k)
+Le euristiche “Closest Insertion” e “Farthest Insertion” selezionano i vertici che minimizzano omassimizzano la distanza dal circuito parziale.
+Closest Insertion
+1.Inizializzazione:considera il circuito parziale composto dal solo vertice0.  Trova unverticejche minimizzaw(0,j)e costruisci il circuito parziale(0,j,0);
+2.Selezione:trova un verticeknon presente nel circuito parzialeCcheminimizzaδ(k,C);
+3.Inserimento:trova l’arco{i,j}del circuito parziale che minimizza il valorew(i,k) +w(k,j)−w(i,j)e inserisciktraiej;
+4.  ripeti da (2) finché non hai inserito tutti i vertici nel circuito.
+Farthest Insertion
+1.Inizializzazione:considera il circuito parziale composto dal solo vertice0.  Trova unverticejche minimizzaw(0,j)e costruisci il circuito parziale(0,j,0);
+2.Selezione:trova un verticeknon presente nel circuito parzialeCchemassimizzaδ(k,C);
+
+best configuration : 
+bestCost = 9722.03iterazione = 130 , bestTime = 6452412 ,popN = 5000, repN = 500, bestMi = 5, bestMa 100
+sballari@sballari-ThinkPad-T480s:~/Desktop/MemocoEx/tsp/Part2$ 
+
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 127743, sol cost : 9966.97, iterazioni : 22
+time : 112132, sol cost : 9965.84, iterazioni : 21
+time : 110285, sol cost : 9951.16, iterazioni : 21
+time : 115581, sol cost : 10062.2, iterazioni : 25
+time : 112141, sol cost : 9692.55, iterazioni : 24
+time : 110857, sol cost : 9907.13, iterazioni : 21
+time : 110012, sol cost : 9818.3, iterazioni : 16
+time : 116865, sol cost : 10256.7, iterazioni : 20
+time : 116463, sol cost : 9865.26, iterazioni : 24
+time : 116614, sol cost : 9869.98, iterazioni : 20
+avgTime = 114869	sqmTime = 5014.47
+avgCost = 9935.62	sqmCost = 142.9
+avgIt = 21.4	sqmIt = 2.45764
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 116854, sol cost : 9915.18, iterazioni : 120
+time : 111978, sol cost : 10081.7, iterazioni : 119
+time : 111217, sol cost : 9868.8, iterazioni : 117
+time : 111813, sol cost : 9982, iterazioni : 116
+time : 113910, sol cost : 9785.01, iterazioni : 116
+time : 112638, sol cost : 9874.96, iterazioni : 117
+time : 115866, sol cost : 9952.07, iterazioni : 121
+time : 116283, sol cost : 10334.9, iterazioni : 123
+time : 113224, sol cost : 9925.85, iterazioni : 121
+time : 112263, sol cost : 9688.6, iterazioni : 117
+avgTime = 113605	sqmTime = 1933.39
+avgCost = 9940.91	sqmCost = 165.96
+avgIt = 118.7	sqmIt = 2.37819
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 119875, sol cost : 9865.05, iterazioni : 518
+time : 121648, sol cost : 9988.76, iterazioni : 512
+time : 129381, sol cost : 9873.29, iterazioni : 517
+time : 118656, sol cost : 9871.13, iterazioni : 516
+time : 116987, sol cost : 9847.95, iterazioni : 513
+time : 119379, sol cost : 9951.74, iterazioni : 518
+time : 119658, sol cost : 9915.54, iterazioni : 515
+time : 121929, sol cost : 10248.1, iterazioni : 515
+time : 117006, sol cost : 9936.2, iterazioni : 513
+time : 114216, sol cost : 9824.67, iterazioni : 516
+avgTime = 119874	sqmTime = 3848.42
+avgCost = 9932.24	sqmCost = 115.844
+avgIt = 515.3	sqmIt = 2.06102
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 110111, sol cost : 9900.1, iterazioni : 17
+time : 116276, sol cost : 10051.2, iterazioni : 16
+time : 118084, sol cost : 9915.03, iterazioni : 22
+time : 118320, sol cost : 10100.6, iterazioni : 15
+time : 121408, sol cost : 9823.23, iterazioni : 19
+time : 116849, sol cost : 9930.12, iterazioni : 21
+time : 118140, sol cost : 9904.31, iterazioni : 23
+time : 116384, sol cost : 10241.1, iterazioni : 22
+time : 110512, sol cost : 9982.02, iterazioni : 15
+time : 110365, sol cost : 9829.14, iterazioni : 15
+avgTime = 115645	sqmTime = 3738.86
+avgCost = 9967.68	sqmCost = 123.498
+avgIt = 18.5	sqmIt = 3.13944
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 110064, sol cost : 9892.04, iterazioni : 111
+time : 113461, sol cost : 10083.7, iterazioni : 116
+time : 114820, sol cost : 9929.13, iterazioni : 110
+time : 115111, sol cost : 10096.9, iterazioni : 115
+time : 111368, sol cost : 9677.53, iterazioni : 117
+time : 113637, sol cost : 9930.75, iterazioni : 117
+time : 111699, sol cost : 9931.83, iterazioni : 115
+time : 113014, sol cost : 10269.2, iterazioni : 110
+time : 110894, sol cost : 9850.1, iterazioni : 111
+time : 114588, sol cost : 9847.89, iterazioni : 119
+avgTime = 112866	sqmTime = 1677.6
+avgCost = 9950.9	sqmCost = 155.111
+avgIt = 114.1	sqmIt = 3.19436
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 116159, sol cost : 9902.16, iterazioni : 510
+time : 115879, sol cost : 10147.7, iterazioni : 509
+time : 116473, sol cost : 10048.8, iterazioni : 514
+time : 117278, sol cost : 9968.07, iterazioni : 523
+time : 111271, sol cost : 9771.67, iterazioni : 511
+time : 113904, sol cost : 9821.05, iterazioni : 517
+time : 116205, sol cost : 9815.87, iterazioni : 518
+time : 113923, sol cost : 10275.5, iterazioni : 517
+time : 115365, sol cost : 9785.1, iterazioni : 520
+time : 113562, sol cost : 9799.59, iterazioni : 516
+avgTime = 115002	sqmTime = 1714.53
+avgCost = 9933.54	sqmCost = 164.633
+avgIt = 515.5	sqmIt = 4.30923
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 111455, sol cost : 9961.09, iterazioni : 21
+time : 110758, sol cost : 10073.2, iterazioni : 15
+time : 113339, sol cost : 9954.77, iterazioni : 21
+time : 112461, sol cost : 9989.09, iterazioni : 26
+time : 113412, sol cost : 9798.47, iterazioni : 24
+time : 112106, sol cost : 9974.07, iterazioni : 15
+time : 112413, sol cost : 9839.73, iterazioni : 19
+time : 112959, sol cost : 10196.8, iterazioni : 25
+time : 111793, sol cost : 9859.95, iterazioni : 20
+time : 112317, sol cost : 9826.1, iterazioni : 21
+avgTime = 112301	sqmTime = 785.971
+avgCost = 9947.32	sqmCost = 117.049
+avgIt = 20.7	sqmIt = 3.61122
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 110989, sol cost : 9826.1, iterazioni : 114
+time : 112849, sol cost : 10120.9, iterazioni : 109
+time : 111846, sol cost : 9919.08, iterazioni : 109
+time : 115523, sol cost : 10080.3, iterazioni : 109
+time : 112050, sol cost : 9766.28, iterazioni : 110
+time : 113629, sol cost : 10004.5, iterazioni : 109
+time : 111234, sol cost : 9943.9, iterazioni : 113
+time : 119924, sol cost : 10357.7, iterazioni : 116
+time : 116664, sol cost : 9852.41, iterazioni : 115
+time : 119479, sol cost : 9842.78, iterazioni : 114
+avgTime = 114419	sqmTime = 3152.76
+avgCost = 9971.39	sqmCost = 167.939
+avgIt = 111.8	sqmIt = 2.77869
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 10
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 123333, sol cost : 9914.44, iterazioni : 510
+time : 117820, sol cost : 10129.7, iterazioni : 513
+time : 117372, sol cost : 9893.27, iterazioni : 514
+time : 118643, sol cost : 9949.97, iterazioni : 513
+time : 118364, sol cost : 9749.55, iterazioni : 515
+time : 123613, sol cost : 9957.59, iterazioni : 510
+time : 118106, sol cost : 9902.7, iterazioni : 510
+time : 120785, sol cost : 10358.1, iterazioni : 509
+time : 118321, sol cost : 9889.65, iterazioni : 510
+time : 118737, sol cost : 9765.79, iterazioni : 516
+avgTime = 119509	sqmTime = 2157.62
+avgCost = 9951.08	sqmCost = 168.395
+avgIt = 512	sqmIt = 2.42443
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 113911, sol cost : 9956.92, iterazioni : 18
+time : 121382, sol cost : 10078.6, iterazioni : 19
+time : 114289, sol cost : 9775.05, iterazioni : 19
+time : 113035, sol cost : 9909.83, iterazioni : 16
+time : 112899, sol cost : 9763.79, iterazioni : 17
+time : 114290, sol cost : 9892.25, iterazioni : 18
+time : 114188, sol cost : 9884.91, iterazioni : 19
+time : 113322, sol cost : 10303.7, iterazioni : 17
+time : 118591, sol cost : 9874.52, iterazioni : 19
+time : 114417, sol cost : 9877.75, iterazioni : 17
+avgTime = 115032	sqmTime = 2605.82
+avgCost = 9931.73	sqmCost = 149.628
+avgIt = 17.9	sqmIt = 1.15432
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 114029, sol cost : 9869.09, iterazioni : 112
+time : 114284, sol cost : 9795.75, iterazioni : 114
+time : 114100, sol cost : 10021.4, iterazioni : 113
+time : 113544, sol cost : 9902.56, iterazioni : 112
+time : 112778, sol cost : 9692.37, iterazioni : 113
+time : 121686, sol cost : 9948.92, iterazioni : 115
+time : 113260, sol cost : 9798.27, iterazioni : 111
+time : 114272, sol cost : 10325.4, iterazioni : 114
+time : 115444, sol cost : 9967.8, iterazioni : 115
+time : 115478, sol cost : 9790.75, iterazioni : 115
+avgTime = 114888	sqmTime = 2405.92
+avgCost = 9911.23	sqmCost = 166.98
+avgIt = 113.4	sqmIt = 1.39837
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 115784, sol cost : 9943.21, iterazioni : 512
+time : 115056, sol cost : 10086.7, iterazioni : 514
+time : 119146, sol cost : 9919.36, iterazioni : 512
+time : 111092, sol cost : 9981.35, iterazioni : 512
+time : 111063, sol cost : 9809.06, iterazioni : 512
+time : 113072, sol cost : 9933.02, iterazioni : 514
+time : 112203, sol cost : 9835.7, iterazioni : 513
+time : 112739, sol cost : 10253.1, iterazioni : 515
+time : 111460, sol cost : 9885.92, iterazioni : 514
+time : 111470, sol cost : 9875.28, iterazioni : 514
+avgTime = 113308	sqmTime = 2482.24
+avgCost = 9952.27	sqmCost = 124.713
+avgIt = 513.2	sqmIt = 1.1401
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 109444, sol cost : 9908.15, iterazioni : 20
+time : 110561, sol cost : 10031.8, iterazioni : 19
+time : 111022, sol cost : 9900.34, iterazioni : 18
+time : 109511, sol cost : 9836.79, iterazioni : 17
+time : 108669, sol cost : 9786.44, iterazioni : 16
+time : 111823, sol cost : 9935.52, iterazioni : 17
+time : 109887, sol cost : 9957.76, iterazioni : 16
+time : 110731, sol cost : 10322.5, iterazioni : 16
+time : 109107, sol cost : 9765.8, iterazioni : 17
+time : 109160, sol cost : 9790.79, iterazioni : 17
+avgTime = 109992	sqmTime = 951.54
+avgCost = 9923.59	sqmCost = 155.547
+avgIt = 17.3	sqmIt = 1.31302
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 110340, sol cost : 9859.84, iterazioni : 110
+time : 113300, sol cost : 10076.9, iterazioni : 111
+time : 118046, sol cost : 9879.79, iterazioni : 112
+time : 113877, sol cost : 10048.2, iterazioni : 111
+time : 113787, sol cost : 9839.17, iterazioni : 111
+time : 113633, sol cost : 9915.75, iterazioni : 111
+time : 114408, sol cost : 9799.01, iterazioni : 112
+time : 114374, sol cost : 10314.4, iterazioni : 112
+time : 114089, sol cost : 9923.39, iterazioni : 112
+time : 119715, sol cost : 9893.05, iterazioni : 109
+avgTime = 114557	sqmTime = 2456.13
+avgCost = 9954.95	sqmCost = 145.497
+avgIt = 111.1	sqmIt = 1.01059
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 116694, sol cost : 9804.13, iterazioni : 516
+time : 115184, sol cost : 10032.5, iterazioni : 512
+time : 116607, sol cost : 9866.08, iterazioni : 514
+time : 114845, sol cost : 9942.34, iterazioni : 513
+time : 114281, sol cost : 9689.63, iterazioni : 513
+time : 119482, sol cost : 9880.89, iterazioni : 512
+time : 118273, sol cost : 9865.84, iterazioni : 512
+time : 117552, sol cost : 10346.9, iterazioni : 508
+time : 115120, sol cost : 9910.17, iterazioni : 513
+time : 116944, sol cost : 9777.53, iterazioni : 511
+avgTime = 116498	sqmTime = 1571.32
+avgCost = 9911.6	sqmCost = 170.035
+avgIt = 512.4	sqmIt = 1.98521
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 111879, sol cost : 10019, iterazioni : 10
+time : 110839, sol cost : 10185.8, iterazioni : 10
+time : 116210, sol cost : 9783.14, iterazioni : 16
+time : 116312, sol cost : 10006.8, iterazioni : 19
+time : 113761, sol cost : 9739.67, iterazioni : 17
+time : 113020, sol cost : 9750.05, iterazioni : 20
+time : 113991, sol cost : 9941.01, iterazioni : 14
+time : 113628, sol cost : 10357.4, iterazioni : 16
+time : 115145, sol cost : 10000.4, iterazioni : 17
+time : 112368, sol cost : 9827.48, iterazioni : 12
+avgTime = 113715	sqmTime = 1704.16
+avgCost = 9961.07	sqmCost = 189.255
+avgIt = 15.1	sqmIt = 3.35984
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 115798, sol cost : 9783.88, iterazioni : 110
+time : 116460, sol cost : 10029.1, iterazioni : 111
+time : 113029, sol cost : 9964.19, iterazioni : 111
+time : 110826, sol cost : 9891.57, iterazioni : 108
+time : 109002, sol cost : 9728.04, iterazioni : 111
+time : 111393, sol cost : 9994.02, iterazioni : 110
+time : 110643, sol cost : 9897.56, iterazioni : 112
+time : 108722, sol cost : 10181, iterazioni : 111
+time : 109398, sol cost : 9831.46, iterazioni : 110
+time : 113253, sol cost : 9812.79, iterazioni : 113
+avgTime = 111852	sqmTime = 2584.98
+avgCost = 9911.37	sqmCost = 127.646
+avgIt = 110.7	sqmIt = 1.39499
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 20
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 113250, sol cost : 9994.72, iterazioni : 512
+time : 113047, sol cost : 10003, iterazioni : 512
+time : 112182, sol cost : 9799.69, iterazioni : 511
+time : 113770, sol cost : 10065.3, iterazioni : 506
+time : 115121, sol cost : 9724.91, iterazioni : 512
+time : 111747, sol cost : 9768.37, iterazioni : 511
+time : 113536, sol cost : 9937.28, iterazioni : 509
+time : 115199, sol cost : 10307.4, iterazioni : 513
+time : 111725, sol cost : 9906.31, iterazioni : 511
+time : 113982, sol cost : 9837.39, iterazioni : 511
+avgTime = 113356	sqmTime = 1176.61
+avgCost = 9934.43	sqmCost = 162.635
+avgIt = 510.8	sqmIt = 1.92341
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 111040, sol cost : 9812.95, iterazioni : 17
+time : 109234, sol cost : 9992.9, iterazioni : 14
+time : 110213, sol cost : 10031, iterazioni : 15
+time : 109258, sol cost : 10057.7, iterazioni : 13
+time : 109752, sol cost : 9729.5, iterazioni : 15
+time : 112076, sol cost : 9900.32, iterazioni : 17
+time : 113128, sol cost : 9999.69, iterazioni : 18
+time : 114119, sol cost : 10323.5, iterazioni : 16
+time : 112407, sol cost : 9941.48, iterazioni : 16
+time : 111136, sol cost : 9871.96, iterazioni : 17
+avgTime = 111236	sqmTime = 1587.04
+avgCost = 9966.11	sqmCost = 153.496
+avgIt = 15.8	sqmIt = 1.53373
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 111938, sol cost : 9932.98, iterazioni : 109
+time : 111195, sol cost : 10085.9, iterazioni : 111
+time : 112075, sol cost : 9946.79, iterazioni : 112
+time : 112113, sol cost : 10083.4, iterazioni : 112
+time : 113378, sol cost : 9820.89, iterazioni : 112
+time : 111597, sol cost : 9835.86, iterazioni : 109
+time : 113122, sol cost : 10016.1, iterazioni : 109
+time : 110029, sol cost : 10255.7, iterazioni : 109
+time : 110787, sol cost : 10023.6, iterazioni : 110
+time : 110437, sol cost : 9808.83, iterazioni : 110
+avgTime = 111667	sqmTime = 1033.59
+avgCost = 9981.01	sqmCost = 134.159
+avgIt = 110.3	sqmIt = 1.32792
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 111157, sol cost : 9885.15, iterazioni : 509
+time : 111455, sol cost : 10094.9, iterazioni : 509
+time : 111857, sol cost : 10013.1, iterazioni : 510
+time : 111596, sol cost : 9949.07, iterazioni : 510
+time : 112590, sol cost : 9768.09, iterazioni : 509
+time : 114724, sol cost : 9851.47, iterazioni : 509
+time : 113510, sol cost : 9938.84, iterazioni : 510
+time : 114286, sol cost : 10361.9, iterazioni : 513
+time : 111677, sol cost : 9934.54, iterazioni : 510
+time : 112072, sol cost : 9836.77, iterazioni : 510
+avgTime = 112492	sqmTime = 1189.6
+avgCost = 9963.38	sqmCost = 159.113
+avgIt = 509.9	sqmIt = 1.19281
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 109475, sol cost : 9820.63, iterazioni : 14
+time : 110924, sol cost : 10054.5, iterazioni : 16
+time : 113866, sol cost : 10032.9, iterazioni : 14
+time : 109835, sol cost : 10041.4, iterazioni : 11
+time : 113447, sol cost : 9795.51, iterazioni : 15
+time : 110842, sol cost : 9923.07, iterazioni : 15
+time : 111305, sol cost : 9878.95, iterazioni : 16
+time : 110346, sol cost : 10139.8, iterazioni : 14
+time : 110255, sol cost : 9974.96, iterazioni : 14
+time : 110424, sol cost : 9866.31, iterazioni : 16
+avgTime = 111072	sqmTime = 1388.25
+avgCost = 9952.81	sqmCost = 107.827
+avgIt = 14.5	sqmIt = 1.47285
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 112091, sol cost : 9938.01, iterazioni : 113
+time : 112510, sol cost : 10077.7, iterazioni : 108
+time : 112683, sol cost : 9947.13, iterazioni : 111
+time : 112338, sol cost : 9857.73, iterazioni : 111
+time : 111111, sol cost : 9932.48, iterazioni : 110
+time : 109011, sol cost : 9810.71, iterazioni : 110
+time : 109352, sol cost : 9940.44, iterazioni : 110
+time : 109620, sol cost : 10302.8, iterazioni : 111
+time : 111542, sol cost : 9942.8, iterazioni : 109
+time : 109305, sol cost : 9882.39, iterazioni : 107
+avgTime = 110956	sqmTime = 1408.22
+avgCost = 9963.22	sqmCost = 131.239
+avgIt = 110	sqmIt = 1.65749
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 109255, sol cost : 9905.83, iterazioni : 508
+time : 110223, sol cost : 10089.8, iterazioni : 512
+time : 110113, sol cost : 9967.49, iterazioni : 507
+time : 110795, sol cost : 10029.5, iterazioni : 508
+time : 112741, sol cost : 9849.98, iterazioni : 513
+time : 112591, sol cost : 9876.52, iterazioni : 509
+time : 110960, sol cost : 10004.6, iterazioni : 510
+time : 111264, sol cost : 10272.9, iterazioni : 512
+time : 110096, sol cost : 9703.07, iterazioni : 508
+time : 109746, sol cost : 9833.76, iterazioni : 508
+avgTime = 110778	sqmTime = 1095.96
+avgCost = 9953.34	sqmCost = 150.088
+avgIt = 509.5	sqmIt = 2.05323
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 108308, sol cost : 9797.23, iterazioni : 14
+time : 116936, sol cost : 10063.1, iterazioni : 15
+time : 108148, sol cost : 9906.38, iterazioni : 13
+time : 107025, sol cost : 9873.92, iterazioni : 13
+time : 109374, sol cost : 9858.32, iterazioni : 10
+time : 110496, sol cost : 9872.55, iterazioni : 14
+time : 108849, sol cost : 9906.08, iterazioni : 12
+time : 108639, sol cost : 10196.8, iterazioni : 13
+time : 110369, sol cost : 9903.24, iterazioni : 14
+time : 111142, sol cost : 9894.7, iterazioni : 13
+avgTime = 109929	sqmTime = 2616.43
+avgCost = 9927.23	sqmCost = 110.129
+avgIt = 13.1	sqmIt = 1.37671
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 108193, sol cost : 9906.08, iterazioni : 109
+time : 109243, sol cost : 10063.1, iterazioni : 108
+time : 110563, sol cost : 9968.71, iterazioni : 107
+time : 108900, sol cost : 9985.52, iterazioni : 108
+time : 109084, sol cost : 9701.23, iterazioni : 107
+time : 108682, sol cost : 9835.39, iterazioni : 107
+time : 111792, sol cost : 9947.48, iterazioni : 108
+time : 109411, sol cost : 10286.1, iterazioni : 110
+time : 110760, sol cost : 10035.2, iterazioni : 105
+time : 109293, sol cost : 9677.78, iterazioni : 110
+avgTime = 109592	sqmTime = 1044.79
+avgCost = 9940.67	sqmCost = 168.801
+avgIt = 107.9	sqmIt = 1.49254
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 100
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 50
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 110236, sol cost : 9935.05, iterazioni : 510
+time : 110712, sol cost : 10052.8, iterazioni : 509
+time : 111428, sol cost : 9928.09, iterazioni : 507
+time : 109093, sol cost : 9774.3, iterazioni : 508
+time : 111059, sol cost : 9690.47, iterazioni : 508
+time : 110504, sol cost : 9941.66, iterazioni : 508
+time : 114671, sol cost : 9994.32, iterazioni : 508
+time : 112571, sol cost : 10282.3, iterazioni : 505
+time : 112155, sol cost : 9923.43, iterazioni : 508
+time : 111352, sol cost : 9813.94, iterazioni : 506
+avgTime = 111378	sqmTime = 1439.08
+avgCost = 9933.63	sqmCost = 154.478
+avgIt = 507.7	sqmIt = 1.39973
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 170991, sol cost : 9931.45, iterazioni : 16
+time : 172591, sol cost : 9939.55, iterazioni : 23
+time : 171651, sol cost : 9854.42, iterazioni : 21
+time : 175473, sol cost : 10092.6, iterazioni : 22
+time : 172641, sol cost : 9756.81, iterazioni : 28
+time : 170499, sol cost : 9933.59, iterazioni : 24
+time : 170729, sol cost : 9896.49, iterazioni : 27
+time : 170031, sol cost : 10337.1, iterazioni : 26
+time : 172118, sol cost : 9941.8, iterazioni : 25
+time : 173157, sol cost : 9729.33, iterazioni : 28
+avgTime = 171988	sqmTime = 1518.54
+avgCost = 9941.32	sqmCost = 163.827
+avgIt = 24	sqmIt = 3.54118
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 170180, sol cost : 9717.26, iterazioni : 123
+time : 171631, sol cost : 10000.6, iterazioni : 121
+time : 171307, sol cost : 10022.5, iterazioni : 121
+time : 168236, sol cost : 9896.3, iterazioni : 116
+time : 169808, sol cost : 9767.83, iterazioni : 121
+time : 172072, sol cost : 9956.42, iterazioni : 121
+time : 172076, sol cost : 9889.42, iterazioni : 119
+time : 169834, sol cost : 10328.6, iterazioni : 121
+time : 169491, sol cost : 9755.37, iterazioni : 118
+time : 169150, sol cost : 9675.46, iterazioni : 117
+avgTime = 170378	sqmTime = 1254.21
+avgCost = 9900.97	sqmCost = 182.886
+avgIt = 119.8	sqmIt = 2.1712
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 171667, sol cost : 9894.76, iterazioni : 520
+time : 171097, sol cost : 10054.6, iterazioni : 517
+time : 173597, sol cost : 9906.55, iterazioni : 522
+time : 172471, sol cost : 9967.56, iterazioni : 519
+time : 171400, sol cost : 9764.12, iterazioni : 521
+time : 173612, sol cost : 9911.22, iterazioni : 521
+time : 178274, sol cost : 9912.55, iterazioni : 518
+time : 171973, sol cost : 10246.9, iterazioni : 520
+time : 177988, sol cost : 9955.95, iterazioni : 515
+time : 173450, sol cost : 9773.9, iterazioni : 520
+avgTime = 173553	sqmTime = 2446.75
+avgCost = 9938.82	sqmCost = 131.075
+avgIt = 519.3	sqmIt = 2.056
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 180609, sol cost : 9940.38, iterazioni : 22
+time : 182356, sol cost : 10056.8, iterazioni : 24
+time : 181390, sol cost : 9778.44, iterazioni : 23
+time : 185895, sol cost : 9962.53, iterazioni : 18
+time : 187467, sol cost : 9828.29, iterazioni : 22
+time : 191752, sol cost : 9904.48, iterazioni : 26
+time : 185776, sol cost : 9891.37, iterazioni : 21
+time : 183820, sol cost : 10247.8, iterazioni : 21
+time : 178457, sol cost : 9741.6, iterazioni : 23
+time : 180271, sol cost : 9753.14, iterazioni : 20
+avgTime = 183779	sqmTime = 3795.4
+avgCost = 9910.48	sqmCost = 147.235
+avgIt = 22	sqmIt = 2.14607
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 181727, sol cost : 9807.04, iterazioni : 121
+time : 178369, sol cost : 10143.3, iterazioni : 110
+time : 182217, sol cost : 9943.08, iterazioni : 119
+time : 176289, sol cost : 9872.96, iterazioni : 112
+time : 184162, sol cost : 9839.78, iterazioni : 110
+time : 186176, sol cost : 9804.9, iterazioni : 123
+time : 184920, sol cost : 9910.11, iterazioni : 118
+time : 184688, sol cost : 10285.7, iterazioni : 110
+time : 184379, sol cost : 10009, iterazioni : 111
+time : 182536, sol cost : 9700.61, iterazioni : 120
+avgTime = 182546	sqmTime = 2945.38
+avgCost = 9931.65	sqmCost = 165.446
+avgIt = 115.4	sqmIt = 5.00546
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 183325, sol cost : 9866.4, iterazioni : 515
+time : 189471, sol cost : 10100, iterazioni : 510
+time : 189393, sol cost : 9906.13, iterazioni : 521
+time : 184960, sol cost : 10004.3, iterazioni : 510
+time : 183688, sol cost : 9844.92, iterazioni : 519
+time : 180970, sol cost : 9986.08, iterazioni : 511
+time : 186807, sol cost : 9763.9, iterazioni : 521
+time : 185222, sol cost : 10282.6, iterazioni : 511
+time : 184084, sol cost : 9922.17, iterazioni : 518
+time : 184290, sol cost : 9776.56, iterazioni : 519
+avgTime = 185221	sqmTime = 2534.36
+avgCost = 9945.31	sqmCost = 149.263
+avgIt = 515.5	sqmIt = 4.44416
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 174973, sol cost : 9800.19, iterazioni : 16
+time : 179138, sol cost : 10148.7, iterazioni : 15
+time : 177419, sol cost : 10018.3, iterazioni : 15
+time : 179655, sol cost : 10037.2, iterazioni : 15
+time : 183833, sol cost : 9734.6, iterazioni : 18
+time : 180439, sol cost : 9984.01, iterazioni : 15
+time : 187767, sol cost : 9856.62, iterazioni : 25
+time : 183328, sol cost : 10096.7, iterazioni : 22
+time : 189103, sol cost : 9938.87, iterazioni : 23
+time : 185378, sol cost : 9803.19, iterazioni : 18
+avgTime = 182103	sqmTime = 4320.09
+avgCost = 9941.82	sqmCost = 131.573
+avgIt = 18.2	sqmIt = 3.6612
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 190033, sol cost : 9932.56, iterazioni : 110
+time : 181521, sol cost : 10066.1, iterazioni : 116
+time : 192891, sol cost : 10006.3, iterazioni : 112
+time : 187909, sol cost : 9982.06, iterazioni : 114
+time : 185123, sol cost : 9715.29, iterazioni : 119
+time : 188857, sol cost : 9906.28, iterazioni : 109
+time : 192783, sol cost : 9971.54, iterazioni : 110
+time : 183664, sol cost : 10142, iterazioni : 116
+time : 189927, sol cost : 9839.9, iterazioni : 114
+time : 185483, sol cost : 9782.81, iterazioni : 116
+avgTime = 187819	sqmTime = 3611.87
+avgCost = 9934.48	sqmCost = 122.519
+avgIt = 113.6	sqmIt = 3.16325
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 15
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 192869, sol cost : 9871.95, iterazioni : 514
+time : 189583, sol cost : 9979.71, iterazioni : 519
+time : 190450, sol cost : 9864.86, iterazioni : 513
+time : 191800, sol cost : 10028.2, iterazioni : 510
+time : 189869, sol cost : 9608.42, iterazioni : 520
+time : 185267, sol cost : 9934.39, iterazioni : 510
+time : 193438, sol cost : 9934.55, iterazioni : 510
+time : 182822, sol cost : 10104.3, iterazioni : 517
+time : 191103, sol cost : 9892.05, iterazioni : 516
+time : 189877, sol cost : 9741.45, iterazioni : 510
+avgTime = 189708	sqmTime = 3130.35
+avgCost = 9895.99	sqmCost = 133.826
+avgIt = 513.9	sqmIt = 3.76913
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 183588, sol cost : 9882.17, iterazioni : 22
+time : 184110, sol cost : 10009, iterazioni : 20
+time : 181692, sol cost : 9866.73, iterazioni : 19
+time : 180009, sol cost : 9971.23, iterazioni : 21
+time : 180358, sol cost : 9634.62, iterazioni : 18
+time : 184900, sol cost : 9913.35, iterazioni : 21
+time : 184105, sol cost : 9998.75, iterazioni : 19
+time : 183016, sol cost : 10352.2, iterazioni : 19
+time : 179276, sol cost : 9941.81, iterazioni : 20
+time : 182336, sol cost : 9714.87, iterazioni : 19
+avgTime = 182339	sqmTime = 1843.62
+avgCost = 9928.47	sqmCost = 182.005
+avgIt = 19.8	sqmIt = 1.31792
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 180170, sol cost : 9772.18, iterazioni : 112
+time : 183985, sol cost : 10015.5, iterazioni : 116
+time : 182225, sol cost : 9878.71, iterazioni : 114
+time : 176657, sol cost : 9860.34, iterazioni : 112
+time : 182191, sol cost : 9819.54, iterazioni : 113
+time : 183007, sol cost : 9967.56, iterazioni : 115
+time : 185659, sol cost : 9879.05, iterazioni : 117
+time : 181340, sol cost : 10228.6, iterazioni : 113
+time : 174581, sol cost : 9807.17, iterazioni : 114
+time : 177016, sol cost : 9773.52, iterazioni : 112
+avgTime = 180683	sqmTime = 3366.05
+avgCost = 9900.22	sqmCost = 132.66
+avgIt = 113.8	sqmIt = 1.70053
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 181734, sol cost : 9988.37, iterazioni : 518
+time : 183640, sol cost : 10053.8, iterazioni : 515
+time : 180415, sol cost : 9904.16, iterazioni : 513
+time : 181171, sol cost : 9968.47, iterazioni : 516
+time : 174692, sol cost : 9717.26, iterazioni : 511
+time : 181439, sol cost : 9835.32, iterazioni : 513
+time : 180438, sol cost : 9778.05, iterazioni : 515
+time : 178955, sol cost : 10239.9, iterazioni : 514
+time : 179951, sol cost : 9849.35, iterazioni : 516
+time : 179812, sol cost : 9737.14, iterazioni : 517
+avgTime = 180225	sqmTime = 2210.55
+avgCost = 9907.19	sqmCost = 152.609
+avgIt = 514.8	sqmIt = 2.03225
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 175590, sol cost : 9796.39, iterazioni : 17
+time : 176633, sol cost : 9866.75, iterazioni : 17
+time : 178089, sol cost : 9894.1, iterazioni : 21
+time : 183025, sol cost : 10035.2, iterazioni : 15
+time : 177404, sol cost : 9661.04, iterazioni : 18
+time : 182381, sol cost : 9876.4, iterazioni : 20
+time : 178901, sol cost : 9868.61, iterazioni : 19
+time : 176027, sol cost : 10302.3, iterazioni : 16
+time : 182504, sol cost : 9951.46, iterazioni : 19
+time : 175420, sol cost : 9747.38, iterazioni : 20
+avgTime = 178597	sqmTime = 2838.38
+avgCost = 9899.96	sqmCost = 166.358
+avgIt = 18.2	sqmIt = 1.88765
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 178797, sol cost : 9931.17, iterazioni : 110
+time : 178439, sol cost : 9955.33, iterazioni : 115
+time : 176747, sol cost : 9789.33, iterazioni : 113
+time : 182002, sol cost : 9995.36, iterazioni : 113
+time : 177839, sol cost : 9682.11, iterazioni : 115
+time : 177715, sol cost : 9830.98, iterazioni : 113
+time : 176207, sol cost : 9988.04, iterazioni : 111
+time : 182106, sol cost : 10264.3, iterazioni : 112
+time : 179552, sol cost : 9916.54, iterazioni : 111
+time : 177943, sol cost : 9837.96, iterazioni : 114
+avgTime = 178735	sqmTime = 1887.12
+avgCost = 9919.12	sqmCost = 147.9
+avgIt = 112.7	sqmIt = 1.67295
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 180568, sol cost : 9916.61, iterazioni : 506
+time : 178811, sol cost : 9992.48, iterazioni : 515
+time : 178198, sol cost : 9845.5, iterazioni : 512
+time : 180696, sol cost : 9848.62, iterazioni : 513
+time : 181740, sol cost : 9840.83, iterazioni : 512
+time : 181971, sol cost : 9857.15, iterazioni : 516
+time : 177305, sol cost : 9889.51, iterazioni : 513
+time : 180402, sol cost : 10269.6, iterazioni : 509
+time : 180035, sol cost : 9929.07, iterazioni : 511
+time : 181275, sol cost : 9867.22, iterazioni : 511
+avgTime = 180100	sqmTime = 1460.6
+avgCost = 9925.66	sqmCost = 123.275
+avgIt = 511.8	sqmIt = 2.74359
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 174993, sol cost : 9821.5, iterazioni : 16
+time : 179681, sol cost : 9959.99, iterazioni : 19
+time : 178950, sol cost : 9772.2, iterazioni : 17
+time : 173815, sol cost : 10110.7, iterazioni : 10
+time : 179130, sol cost : 9629.29, iterazioni : 21
+time : 174018, sol cost : 9977.74, iterazioni : 11
+time : 177905, sol cost : 9898.39, iterazioni : 17
+time : 175624, sol cost : 10275.8, iterazioni : 19
+time : 176669, sol cost : 9955.88, iterazioni : 17
+time : 175809, sol cost : 9826.47, iterazioni : 17
+avgTime = 176659	sqmTime = 2041.41
+avgCost = 9922.8	sqmCost = 171.615
+avgIt = 16.4	sqmIt = 3.30369
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 182399, sol cost : 9878.19, iterazioni : 111
+time : 177627, sol cost : 10022.6, iterazioni : 113
+time : 176976, sol cost : 9925.38, iterazioni : 113
+time : 180803, sol cost : 10015.2, iterazioni : 106
+time : 176616, sol cost : 9691.45, iterazioni : 112
+time : 180653, sol cost : 9925.44, iterazioni : 110
+time : 179154, sol cost : 9886.33, iterazioni : 112
+time : 177172, sol cost : 10209, iterazioni : 110
+time : 177490, sol cost : 9961.56, iterazioni : 110
+time : 178428, sol cost : 9796.61, iterazioni : 109
+avgTime = 178732	sqmTime = 1856.26
+avgCost = 9931.18	sqmCost = 131.977
+avgIt = 110.6	sqmIt = 2.09054
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 30
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 177763, sol cost : 9849.1, iterazioni : 513
+time : 178295, sol cost : 10027.1, iterazioni : 513
+time : 179902, sol cost : 9931.22, iterazioni : 515
+time : 178667, sol cost : 9999.03, iterazioni : 513
+time : 180407, sol cost : 9765.9, iterazioni : 513
+time : 180247, sol cost : 9856.61, iterazioni : 515
+time : 184873, sol cost : 9820.31, iterazioni : 511
+time : 188847, sol cost : 10294.3, iterazioni : 512
+time : 176364, sol cost : 10002.9, iterazioni : 507
+time : 181482, sol cost : 9823.05, iterazioni : 514
+avgTime = 180685	sqmTime = 3502.43
+avgCost = 9936.95	sqmCost = 146.357
+avgIt = 512.6	sqmIt = 2.24701
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 169939, sol cost : 9781.78, iterazioni : 13
+time : 176039, sol cost : 9985.93, iterazioni : 15
+time : 172481, sol cost : 10009, iterazioni : 15
+time : 179238, sol cost : 10021.9, iterazioni : 17
+time : 173508, sol cost : 9827.93, iterazioni : 16
+time : 178616, sol cost : 9970.93, iterazioni : 16
+time : 177411, sol cost : 10019.9, iterazioni : 15
+time : 178307, sol cost : 10287.9, iterazioni : 19
+time : 174564, sol cost : 9882.51, iterazioni : 14
+time : 179780, sol cost : 9820.4, iterazioni : 17
+avgTime = 175988	sqmTime = 3103.62
+avgCost = 9960.81	sqmCost = 138.908
+avgIt = 15.7	sqmIt = 1.68366
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 176868, sol cost : 9933.99, iterazioni : 111
+time : 178291, sol cost : 10022.7, iterazioni : 111
+time : 176624, sol cost : 9804.01, iterazioni : 113
+time : 178945, sol cost : 9896.63, iterazioni : 112
+time : 178089, sol cost : 9656.06, iterazioni : 113
+time : 180929, sol cost : 9922.44, iterazioni : 111
+time : 177880, sol cost : 9856.81, iterazioni : 112
+time : 174843, sol cost : 10262.2, iterazioni : 112
+time : 177771, sol cost : 9878.8, iterazioni : 111
+time : 175294, sol cost : 9837.13, iterazioni : 111
+avgTime = 177553	sqmTime = 1676.42
+avgCost = 9907.08	sqmCost = 149.181
+avgIt = 111.7	sqmIt = 0.88225
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 183506, sol cost : 9858.16, iterazioni : 513
+time : 180219, sol cost : 10082.2, iterazioni : 511
+time : 179616, sol cost : 10057.8, iterazioni : 511
+time : 181891, sol cost : 10074.9, iterazioni : 510
+time : 177057, sol cost : 9821.67, iterazioni : 509
+time : 178678, sol cost : 9881.13, iterazioni : 510
+time : 180192, sol cost : 9848.38, iterazioni : 512
+time : 181271, sol cost : 10301.9, iterazioni : 512
+time : 176798, sol cost : 9836.32, iterazioni : 509
+time : 184780, sol cost : 9794.53, iterazioni : 513
+avgTime = 180401	sqmTime = 2441.74
+avgCost = 9955.7	sqmCost = 156.656
+avgIt = 511	sqmIt = 1.44507
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 174327, sol cost : 9774.47, iterazioni : 14
+time : 177916, sol cost : 9918.79, iterazioni : 17
+time : 176663, sol cost : 9970.98, iterazioni : 15
+time : 178303, sol cost : 9967.06, iterazioni : 14
+time : 176254, sol cost : 9781.56, iterazioni : 18
+time : 176573, sol cost : 9884.36, iterazioni : 15
+time : 178746, sol cost : 9818.78, iterazioni : 15
+time : 174963, sol cost : 10265.3, iterazioni : 16
+time : 178946, sol cost : 9916.75, iterazioni : 16
+time : 177314, sol cost : 9727.83, iterazioni : 14
+avgTime = 177000	sqmTime = 1470.38
+avgCost = 9902.58	sqmCost = 144.896
+avgIt = 15.4	sqmIt = 1.33585
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 178772, sol cost : 9914.88, iterazioni : 110
+time : 175276, sol cost : 10074.8, iterazioni : 109
+time : 174482, sol cost : 9876.6, iterazioni : 109
+time : 180536, sol cost : 9860.99, iterazioni : 109
+time : 176612, sol cost : 9775.96, iterazioni : 112
+time : 174589, sol cost : 9805, iterazioni : 110
+time : 178946, sol cost : 9832.4, iterazioni : 113
+time : 178195, sol cost : 10300.4, iterazioni : 109
+time : 178237, sol cost : 9855.49, iterazioni : 110
+time : 175818, sol cost : 9777.75, iterazioni : 109
+avgTime = 177146	sqmTime = 1971.01
+avgCost = 9907.43	sqmCost = 154.495
+avgIt = 110	sqmIt = 1.39053
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 177251, sol cost : 9789.97, iterazioni : 507
+time : 178181, sol cost : 9997.44, iterazioni : 511
+time : 181952, sol cost : 9945.82, iterazioni : 514
+time : 175948, sol cost : 9995.54, iterazioni : 512
+time : 181471, sol cost : 9763.68, iterazioni : 512
+time : 176495, sol cost : 9844.24, iterazioni : 509
+time : 182201, sol cost : 9729.32, iterazioni : 512
+time : 180372, sol cost : 10284, iterazioni : 514
+time : 176130, sol cost : 9915.47, iterazioni : 509
+time : 181961, sol cost : 9849, iterazioni : 511
+avgTime = 179196	sqmTime = 2507.79
+avgCost = 9911.45	sqmCost = 152.572
+avgIt = 511.1	sqmIt = 2.15152
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 172432, sol cost : 9700.62, iterazioni : 13
+time : 176476, sol cost : 10048.3, iterazioni : 14
+time : 173269, sol cost : 10027.1, iterazioni : 13
+time : 178273, sol cost : 9985.23, iterazioni : 14
+time : 174684, sol cost : 9781.76, iterazioni : 14
+time : 179753, sol cost : 9839.15, iterazioni : 13
+time : 175034, sol cost : 9793.29, iterazioni : 16
+time : 176448, sol cost : 10210.1, iterazioni : 14
+time : 174383, sol cost : 9970.36, iterazioni : 14
+time : 177304, sol cost : 9769.25, iterazioni : 14
+avgTime = 175806	sqmTime = 2155.75
+avgCost = 9912.52	sqmCost = 152
+avgIt = 13.9	sqmIt = 0.951395
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 175641, sol cost : 9910.86, iterazioni : 110
+time : 179613, sol cost : 10078.6, iterazioni : 107
+time : 172491, sol cost : 9908.7, iterazioni : 109
+time : 178262, sol cost : 9985.59, iterazioni : 109
+time : 175260, sol cost : 9787.81, iterazioni : 110
+time : 177766, sol cost : 9976.44, iterazioni : 110
+time : 181008, sol cost : 9944.21, iterazioni : 110
+time : 175514, sol cost : 10108.3, iterazioni : 108
+time : 178366, sol cost : 9918.1, iterazioni : 109
+time : 173033, sol cost : 9744.88, iterazioni : 109
+avgTime = 176695	sqmTime = 2629.87
+avgCost = 9936.34	sqmCost = 107.003
+avgIt = 109.1	sqmIt = 0.992542
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 150
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 75
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 183665, sol cost : 9968.96, iterazioni : 513
+time : 178789, sol cost : 10096, iterazioni : 508
+time : 179254, sol cost : 9960, iterazioni : 509
+time : 174955, sol cost : 9931.01, iterazioni : 508
+time : 180857, sol cost : 9769.39, iterazioni : 507
+time : 176659, sol cost : 9860.3, iterazioni : 510
+time : 178055, sol cost : 9895.17, iterazioni : 510
+time : 180005, sol cost : 10341.1, iterazioni : 510
+time : 178963, sol cost : 9954.02, iterazioni : 509
+time : 177706, sol cost : 9760.71, iterazioni : 509
+avgTime = 178891	sqmTime = 2249.98
+avgCost = 9953.67	sqmCost = 159.559
+avgIt = 509.3	sqmIt = 1.58406
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 1264520, sol cost : 9837.19, iterazioni : 36
+time : 1240084, sol cost : 9918.53, iterazioni : 34
+time : 1248751, sol cost : 9846.49, iterazioni : 36
+time : 1197018, sol cost : 9769.9, iterazioni : 27
+time : 1201645, sol cost : 9616.38, iterazioni : 30
+time : 1231233, sol cost : 9871.67, iterazioni : 26
+time : 1255469, sol cost : 9749.09, iterazioni : 32
+time : 1220976, sol cost : 10215.3, iterazioni : 25
+time : 1226784, sol cost : 9783.76, iterazioni : 26
+time : 1209554, sol cost : 9628.9, iterazioni : 32
+avgTime = 1.2296e+06	sqmTime = 21668.3
+avgCost = 9823.72	sqmCost = 160.15
+avgIt = 30.4	sqmIt = 4.02472
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 1236883, sol cost : 9797.72, iterazioni : 128
+time : 1264011, sol cost : 10013.3, iterazioni : 134
+time : 1249695, sol cost : 9746.69, iterazioni : 131
+time : 1262134, sol cost : 9858.03, iterazioni : 131
+time : 1203081, sol cost : 9677.51, iterazioni : 122
+time : 1232799, sol cost : 9729.24, iterazioni : 129
+time : 1256502, sol cost : 9810.89, iterazioni : 133
+time : 1239826, sol cost : 10234.7, iterazioni : 119
+time : 1243618, sol cost : 9786.99, iterazioni : 133
+time : 1213929, sol cost : 9516.23, iterazioni : 126
+avgTime = 1.24025e+06	sqmTime = 18840.3
+avgCost = 9817.13	sqmCost = 184.045
+avgIt = 128.6	sqmIt = 4.75841
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 1258823, sol cost : 9811.31, iterazioni : 530
+time : 1236601, sol cost : 9841.48, iterazioni : 528
+time : 1232197, sol cost : 9782.67, iterazioni : 528
+time : 1207497, sol cost : 9791.02, iterazioni : 524
+time : 1281361, sol cost : 9720.46, iterazioni : 531
+time : 1294438, sol cost : 9806.85, iterazioni : 533
+time : 1286584, sol cost : 9830.72, iterazioni : 536
+time : 1240012, sol cost : 10147.6, iterazioni : 521
+time : 1267074, sol cost : 9789.42, iterazioni : 524
+time : 1273216, sol cost : 9623.44, iterazioni : 530
+avgTime = 1.25778e+06	sqmTime = 26462.1
+avgCost = 9814.49	sqmCost = 126.377
+avgIt = 528.5	sqmIt = 4.35038
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 1213528, sol cost : 9735.11, iterazioni : 32
+time : 1222085, sol cost : 10023.3, iterazioni : 29
+time : 1220624, sol cost : 9760.84, iterazioni : 31
+time : 1232693, sol cost : 9809.93, iterazioni : 35
+time : 1221942, sol cost : 9768.43, iterazioni : 20
+time : 1222167, sol cost : 9733.84, iterazioni : 31
+time : 1236318, sol cost : 9829.59, iterazioni : 30
+time : 1187069, sol cost : 10221.8, iterazioni : 16
+time : 1236391, sol cost : 9724.29, iterazioni : 24
+time : 1242325, sol cost : 9684.51, iterazioni : 31
+avgTime = 1.22351e+06	sqmTime = 14867.9
+avgCost = 9829.16	sqmCost = 158.283
+avgIt = 27.9	sqmIt = 5.70307
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 1248672, sol cost : 9622, iterazioni : 130
+time : 1225700, sol cost : 9908.52, iterazioni : 124
+time : 1203172, sol cost : 9884.76, iterazioni : 111
+time : 1237871, sol cost : 9873.88, iterazioni : 115
+time : 1235855, sol cost : 9640.6, iterazioni : 128
+time : 1268068, sol cost : 9827.66, iterazioni : 123
+time : 1235256, sol cost : 9804.98, iterazioni : 127
+time : 1229782, sol cost : 10191.7, iterazioni : 111
+time : 1195380, sol cost : 9836.34, iterazioni : 111
+time : 1206962, sol cost : 9514.91, iterazioni : 124
+avgTime = 1.22867e+06	sqmTime = 20908.4
+avgCost = 9810.53	sqmCost = 178.139
+avgIt = 120.4	sqmIt = 7.2533
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 1290124, sol cost : 9844.62, iterazioni : 521
+time : 1233731, sol cost : 9852.09, iterazioni : 527
+time : 1259008, sol cost : 9846.23, iterazioni : 528
+time : 1281290, sol cost : 9888.38, iterazioni : 526
+time : 1269502, sol cost : 9763.72, iterazioni : 511
+time : 1279088, sol cost : 9808.22, iterazioni : 526
+time : 1253370, sol cost : 9773.78, iterazioni : 530
+time : 1257630, sol cost : 10194.5, iterazioni : 523
+time : 1220538, sol cost : 9796.06, iterazioni : 526
+time : 1256484, sol cost : 9728.01, iterazioni : 527
+avgTime = 1.26008e+06	sqmTime = 20311.5
+avgCost = 9849.56	sqmCost = 123.766
+avgIt = 524.5	sqmIt = 5.15513
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 1227388, sol cost : 9736.09, iterazioni : 32
+time : 1183554, sol cost : 10057.7, iterazioni : 15
+time : 1219571, sol cost : 9828.33, iterazioni : 28
+time : 1227775, sol cost : 9867.66, iterazioni : 30
+time : 1220838, sol cost : 9674.81, iterazioni : 29
+time : 1232885, sol cost : 9787.18, iterazioni : 29
+time : 1206327, sol cost : 9580.92, iterazioni : 29
+time : 1203694, sol cost : 10240.7, iterazioni : 27
+time : 1202878, sol cost : 9589.62, iterazioni : 30
+time : 1211681, sol cost : 9773.13, iterazioni : 27
+avgTime = 1.21366e+06	sqmTime = 14224.7
+avgCost = 9813.61	sqmCost = 194.195
+avgIt = 27.6	sqmIt = 4.48949
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 1239281, sol cost : 9697.65, iterazioni : 129
+time : 1263717, sol cost : 9884.35, iterazioni : 125
+time : 1238213, sol cost : 9775.75, iterazioni : 127
+time : 1239072, sol cost : 9845.53, iterazioni : 123
+time : 1243040, sol cost : 9726.25, iterazioni : 110
+time : 1233428, sol cost : 9828.24, iterazioni : 110
+time : 1280403, sol cost : 9790.59, iterazioni : 121
+time : 1188631, sol cost : 10180.9, iterazioni : 119
+time : 1193189, sol cost : 9679.27, iterazioni : 121
+time : 1235433, sol cost : 9634.45, iterazioni : 115
+avgTime = 1.23544e+06	sqmTime = 26258.2
+avgCost = 9804.3	sqmCost = 146.18
+avgIt = 120	sqmIt = 6.29674
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 100
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 1243511, sol cost : 9728.05, iterazioni : 523
+time : 1236970, sol cost : 9963.81, iterazioni : 524
+time : 1272264, sol cost : 9773.87, iterazioni : 523
+time : 1251635, sol cost : 9858.6, iterazioni : 517
+time : 1255471, sol cost : 9653.22, iterazioni : 526
+time : 1267896, sol cost : 9844.61, iterazioni : 520
+time : 1221090, sol cost : 9860.44, iterazioni : 511
+time : 1274680, sol cost : 10170, iterazioni : 522
+time : 1223217, sol cost : 9647.05, iterazioni : 524
+time : 1270895, sol cost : 9689.83, iterazioni : 518
+avgTime = 1.25176e+06	sqmTime = 19047.9
+avgCost = 9818.95	sqmCost = 152.424
+avgIt = 520.8	sqmIt = 4.28832
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 1217291, sol cost : 9775.82, iterazioni : 28
+time : 1193881, sol cost : 9991.71, iterazioni : 24
+time : 1200637, sol cost : 9790.56, iterazioni : 23
+time : 1194315, sol cost : 9909.89, iterazioni : 25
+time : 1165965, sol cost : 9538.51, iterazioni : 21
+time : 1182004, sol cost : 9743.19, iterazioni : 22
+time : 1196889, sol cost : 9793.61, iterazioni : 23
+time : 1190490, sol cost : 10163.2, iterazioni : 25
+time : 1198012, sol cost : 9764.6, iterazioni : 24
+time : 1202018, sol cost : 9668.85, iterazioni : 24
+avgTime = 1.19415e+06	sqmTime = 12717.5
+avgCost = 9813.99	sqmCost = 164.221
+avgIt = 23.9	sqmIt = 1.92843
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 1170148, sol cost : 9595.19, iterazioni : 116
+time : 1185306, sol cost : 9908.23, iterazioni : 118
+time : 1193538, sol cost : 9750.19, iterazioni : 120
+time : 1199572, sol cost : 9834.67, iterazioni : 118
+time : 1205639, sol cost : 9713.04, iterazioni : 122
+time : 1201492, sol cost : 9860.18, iterazioni : 120
+time : 1195085, sol cost : 9847.79, iterazioni : 119
+time : 1200627, sol cost : 10231.5, iterazioni : 121
+time : 1207335, sol cost : 9776.4, iterazioni : 122
+time : 1199953, sol cost : 9691.58, iterazioni : 119
+avgTime = 1.19587e+06	sqmTime = 10444
+avgCost = 9820.88	sqmCost = 162.823
+avgIt = 119.5	sqmIt = 1.85549
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 1197767, sol cost : 9788.98, iterazioni : 516
+time : 1225045, sol cost : 9977.84, iterazioni : 523
+time : 1194478, sol cost : 9759.34, iterazioni : 519
+time : 1216715, sol cost : 9835.74, iterazioni : 520
+time : 1186467, sol cost : 9655.89, iterazioni : 517
+time : 1189503, sol cost : 9751.11, iterazioni : 518
+time : 1196391, sol cost : 9834.27, iterazioni : 519
+time : 1208787, sol cost : 10180.9, iterazioni : 521
+time : 1229025, sol cost : 9785.23, iterazioni : 522
+time : 1209666, sol cost : 9767.62, iterazioni : 521
+avgTime = 1.20538e+06	sqmTime = 14041.6
+avgCost = 9833.7	sqmCost = 139.357
+avgIt = 519.6	sqmIt = 2.15071
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 1211262, sol cost : 9813.81, iterazioni : 27
+time : 1182673, sol cost : 9820.15, iterazioni : 24
+time : 1195136, sol cost : 9804.16, iterazioni : 24
+time : 1193258, sol cost : 9844.16, iterazioni : 23
+time : 1225459, sol cost : 9692.57, iterazioni : 29
+time : 1186812, sol cost : 9816.8, iterazioni : 23
+time : 1177511, sol cost : 9814.84, iterazioni : 21
+time : 1198723, sol cost : 10180.4, iterazioni : 26
+time : 1194770, sol cost : 9852.42, iterazioni : 22
+time : 1189366, sol cost : 9692.43, iterazioni : 24
+avgTime = 1.1955e+06	sqmTime = 13279
+avgCost = 9833.18	sqmCost = 127.584
+avgIt = 24.3	sqmIt = 2.32918
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 1192967, sol cost : 9681.48, iterazioni : 120
+time : 1210052, sol cost : 9927.65, iterazioni : 119
+time : 1210776, sol cost : 9815.85, iterazioni : 115
+time : 1196373, sol cost : 9903.2, iterazioni : 118
+time : 1200761, sol cost : 9662.84, iterazioni : 115
+time : 1204090, sol cost : 9836.08, iterazioni : 117
+time : 1199171, sol cost : 9778.86, iterazioni : 118
+time : 1203792, sol cost : 10158, iterazioni : 118
+time : 1194215, sol cost : 9738.61, iterazioni : 119
+time : 1199754, sol cost : 9676.47, iterazioni : 117
+avgTime = 1.2012e+06	sqmTime = 5756.86
+avgCost = 9817.91	sqmCost = 143.505
+avgIt = 117.6	sqmIt = 1.63491
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 1209691, sol cost : 9708.26, iterazioni : 520
+time : 1222493, sol cost : 9925.02, iterazioni : 518
+time : 1194602, sol cost : 9716.03, iterazioni : 518
+time : 1200475, sol cost : 9847.3, iterazioni : 520
+time : 1225340, sol cost : 9667.1, iterazioni : 518
+time : 1217186, sol cost : 9839.32, iterazioni : 516
+time : 1207433, sol cost : 9773.94, iterazioni : 521
+time : 1234237, sol cost : 10278.7, iterazioni : 517
+time : 1204116, sol cost : 9827.75, iterazioni : 516
+time : 1207488, sol cost : 9670.78, iterazioni : 518
+avgTime = 1.21231e+06	sqmTime = 11630.7
+avgCost = 9825.42	sqmCost = 171.322
+avgIt = 518.2	sqmIt = 1.6503
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 1190755, sol cost : 9737.13, iterazioni : 19
+time : 1168486, sol cost : 10065.6, iterazioni : 17
+time : 1181140, sol cost : 9844.49, iterazioni : 22
+time : 1193286, sol cost : 9944.71, iterazioni : 19
+time : 1201554, sol cost : 9694.15, iterazioni : 21
+time : 1197228, sol cost : 9784.79, iterazioni : 24
+time : 1208427, sol cost : 9780.18, iterazioni : 26
+time : 1208353, sol cost : 10169.4, iterazioni : 23
+time : 1196882, sol cost : 9712.61, iterazioni : 20
+time : 1186433, sol cost : 9651.41, iterazioni : 23
+avgTime = 1.19325e+06	sqmTime = 11700.6
+avgCost = 9838.45	sqmCost = 161.5
+avgIt = 21.4	sqmIt = 2.60865
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 1187441, sol cost : 9775.44, iterazioni : 116
+time : 1210017, sol cost : 9957.3, iterazioni : 118
+time : 1185076, sol cost : 9806.95, iterazioni : 120
+time : 1203399, sol cost : 9835.12, iterazioni : 116
+time : 1223774, sol cost : 9755.1, iterazioni : 115
+time : 1205976, sol cost : 9848.99, iterazioni : 115
+time : 1210085, sol cost : 9817.53, iterazioni : 117
+time : 1207959, sol cost : 10136.8, iterazioni : 116
+time : 1199460, sol cost : 9772.83, iterazioni : 119
+time : 1212159, sol cost : 9766.98, iterazioni : 116
+avgTime = 1.20453e+06	sqmTime = 10958.3
+avgCost = 9847.31	sqmCost = 111.546
+avgIt = 116.8	sqmIt = 1.67954
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 1197098, sol cost : 9666.27, iterazioni : 517
+time : 1196791, sol cost : 9933.93, iterazioni : 519
+time : 1208960, sol cost : 9840.96, iterazioni : 519
+time : 1214102, sol cost : 9871.92, iterazioni : 520
+time : 1201398, sol cost : 9704.81, iterazioni : 519
+time : 1209689, sol cost : 9787.48, iterazioni : 520
+time : 1202376, sol cost : 9696.06, iterazioni : 519
+time : 1203490, sol cost : 10199, iterazioni : 519
+time : 1200675, sol cost : 9842.88, iterazioni : 516
+time : 1216285, sol cost : 9666.67, iterazioni : 514
+avgTime = 1.20509e+06	sqmTime = 6468.98
+avgCost = 9821	sqmCost = 154.022
+avgIt = 518.2	sqmIt = 1.87828
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 1204948, sol cost : 9745.26, iterazioni : 21
+time : 1189314, sol cost : 9964.19, iterazioni : 21
+time : 1212856, sol cost : 9879.8, iterazioni : 20
+time : 1191523, sol cost : 9887.53, iterazioni : 21
+time : 1171779, sol cost : 9729.48, iterazioni : 17
+time : 1193131, sol cost : 9819.36, iterazioni : 21
+time : 1186974, sol cost : 9771.9, iterazioni : 21
+time : 1203816, sol cost : 10240.3, iterazioni : 20
+time : 1195691, sol cost : 9745.57, iterazioni : 19
+time : 1216212, sol cost : 9737.43, iterazioni : 22
+avgTime = 1.19662e+06	sqmTime = 12534.4
+avgCost = 9852.08	sqmCost = 149.619
+avgIt = 20.3	sqmIt = 1.41345
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 1187217, sol cost : 9806.75, iterazioni : 116
+time : 1233045, sol cost : 9926.54, iterazioni : 120
+time : 1193610, sol cost : 9905.93, iterazioni : 114
+time : 1204243, sol cost : 9884.84, iterazioni : 116
+time : 1202244, sol cost : 9646.77, iterazioni : 115
+time : 1229536, sol cost : 9803.49, iterazioni : 121
+time : 1202104, sol cost : 9811.08, iterazioni : 116
+time : 1204310, sol cost : 10235.1, iterazioni : 116
+time : 1196196, sol cost : 9694.66, iterazioni : 115
+time : 1230076, sol cost : 9721.54, iterazioni : 120
+avgTime = 1.20826e+06	sqmTime = 15657.9
+avgCost = 9843.67	sqmCost = 156.758
+avgIt = 116.9	sqmIt = 2.37305
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 1229713, sol cost : 9826.58, iterazioni : 517
+time : 1218983, sol cost : 9931.28, iterazioni : 516
+time : 1226729, sol cost : 9832.18, iterazioni : 514
+time : 1205337, sol cost : 9862.3, iterazioni : 516
+time : 1215849, sol cost : 9677.94, iterazioni : 513
+time : 1203377, sol cost : 9779.17, iterazioni : 518
+time : 1240123, sol cost : 9804.98, iterazioni : 518
+time : 1201648, sol cost : 10155.2, iterazioni : 513
+time : 1224750, sol cost : 9900.32, iterazioni : 518
+time : 1216375, sol cost : 9593.89, iterazioni : 517
+avgTime = 1.21829e+06	sqmTime = 11821
+avgCost = 9836.39	sqmCost = 142.785
+avgIt = 516	sqmIt = 1.9589
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 1211262, sol cost : 9790.64, iterazioni : 19
+time : 1205195, sol cost : 9905.2, iterazioni : 18
+time : 1218522, sol cost : 9846.55, iterazioni : 22
+time : 1208411, sol cost : 9859.62, iterazioni : 20
+time : 1191358, sol cost : 9740.67, iterazioni : 16
+time : 1179575, sol cost : 9775.41, iterazioni : 17
+time : 1199016, sol cost : 9840.38, iterazioni : 19
+time : 1211224, sol cost : 10178.4, iterazioni : 22
+time : 1189356, sol cost : 9675.78, iterazioni : 16
+time : 1183694, sol cost : 9615.1, iterazioni : 19
+avgTime = 1.19976e+06	sqmTime = 12510.3
+avgCost = 9822.77	sqmCost = 145.046
+avgIt = 18.8	sqmIt = 2.08708
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 1197557, sol cost : 9768.57, iterazioni : 118
+time : 1211203, sol cost : 9970.03, iterazioni : 117
+time : 1215103, sol cost : 9910.05, iterazioni : 115
+time : 1206881, sol cost : 9858.71, iterazioni : 117
+time : 1203038, sol cost : 9721.16, iterazioni : 113
+time : 1214963, sol cost : 9807.41, iterazioni : 115
+time : 1160379, sol cost : 9691.05, iterazioni : 111
+time : 1224100, sol cost : 10203.7, iterazioni : 116
+time : 1208362, sol cost : 9791.75, iterazioni : 116
+time : 1189527, sol cost : 9654.76, iterazioni : 111
+avgTime = 1.20311e+06	sqmTime = 16951.4
+avgCost = 9837.72	sqmCost = 152.86
+avgIt = 114.9	sqmIt = 2.3872
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 1187277, sol cost : 9770.51, iterazioni : 513
+time : 1244933, sol cost : 9980.63, iterazioni : 511
+time : 1191202, sol cost : 9876.79, iterazioni : 511
+time : 1228863, sol cost : 9880.24, iterazioni : 516
+time : 1201160, sol cost : 9706.07, iterazioni : 513
+time : 1211375, sol cost : 9796.81, iterazioni : 516
+time : 1237361, sol cost : 9781.11, iterazioni : 516
+time : 1209469, sol cost : 10242.2, iterazioni : 512
+time : 1208999, sol cost : 9777.24, iterazioni : 511
+time : 1195801, sol cost : 9688.27, iterazioni : 511
+avgTime = 1.21164e+06	sqmTime = 18575.2
+avgCost = 9849.99	sqmCost = 154.518
+avgIt = 513	sqmIt = 2.15377
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 1190343, sol cost : 9844.21, iterazioni : 14
+time : 1209508, sol cost : 10074.3, iterazioni : 16
+time : 1187965, sol cost : 9829.23, iterazioni : 16
+time : 1219422, sol cost : 9882.86, iterazioni : 23
+time : 1196389, sol cost : 9784.57, iterazioni : 16
+time : 1189837, sol cost : 9766.7, iterazioni : 16
+time : 1197794, sol cost : 9802.44, iterazioni : 18
+time : 1189642, sol cost : 10315, iterazioni : 15
+time : 1203513, sol cost : 9806.63, iterazioni : 17
+time : 1210872, sol cost : 9732.67, iterazioni : 18
+avgTime = 1.19953e+06	sqmTime = 10307.9
+avgCost = 9883.86	sqmCost = 169.078
+avgIt = 16.9	sqmIt = 2.38859
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 1209007, sol cost : 9839.1, iterazioni : 110
+time : 1224296, sol cost : 9955.58, iterazioni : 113
+time : 1181475, sol cost : 9796.17, iterazioni : 112
+time : 1192757, sol cost : 9876.84, iterazioni : 115
+time : 1196085, sol cost : 9667.34, iterazioni : 115
+time : 1194801, sol cost : 9722.7, iterazioni : 112
+time : 1195340, sol cost : 9758.39, iterazioni : 112
+time : 1206125, sol cost : 10110.2, iterazioni : 116
+time : 1193953, sol cost : 9666.45, iterazioni : 111
+time : 1201835, sol cost : 9718.68, iterazioni : 112
+avgTime = 1.19957e+06	sqmTime = 10985.1
+avgCost = 9811.15	sqmCost = 132.886
+avgIt = 112.8	sqmIt = 1.89707
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 1000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 1231097, sol cost : 9813.9, iterazioni : 509
+time : 1208617, sol cost : 9945.89, iterazioni : 513
+time : 1215195, sol cost : 9753.13, iterazioni : 512
+time : 1242620, sol cost : 9851.46, iterazioni : 510
+time : 1222128, sol cost : 9634.31, iterazioni : 514
+time : 1212846, sol cost : 9849.17, iterazioni : 513
+time : 1215097, sol cost : 9821.75, iterazioni : 513
+time : 1214422, sol cost : 10183.5, iterazioni : 516
+time : 1220617, sol cost : 9826.66, iterazioni : 516
+time : 1218936, sol cost : 9642.8, iterazioni : 520
+avgTime = 1.22016e+06	sqmTime = 9484.76
+avgCost = 9832.26	sqmCost = 147.955
+avgIt = 513.6	sqmIt = 3.03804
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 2507163, sol cost : 9774.94, iterazioni : 36
+time : 2537182, sol cost : 9952.34, iterazioni : 40
+time : 2536251, sol cost : 9793.08, iterazioni : 34
+time : 2596196, sol cost : 9867.66, iterazioni : 37
+time : 2445838, sol cost : 9568.31, iterazioni : 36
+time : 2489991, sol cost : 9767.56, iterazioni : 38
+time : 2554001, sol cost : 9806.33, iterazioni : 42
+time : 2574629, sol cost : 10157.8, iterazioni : 41
+time : 2500565, sol cost : 9753.67, iterazioni : 29
+time : 2473598, sol cost : 9518.71, iterazioni : 36
+avgTime = 2.52154e+06	sqmTime = 44247
+avgCost = 9796.04	sqmCost = 171.029
+avgIt = 36.9	sqmIt = 3.60469
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 2494026, sol cost : 9760.37, iterazioni : 132
+time : 2527262, sol cost : 9898.35, iterazioni : 136
+time : 2474997, sol cost : 9713.79, iterazioni : 129
+time : 2508198, sol cost : 9875.23, iterazioni : 125
+time : 2532612, sol cost : 9651.06, iterazioni : 136
+time : 2480891, sol cost : 9810.85, iterazioni : 125
+time : 2536284, sol cost : 9756.75, iterazioni : 134
+time : 2472757, sol cost : 10150.3, iterazioni : 131
+time : 2533890, sol cost : 9750.03, iterazioni : 136
+time : 2512514, sol cost : 9703.13, iterazioni : 126
+avgTime = 2.50734e+06	sqmTime = 23926.2
+avgCost = 9806.99	sqmCost = 135.196
+avgIt = 131	sqmIt = 4.35436
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 2603103, sol cost : 9801.52, iterazioni : 523
+time : 2541957, sol cost : 9841.29, iterazioni : 535
+time : 2484844, sol cost : 9715.09, iterazioni : 529
+time : 2495054, sol cost : 9889.54, iterazioni : 521
+time : 2485690, sol cost : 9638.04, iterazioni : 522
+time : 2509266, sol cost : 9775.78, iterazioni : 532
+time : 2550875, sol cost : 9744.79, iterazioni : 531
+time : 2547025, sol cost : 10161, iterazioni : 533
+time : 2541995, sol cost : 9775.89, iterazioni : 534
+time : 2538775, sol cost : 9743.33, iterazioni : 535
+avgTime = 2.52986e+06	sqmTime = 34766.2
+avgCost = 9808.63	sqmCost = 134.291
+avgIt = 529.5	sqmIt = 5.2617
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 2477951, sol cost : 9847.06, iterazioni : 31
+time : 2489684, sol cost : 9909.42, iterazioni : 30
+time : 2420373, sol cost : 9666.67, iterazioni : 32
+time : 2506985, sol cost : 9827.16, iterazioni : 33
+time : 2511418, sol cost : 9626.18, iterazioni : 37
+time : 2488916, sol cost : 9804.16, iterazioni : 33
+time : 2475005, sol cost : 9857.93, iterazioni : 31
+time : 2510331, sol cost : 10086.2, iterazioni : 38
+time : 2465471, sol cost : 9868.49, iterazioni : 31
+time : 2504186, sol cost : 9635.83, iterazioni : 24
+avgTime = 2.48503e+06	sqmTime = 26336.2
+avgCost = 9812.91	sqmCost = 133.537
+avgIt = 32	sqmIt = 3.73178
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 2450982, sol cost : 9743.64, iterazioni : 122
+time : 2540046, sol cost : 9942.51, iterazioni : 131
+time : 2522676, sol cost : 9835.92, iterazioni : 118
+time : 2579922, sol cost : 9818.35, iterazioni : 125
+time : 2566803, sol cost : 9717.6, iterazioni : 128
+time : 2489260, sol cost : 9793.89, iterazioni : 128
+time : 2559177, sol cost : 9797.11, iterazioni : 133
+time : 2425327, sol cost : 9939.31, iterazioni : 126
+time : 2515926, sol cost : 9747.63, iterazioni : 130
+time : 2540732, sol cost : 9714.46, iterazioni : 133
+avgTime = 2.51909e+06	sqmTime = 47785.4
+avgCost = 9805.04	sqmCost = 78.29
+avgIt = 127.4	sqmIt = 4.60578
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 2484330, sol cost : 9745.17, iterazioni : 519
+time : 2485520, sol cost : 9859.92, iterazioni : 524
+time : 2573524, sol cost : 9843.25, iterazioni : 528
+time : 2551411, sol cost : 9898.62, iterazioni : 524
+time : 2547378, sol cost : 9689.91, iterazioni : 533
+time : 2456543, sol cost : 9729.07, iterazioni : 525
+time : 2529096, sol cost : 9818.25, iterazioni : 525
+time : 2469329, sol cost : 10196.3, iterazioni : 524
+time : 2479733, sol cost : 9748.07, iterazioni : 530
+time : 2463807, sol cost : 9679.64, iterazioni : 525
+avgTime = 2.50407e+06	sqmTime = 39974.8
+avgCost = 9820.82	sqmCost = 143.397
+avgIt = 525.7	sqmIt = 3.69737
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 2482026, sol cost : 9712.55, iterazioni : 33
+time : 2314364, sol cost : 10102.7, iterazioni : 15
+time : 2456886, sol cost : 9692.91, iterazioni : 32
+time : 2463507, sol cost : 9862.62, iterazioni : 30
+time : 2470649, sol cost : 9571.03, iterazioni : 31
+time : 2417791, sol cost : 9853.29, iterazioni : 27
+time : 2470730, sol cost : 9641.43, iterazioni : 32
+time : 2362649, sol cost : 10301.7, iterazioni : 20
+time : 2381576, sol cost : 9900.05, iterazioni : 16
+time : 2431233, sol cost : 9771.54, iterazioni : 28
+avgTime = 2.42514e+06	sqmTime = 52944.1
+avgCost = 9840.98	sqmCost = 209.99
+avgIt = 26.4	sqmIt = 6.52761
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 2522034, sol cost : 9746.18, iterazioni : 123
+time : 2501491, sol cost : 9898.77, iterazioni : 128
+time : 2514106, sol cost : 9758.39, iterazioni : 121
+time : 2555512, sol cost : 9810, iterazioni : 124
+time : 2452732, sol cost : 9657.75, iterazioni : 123
+time : 2435741, sol cost : 9634.01, iterazioni : 128
+time : 2490560, sol cost : 9705.21, iterazioni : 119
+time : 2474504, sol cost : 10196.8, iterazioni : 113
+time : 2570683, sol cost : 9819.45, iterazioni : 129
+time : 2482095, sol cost : 9634.82, iterazioni : 130
+avgTime = 2.49995e+06	sqmTime = 40233.8
+avgCost = 9786.14	sqmCost = 159.587
+avgIt = 123.8	sqmIt = 5.06091
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 200
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 2479676, sol cost : 9689.79, iterazioni : 527
+time : 2450369, sol cost : 9865.54, iterazioni : 528
+time : 2491294, sol cost : 9667.02, iterazioni : 528
+time : 2547775, sol cost : 9848.65, iterazioni : 511
+time : 2527029, sol cost : 9674.8, iterazioni : 521
+time : 2460121, sol cost : 9737.47, iterazioni : 513
+time : 2547380, sol cost : 9765.21, iterazioni : 526
+time : 2552530, sol cost : 10098.2, iterazioni : 523
+time : 2464615, sol cost : 9678, iterazioni : 528
+time : 2498352, sol cost : 9592.25, iterazioni : 528
+avgTime = 2.50191e+06	sqmTime = 37118.6
+avgCost = 9761.69	sqmCost = 137.745
+avgIt = 523.3	sqmIt = 6.14134
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 2402929, sol cost : 9724.57, iterazioni : 26
+time : 2443762, sol cost : 9975.9, iterazioni : 27
+time : 2454014, sol cost : 9782.15, iterazioni : 24
+time : 2487640, sol cost : 9848.87, iterazioni : 31
+time : 2439294, sol cost : 9606.6, iterazioni : 28
+time : 2396544, sol cost : 9750.86, iterazioni : 22
+time : 2414025, sol cost : 9705.29, iterazioni : 27
+time : 2429332, sol cost : 10164.4, iterazioni : 24
+time : 2508093, sol cost : 9832.58, iterazioni : 29
+time : 2426977, sol cost : 9668.31, iterazioni : 26
+avgTime = 2.44026e+06	sqmTime = 33671.1
+avgCost = 9805.96	sqmCost = 154.639
+avgIt = 26.4	sqmIt = 2.61804
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 2439933, sol cost : 9825.82, iterazioni : 122
+time : 2443747, sol cost : 9878.45, iterazioni : 121
+time : 2390592, sol cost : 9762.43, iterazioni : 119
+time : 2425558, sol cost : 9868.1, iterazioni : 122
+time : 2408511, sol cost : 9530.26, iterazioni : 119
+time : 2431076, sol cost : 9674.98, iterazioni : 122
+time : 2412007, sol cost : 9767.33, iterazioni : 120
+time : 2430461, sol cost : 10099.9, iterazioni : 121
+time : 2425785, sol cost : 9725.13, iterazioni : 121
+time : 2455842, sol cost : 9612.88, iterazioni : 119
+avgTime = 2.42635e+06	sqmTime = 17887.8
+avgCost = 9774.52	sqmCost = 150.507
+avgIt = 120.6	sqmIt = 1.30453
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 2414796, sol cost : 9780.95, iterazioni : 519
+time : 2435978, sol cost : 9927.08, iterazioni : 520
+time : 2420638, sol cost : 9771.9, iterazioni : 519
+time : 2437932, sol cost : 9863.19, iterazioni : 522
+time : 2425770, sol cost : 9671.05, iterazioni : 517
+time : 2500069, sol cost : 9720.24, iterazioni : 525
+time : 2467095, sol cost : 9720.79, iterazioni : 522
+time : 2520810, sol cost : 10149.6, iterazioni : 522
+time : 2418050, sol cost : 9643.97, iterazioni : 518
+time : 2457216, sol cost : 9592.68, iterazioni : 523
+avgTime = 2.44984e+06	sqmTime = 34520.4
+avgCost = 9784.14	sqmCost = 154.18
+avgIt = 520.7	sqmIt = 2.39592
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 2432781, sol cost : 9792.49, iterazioni : 27
+time : 2395036, sol cost : 9926.97, iterazioni : 23
+time : 2399576, sol cost : 9711.89, iterazioni : 26
+time : 2377278, sol cost : 9875.14, iterazioni : 23
+time : 2424236, sol cost : 9627.81, iterazioni : 27
+time : 2420386, sol cost : 9772.46, iterazioni : 24
+time : 2498895, sol cost : 9773.46, iterazioni : 27
+time : 2443127, sol cost : 10205.9, iterazioni : 23
+time : 2355697, sol cost : 9495.12, iterazioni : 22
+time : 2439851, sol cost : 9664.1, iterazioni : 23
+avgTime = 2.41869e+06	sqmTime = 37839.1
+avgCost = 9784.53	sqmCost = 182.925
+avgIt = 24.5	sqmIt = 1.9722
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 2421402, sol cost : 9753.28, iterazioni : 119
+time : 2414253, sol cost : 9909.48, iterazioni : 118
+time : 2403469, sol cost : 9701.45, iterazioni : 119
+time : 2401727, sol cost : 9782.96, iterazioni : 116
+time : 2427574, sol cost : 9594.28, iterazioni : 122
+time : 2487030, sol cost : 9764.64, iterazioni : 118
+time : 2421808, sol cost : 9716.03, iterazioni : 120
+time : 2416759, sol cost : 10095.8, iterazioni : 121
+time : 2455351, sol cost : 9756.84, iterazioni : 122
+time : 2461736, sol cost : 9630.53, iterazioni : 121
+avgTime = 2.43111e+06	sqmTime = 26388.3
+avgCost = 9770.53	sqmCost = 135.789
+avgIt = 119.6	sqmIt = 1.90715
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 2429160, sol cost : 9724.22, iterazioni : 521
+time : 2404681, sol cost : 9848.69, iterazioni : 519
+time : 2452311, sol cost : 9778.28, iterazioni : 520
+time : 2436423, sol cost : 9857.56, iterazioni : 519
+time : 2482991, sol cost : 9696.55, iterazioni : 518
+time : 2428717, sol cost : 9699.79, iterazioni : 521
+time : 2431618, sol cost : 9745.68, iterazioni : 518
+time : 2426460, sol cost : 10027.5, iterazioni : 521
+time : 2404115, sol cost : 9651.61, iterazioni : 519
+time : 2444408, sol cost : 9645.17, iterazioni : 519
+avgTime = 2.43409e+06	sqmTime = 21716.7
+avgCost = 9767.5	sqmCost = 110.859
+avgIt = 519.5	sqmIt = 1.2003
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 2434069, sol cost : 9791.43, iterazioni : 22
+time : 2381637, sol cost : 9851.66, iterazioni : 22
+time : 2453536, sol cost : 9716.11, iterazioni : 21
+time : 2417682, sol cost : 9789.39, iterazioni : 25
+time : 2406311, sol cost : 9566.64, iterazioni : 22
+time : 2441210, sol cost : 9784.69, iterazioni : 24
+time : 2444849, sol cost : 9788.29, iterazioni : 23
+time : 2375151, sol cost : 10070.2, iterazioni : 24
+time : 2456839, sol cost : 9705.3, iterazioni : 23
+time : 2464287, sol cost : 9642.97, iterazioni : 21
+avgTime = 2.42756e+06	sqmTime = 29687.1
+avgCost = 9770.66	sqmCost = 127.607
+avgIt = 22.7	sqmIt = 1.31531
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 2442307, sol cost : 9754, iterazioni : 120
+time : 2397448, sol cost : 9906.46, iterazioni : 117
+time : 2458059, sol cost : 9828.86, iterazioni : 120
+time : 2430396, sol cost : 9860.34, iterazioni : 118
+time : 2423237, sol cost : 9716.67, iterazioni : 115
+time : 2431838, sol cost : 9776.25, iterazioni : 121
+time : 2454211, sol cost : 9792.27, iterazioni : 119
+time : 2423545, sol cost : 10205.1, iterazioni : 122
+time : 2419261, sol cost : 9709.75, iterazioni : 121
+time : 2401951, sol cost : 9654.75, iterazioni : 119
+avgTime = 2.42823e+06	sqmTime = 18831.1
+avgCost = 9820.45	sqmCost = 146.554
+avgIt = 119.2	sqmIt = 2.02275
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 400
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 2416366, sol cost : 9758.16, iterazioni : 518
+time : 2448891, sol cost : 9878.8, iterazioni : 519
+time : 2428973, sol cost : 9739.4, iterazioni : 519
+time : 2405919, sol cost : 9830.22, iterazioni : 518
+time : 2490769, sol cost : 9593.76, iterazioni : 519
+time : 2466618, sol cost : 9734.31, iterazioni : 519
+time : 2478215, sol cost : 9743.99, iterazioni : 519
+time : 2416873, sol cost : 10061.8, iterazioni : 519
+time : 2417606, sol cost : 9653.52, iterazioni : 518
+time : 2453172, sol cost : 9676.53, iterazioni : 520
+avgTime = 2.44234e+06	sqmTime = 27968.2
+avgCost = 9767.05	sqmCost = 125.327
+avgIt = 518.8	sqmIt = 0.74985
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 2457662, sol cost : 9706.39, iterazioni : 22
+time : 2462703, sol cost : 10034.7, iterazioni : 18
+time : 2478515, sol cost : 9824.32, iterazioni : 22
+time : 2446894, sol cost : 9857.77, iterazioni : 20
+time : 2501080, sol cost : 9613.29, iterazioni : 24
+time : 2430372, sol cost : 9737.28, iterazioni : 22
+time : 2457882, sol cost : 9775.34, iterazioni : 20
+time : 2440078, sol cost : 10154.3, iterazioni : 21
+time : 2478744, sol cost : 9751.65, iterazioni : 21
+time : 2524335, sol cost : 9674.08, iterazioni : 24
+avgTime = 2.46783e+06	sqmTime = 27151.3
+avgCost = 9812.91	sqmCost = 157.909
+avgIt = 21.4	sqmIt = 1.76493
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 2490304, sol cost : 9772.37, iterazioni : 118
+time : 2500730, sol cost : 9944.5, iterazioni : 116
+time : 2519190, sol cost : 9771.97, iterazioni : 119
+time : 2439260, sol cost : 9773.04, iterazioni : 115
+time : 2490901, sol cost : 9554.61, iterazioni : 118
+time : 2462412, sol cost : 9747.09, iterazioni : 117
+time : 2424978, sol cost : 9679.67, iterazioni : 117
+time : 2484188, sol cost : 10226.2, iterazioni : 118
+time : 2508538, sol cost : 9720.69, iterazioni : 119
+time : 2437032, sol cost : 9708.84, iterazioni : 113
+avgTime = 2.47575e+06	sqmTime = 31120.7
+avgCost = 9789.9	sqmCost = 172.063
+avgIt = 117	sqmIt = 1.83752
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 2435113, sol cost : 9622.35, iterazioni : 515
+time : 2514292, sol cost : 9948.97, iterazioni : 517
+time : 2458395, sol cost : 9714.27, iterazioni : 515
+time : 2510982, sol cost : 9890.8, iterazioni : 517
+time : 2517951, sol cost : 9648.27, iterazioni : 517
+time : 2499508, sol cost : 9767.27, iterazioni : 522
+time : 2479169, sol cost : 9745.41, iterazioni : 517
+time : 2516861, sol cost : 10195.6, iterazioni : 519
+time : 2481974, sol cost : 9804.46, iterazioni : 516
+time : 2504005, sol cost : 9684.43, iterazioni : 517
+avgTime = 2.49182e+06	sqmTime = 26418.9
+avgCost = 9802.18	sqmCost = 163.22
+avgIt = 517.2	sqmIt = 1.98589
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 2435033, sol cost : 9740.94, iterazioni : 20
+time : 2387244, sol cost : 9890.74, iterazioni : 20
+time : 2456245, sol cost : 9762.44, iterazioni : 24
+time : 2419739, sol cost : 9830.08, iterazioni : 19
+time : 2476555, sol cost : 9639.88, iterazioni : 21
+time : 2480048, sol cost : 9833.07, iterazioni : 18
+time : 2496933, sol cost : 9748.68, iterazioni : 20
+time : 2459424, sol cost : 10021.6, iterazioni : 23
+time : 2446778, sol cost : 9732.41, iterazioni : 23
+time : 2454327, sol cost : 9671.63, iterazioni : 20
+avgTime = 2.45123e+06	sqmTime = 30050.9
+avgCost = 9787.15	sqmCost = 105.861
+avgIt = 20.8	sqmIt = 1.88642
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 2511615, sol cost : 9785.64, iterazioni : 118
+time : 2424168, sol cost : 9913, iterazioni : 116
+time : 2406372, sol cost : 9736.4, iterazioni : 114
+time : 2495369, sol cost : 9788.88, iterazioni : 115
+time : 2490503, sol cost : 9638.31, iterazioni : 120
+time : 2467235, sol cost : 9736.16, iterazioni : 116
+time : 2450057, sol cost : 9817.94, iterazioni : 117
+time : 2498697, sol cost : 10178.9, iterazioni : 114
+time : 2460822, sol cost : 9793.88, iterazioni : 112
+time : 2488386, sol cost : 9652.97, iterazioni : 119
+avgTime = 2.46932e+06	sqmTime = 32544.5
+avgCost = 9804.2	sqmCost = 145.882
+avgIt = 116.1	sqmIt = 2.38299
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 2509244, sol cost : 9810.58, iterazioni : 520
+time : 2496965, sol cost : 9977.18, iterazioni : 516
+time : 2512906, sol cost : 9827.33, iterazioni : 511
+time : 2457893, sol cost : 9831.11, iterazioni : 514
+time : 2466678, sol cost : 9613.44, iterazioni : 515
+time : 2494487, sol cost : 9812.91, iterazioni : 514
+time : 2537928, sol cost : 9773.3, iterazioni : 522
+time : 2571599, sol cost : 10180.8, iterazioni : 514
+time : 2492970, sol cost : 9697.05, iterazioni : 516
+time : 2476170, sol cost : 9542.09, iterazioni : 515
+avgTime = 2.50168e+06	sqmTime = 32138.6
+avgCost = 9806.58	sqmCost = 170.506
+avgIt = 515.7	sqmIt = 3.0411
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 2503343, sol cost : 9689.71, iterazioni : 22
+time : 2411883, sol cost : 9872.55, iterazioni : 19
+time : 2460284, sol cost : 9752.76, iterazioni : 22
+time : 2427389, sol cost : 9819.99, iterazioni : 18
+time : 2443928, sol cost : 9620.69, iterazioni : 25
+time : 2447337, sol cost : 9742.91, iterazioni : 20
+time : 2422412, sol cost : 9756.9, iterazioni : 17
+time : 2498862, sol cost : 10157.8, iterazioni : 23
+time : 2478101, sol cost : 9781.83, iterazioni : 24
+time : 2455209, sol cost : 9599.34, iterazioni : 25
+avgTime = 2.45487e+06	sqmTime = 29474
+avgCost = 9779.44	sqmCost = 148.949
+avgIt = 21.5	sqmIt = 2.78462
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 2436667, sol cost : 9800.78, iterazioni : 111
+time : 2479524, sol cost : 9918.4, iterazioni : 116
+time : 2484621, sol cost : 9829.04, iterazioni : 120
+time : 2508014, sol cost : 9821.42, iterazioni : 120
+time : 2495364, sol cost : 9687.21, iterazioni : 117
+time : 2492067, sol cost : 9730.37, iterazioni : 117
+time : 2448105, sol cost : 9699.35, iterazioni : 117
+time : 2523034, sol cost : 10157.6, iterazioni : 111
+time : 2463915, sol cost : 9852.83, iterazioni : 111
+time : 2441119, sol cost : 9668.21, iterazioni : 113
+avgTime = 2.47724e+06	sqmTime = 27621.5
+avgCost = 9816.52	sqmCost = 137.275
+avgIt = 115.3	sqmIt = 3.41884
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 2000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 2510593, sol cost : 9766.73, iterazioni : 518
+time : 2587121, sol cost : 9934.76, iterazioni : 514
+time : 2508305, sol cost : 9794.21, iterazioni : 515
+time : 2534491, sol cost : 9833.57, iterazioni : 513
+time : 2436665, sol cost : 9622.84, iterazioni : 514
+time : 2517071, sol cost : 9767.7, iterazioni : 511
+time : 2461157, sol cost : 9733.33, iterazioni : 515
+time : 2470600, sol cost : 10056.4, iterazioni : 515
+time : 2471372, sol cost : 9751.52, iterazioni : 514
+time : 2439415, sol cost : 9580.5, iterazioni : 512
+avgTime = 2.49368e+06	sqmTime = 44415.5
+avgCost = 9784.16	sqmCost = 130.853
+avgIt = 514.1	sqmIt = 1.90575
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 6307710, sol cost : 9674.5, iterazioni : 38
+time : 6496744, sol cost : 9919.09, iterazioni : 36
+time : 6422480, sol cost : 9773.44, iterazioni : 42
+time : 6179362, sol cost : 9807.8, iterazioni : 31
+time : 6513625, sol cost : 9611.94, iterazioni : 43
+time : 6600733, sol cost : 9694.3, iterazioni : 43
+time : 6390567, sol cost : 9660.56, iterazioni : 40
+time : 6422665, sol cost : 10101.8, iterazioni : 40
+time : 6445589, sol cost : 9753.94, iterazioni : 41
+time : 6592192, sol cost : 9646.76, iterazioni : 41
+avgTime = 6.43717e+06	sqmTime = 120861
+avgCost = 9764.41	sqmCost = 141.708
+avgIt = 39.5	sqmIt = 3.52712
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 6384429, sol cost : 9717.1, iterazioni : 126
+time : 6388402, sol cost : 9913.22, iterazioni : 123
+time : 6236878, sol cost : 9673.24, iterazioni : 130
+time : 6482581, sol cost : 9830.79, iterazioni : 129
+time : 6442122, sol cost : 9608.97, iterazioni : 136
+time : 6477174, sol cost : 9734.03, iterazioni : 136
+time : 6456914, sol cost : 9706.88, iterazioni : 136
+time : 6469707, sol cost : 10138.8, iterazioni : 136
+time : 6398368, sol cost : 9709.8, iterazioni : 135
+time : 6264344, sol cost : 9557.84, iterazioni : 131
+avgTime = 6.40009e+06	sqmTime = 82485.7
+avgCost = 9759.06	sqmCost = 158.474
+avgIt = 131.8	sqmIt = 4.55112
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 6630142, sol cost : 9769.27, iterazioni : 541
+time : 6564241, sol cost : 9914.06, iterazioni : 538
+time : 6608470, sol cost : 9783.8, iterazioni : 535
+time : 6505831, sol cost : 9799.9, iterazioni : 536
+time : 6563914, sol cost : 9637.65, iterazioni : 535
+time : 6683342, sol cost : 9803.81, iterazioni : 541
+time : 6393283, sol cost : 9719.2, iterazioni : 533
+time : 6388357, sol cost : 10141.1, iterazioni : 534
+time : 6277442, sol cost : 9608.34, iterazioni : 530
+time : 6637000, sol cost : 9556.35, iterazioni : 538
+avgTime = 6.5252e+06	sqmTime = 125046
+avgCost = 9773.35	sqmCost = 158.947
+avgIt = 536.1	sqmIt = 3.36825
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 6254774, sol cost : 9776.37, iterazioni : 33
+time : 6358911, sol cost : 9887.95, iterazioni : 37
+time : 6384470, sol cost : 9737.21, iterazioni : 37
+time : 6437041, sol cost : 9787.47, iterazioni : 38
+time : 6178892, sol cost : 9485.43, iterazioni : 30
+time : 6442104, sol cost : 9786.83, iterazioni : 35
+time : 6410033, sol cost : 9675.15, iterazioni : 41
+time : 6492499, sol cost : 10142.6, iterazioni : 40
+time : 6448000, sol cost : 9737.02, iterazioni : 37
+time : 6486257, sol cost : 9563.68, iterazioni : 38
+avgTime = 6.3893e+06	sqmTime = 96077.8
+avgCost = 9757.97	sqmCost = 169.358
+avgIt = 36.6	sqmIt = 3.12679
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 6341199, sol cost : 9584.49, iterazioni : 131
+time : 6422912, sol cost : 9839.61, iterazioni : 135
+time : 6435342, sol cost : 9746.81, iterazioni : 135
+time : 6456987, sol cost : 9811.72, iterazioni : 133
+time : 6371804, sol cost : 9582.39, iterazioni : 133
+time : 6398215, sol cost : 9582.75, iterazioni : 135
+time : 6388477, sol cost : 9640.37, iterazioni : 125
+time : 6465428, sol cost : 10114.4, iterazioni : 131
+time : 6464315, sol cost : 9690.48, iterazioni : 132
+time : 6779447, sol cost : 9627.26, iterazioni : 130
+avgTime = 6.45241e+06	sqmTime = 115904
+avgCost = 9722.03	sqmCost = 158.462
+avgIt = 132	sqmIt = 2.95172
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 6341459, sol cost : 9756.64, iterazioni : 529
+time : 6714649, sol cost : 9890.45, iterazioni : 530
+time : 6392235, sol cost : 9731.19, iterazioni : 520
+time : 6497041, sol cost : 9826.77, iterazioni : 523
+time : 6533473, sol cost : 9616.4, iterazioni : 532
+time : 6383605, sol cost : 9632.71, iterazioni : 530
+time : 6284840, sol cost : 9523.59, iterazioni : 530
+time : 6696406, sol cost : 10148.7, iterazioni : 534
+time : 6629248, sol cost : 9744.63, iterazioni : 535
+time : 6553386, sol cost : 9578.23, iterazioni : 520
+avgTime = 6.50263e+06	sqmTime = 142076
+avgCost = 9744.93	sqmCost = 172.411
+avgIt = 528.3	sqmIt = 5.18702
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 6208008, sol cost : 9854.83, iterazioni : 30
+time : 5862832, sol cost : 10115.5, iterazioni : 15
+time : 6230762, sol cost : 9916.97, iterazioni : 20
+time : 6234825, sol cost : 9946.35, iterazioni : 30
+time : 6122602, sol cost : 9803.03, iterazioni : 26
+time : 6396954, sol cost : 9689.88, iterazioni : 35
+time : 5880345, sol cost : 9963.53, iterazioni : 15
+time : 6317228, sol cost : 10022.3, iterazioni : 35
+time : 6259513, sol cost : 9808.65, iterazioni : 29
+time : 6310264, sol cost : 9701.21, iterazioni : 32
+avgTime = 6.18233e+06	sqmTime = 170055
+avgCost = 9882.22	sqmCost = 129.745
+avgIt = 26.7	sqmIt = 7.19227
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 6795431, sol cost : 9761.41, iterazioni : 119
+time : 6425800, sol cost : 9914.21, iterazioni : 111
+time : 6417575, sol cost : 9734.85, iterazioni : 131
+time : 6285468, sol cost : 9763.97, iterazioni : 128
+time : 6408563, sol cost : 9620.35, iterazioni : 127
+time : 6594570, sol cost : 9754.15, iterazioni : 125
+time : 6484511, sol cost : 9758.58, iterazioni : 127
+time : 6379254, sol cost : 10102.7, iterazioni : 121
+time : 6272812, sol cost : 9609.81, iterazioni : 128
+time : 6324582, sol cost : 9537.46, iterazioni : 130
+avgTime = 6.43886e+06	sqmTime = 149241
+avgCost = 9755.75	sqmCost = 152.783
+avgIt = 124.7	sqmIt = 5.84202
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 6501018, sol cost : 9694.01, iterazioni : 529
+time : 6563785, sol cost : 9917.3, iterazioni : 523
+time : 6591623, sol cost : 9718.14, iterazioni : 529
+time : 6428023, sol cost : 9787.61, iterazioni : 531
+time : 6424353, sol cost : 9476.59, iterazioni : 531
+time : 6562947, sol cost : 9703.17, iterazioni : 529
+time : 6599434, sol cost : 9695.42, iterazioni : 529
+time : 6553477, sol cost : 10133.8, iterazioni : 525
+time : 6576941, sol cost : 9686.48, iterazioni : 530
+time : 6543087, sol cost : 9602.86, iterazioni : 527
+avgTime = 6.53447e+06	sqmTime = 59976.9
+avgCost = 9741.54	sqmCost = 169.097
+avgIt = 528.3	sqmIt = 2.56792
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 6419319, sol cost : 9734.45, iterazioni : 32
+time : 6360128, sol cost : 9896.44, iterazioni : 28
+time : 6411278, sol cost : 9761.61, iterazioni : 33
+time : 6321335, sol cost : 9832.17, iterazioni : 26
+time : 6365316, sol cost : 9631.38, iterazioni : 30
+time : 6417800, sol cost : 9726.97, iterazioni : 31
+time : 6291049, sol cost : 9721.19, iterazioni : 28
+time : 6262051, sol cost : 10084, iterazioni : 27
+time : 6331048, sol cost : 9777.36, iterazioni : 28
+time : 6387003, sol cost : 9662.8, iterazioni : 29
+avgTime = 6.35663e+06	sqmTime = 51782.8
+avgCost = 9782.84	sqmCost = 123.824
+avgIt = 29.2	sqmIt = 2.19472
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 6136687, sol cost : 9691.36, iterazioni : 120
+time : 6269844, sol cost : 9851.16, iterazioni : 122
+time : 6236157, sol cost : 9686.63, iterazioni : 121
+time : 6337662, sol cost : 9747.02, iterazioni : 124
+time : 6492350, sol cost : 9621, iterazioni : 125
+time : 6388892, sol cost : 9694.47, iterazioni : 123
+time : 6293689, sol cost : 9733.03, iterazioni : 123
+time : 6353996, sol cost : 10125.3, iterazioni : 124
+time : 6523855, sol cost : 9777.34, iterazioni : 127
+time : 6492241, sol cost : 9607.72, iterazioni : 127
+avgTime = 6.35254e+06	sqmTime = 118489
+avgCost = 9753.5	sqmCost = 141.251
+avgIt = 123.6	sqmIt = 2.24933
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 6382457, sol cost : 9733.97, iterazioni : 523
+time : 6494200, sol cost : 9885.08, iterazioni : 527
+time : 6529874, sol cost : 9802.01, iterazioni : 525
+time : 6574816, sol cost : 9767.72, iterazioni : 524
+time : 6378878, sol cost : 9492.28, iterazioni : 522
+time : 6497775, sol cost : 9771.66, iterazioni : 524
+time : 6471685, sol cost : 9673.91, iterazioni : 521
+time : 6270500, sol cost : 10083.6, iterazioni : 522
+time : 6407738, sol cost : 9663.16, iterazioni : 525
+time : 6314680, sol cost : 9622.6, iterazioni : 521
+avgTime = 6.43226e+06	sqmTime = 92442.7
+avgCost = 9749.6	sqmCost = 151.453
+avgIt = 523.4	sqmIt = 1.9144
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 6260464, sol cost : 9695.19, iterazioni : 25
+time : 6389935, sol cost : 9834.59, iterazioni : 31
+time : 6363021, sol cost : 9711.9, iterazioni : 26
+time : 6295207, sol cost : 9705.31, iterazioni : 26
+time : 6467546, sol cost : 9639.32, iterazioni : 27
+time : 6407253, sol cost : 9728.9, iterazioni : 28
+time : 6363137, sol cost : 9686.17, iterazioni : 30
+time : 6313185, sol cost : 10134.8, iterazioni : 29
+time : 6322928, sol cost : 9615.55, iterazioni : 26
+time : 6389176, sol cost : 9613.97, iterazioni : 28
+avgTime = 6.35719e+06	sqmTime = 57582.7
+avgCost = 9736.57	sqmCost = 146.081
+avgIt = 27.6	sqmIt = 1.90563
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 6272353, sol cost : 9691.43, iterazioni : 121
+time : 6268820, sol cost : 9898.15, iterazioni : 119
+time : 6429536, sol cost : 9816.9, iterazioni : 121
+time : 6661155, sol cost : 9836.7, iterazioni : 120
+time : 6372699, sol cost : 9619.51, iterazioni : 123
+time : 6305929, sol cost : 9763.5, iterazioni : 121
+time : 6349602, sol cost : 9766.69, iterazioni : 122
+time : 6375814, sol cost : 10076.2, iterazioni : 124
+time : 6432307, sol cost : 9680.1, iterazioni : 118
+time : 6329135, sol cost : 9610.95, iterazioni : 122
+avgTime = 6.37974e+06	sqmTime = 108284
+avgCost = 9776.01	sqmCost = 133.733
+avgIt = 121.1	sqmIt = 1.75515
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 6354266, sol cost : 9751.26, iterazioni : 521
+time : 6498928, sol cost : 9905.32, iterazioni : 523
+time : 6496241, sol cost : 9781.89, iterazioni : 521
+time : 6445315, sol cost : 9795.6, iterazioni : 521
+time : 6390958, sol cost : 9633.97, iterazioni : 521
+time : 6307864, sol cost : 9747.36, iterazioni : 525
+time : 6314104, sol cost : 9632.22, iterazioni : 521
+time : 6347408, sol cost : 10111.9, iterazioni : 521
+time : 6298288, sol cost : 9523.27, iterazioni : 521
+time : 6476716, sol cost : 9631.25, iterazioni : 526
+avgTime = 6.39301e+06	sqmTime = 75928.2
+avgCost = 9751.4	sqmCost = 158.48
+avgIt = 522.1	sqmIt = 1.86159
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 6355741, sol cost : 9720.04, iterazioni : 24
+time : 6401044, sol cost : 9883.28, iterazioni : 25
+time : 6251901, sol cost : 9695.83, iterazioni : 24
+time : 6241000, sol cost : 9746.46, iterazioni : 24
+time : 6369757, sol cost : 9591.86, iterazioni : 29
+time : 6362160, sol cost : 9729.72, iterazioni : 28
+time : 6412542, sol cost : 9713.66, iterazioni : 26
+time : 6184326, sol cost : 10021, iterazioni : 25
+time : 6408507, sol cost : 9749.39, iterazioni : 25
+time : 6225749, sol cost : 9499.55, iterazioni : 27
+avgTime = 6.32127e+06	sqmTime = 81639
+avgCost = 9735.07	sqmCost = 135.065
+avgIt = 25.7	sqmIt = 1.73094
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 6346219, sol cost : 9670.5, iterazioni : 121
+time : 6496205, sol cost : 9872.17, iterazioni : 123
+time : 6500173, sol cost : 9795.02, iterazioni : 126
+time : 6269580, sol cost : 9839.51, iterazioni : 118
+time : 6298668, sol cost : 9538.28, iterazioni : 122
+time : 6328223, sol cost : 9753.33, iterazioni : 119
+time : 6292708, sol cost : 9684.09, iterazioni : 120
+time : 6442702, sol cost : 10136.5, iterazioni : 123
+time : 6333388, sol cost : 9678.87, iterazioni : 122
+time : 6452763, sol cost : 9596.41, iterazioni : 121
+avgTime = 6.37606e+06	sqmTime = 83329.6
+avgCost = 9756.46	sqmCost = 160.683
+avgIt = 121.5	sqmIt = 2.19615
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 1000
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 6409400, sol cost : 9734.92, iterazioni : 519
+time : 6381252, sol cost : 9877.85, iterazioni : 522
+time : 6392490, sol cost : 9742.9, iterazioni : 520
+time : 6252273, sol cost : 9737.72, iterazioni : 520
+time : 6354908, sol cost : 9529.16, iterazioni : 523
+time : 6401750, sol cost : 9776.24, iterazioni : 521
+time : 6386585, sol cost : 9676.58, iterazioni : 519
+time : 6377684, sol cost : 10121.2, iterazioni : 519
+time : 6478194, sol cost : 9730.39, iterazioni : 519
+time : 6510962, sol cost : 9699.38, iterazioni : 523
+avgTime = 6.39455e+06	sqmTime = 65699.1
+avgCost = 9762.64	sqmCost = 145.243
+avgIt = 520.5	sqmIt = 1.6339
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 5
+time : 6515324, sol cost : 9782.41, iterazioni : 26
+time : 6438146, sol cost : 9840.95, iterazioni : 23
+time : 6520261, sol cost : 9741.15, iterazioni : 22
+time : 6609655, sol cost : 9736.48, iterazioni : 23
+time : 6558870, sol cost : 9573.94, iterazioni : 24
+time : 6630610, sol cost : 9771.09, iterazioni : 21
+time : 6712698, sol cost : 9698.33, iterazioni : 26
+time : 6672000, sol cost : 10063.1, iterazioni : 22
+time : 6624607, sol cost : 9704.82, iterazioni : 27
+time : 6750702, sol cost : 9571.44, iterazioni : 26
+avgTime = 6.60329e+06	sqmTime = 91400.4
+avgCost = 9748.37	sqmCost = 132.586
+avgIt = 24	sqmIt = 2.04044
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 100
+time : 6606850, sol cost : 9716.33, iterazioni : 122
+time : 6724107, sol cost : 9914.13, iterazioni : 118
+time : 6526568, sol cost : 9783.72, iterazioni : 119
+time : 6546580, sol cost : 9840.36, iterazioni : 118
+time : 6551458, sol cost : 9663.37, iterazioni : 118
+time : 6649315, sol cost : 9644.05, iterazioni : 122
+time : 6742619, sol cost : 9733.61, iterazioni : 120
+time : 6693806, sol cost : 10125.6, iterazioni : 121
+time : 6737449, sol cost : 9759.29, iterazioni : 120
+time : 6617115, sol cost : 9604.47, iterazioni : 118
+avgTime = 6.63959e+06	sqmTime = 78190.6
+avgCost = 9778.5	sqmCost = 145.166
+avgIt = 119.6	sqmIt = 1.62605
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 1 maxAttempt : 500
+time : 6679017, sol cost : 9792.59, iterazioni : 519
+time : 6652406, sol cost : 9841.96, iterazioni : 518
+time : 6687806, sol cost : 9778.64, iterazioni : 522
+time : 6843637, sol cost : 9811.5, iterazioni : 521
+time : 6927749, sol cost : 9617.42, iterazioni : 522
+time : 6767066, sol cost : 9749.17, iterazioni : 521
+time : 6673749, sol cost : 9689.11, iterazioni : 521
+time : 6666193, sol cost : 10063.9, iterazioni : 519
+time : 6627732, sol cost : 9705.98, iterazioni : 517
+time : 6749623, sol cost : 9612.77, iterazioni : 521
+avgTime = 6.7275e+06	sqmTime = 90448.4
+avgCost = 9766.3	sqmCost = 123.664
+avgIt = 520.1	sqmIt = 1.68897
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 5
+time : 6653110, sol cost : 9840.92, iterazioni : 21
+time : 6795729, sol cost : 9887.04, iterazioni : 26
+time : 6561952, sol cost : 9745.2, iterazioni : 23
+time : 6691549, sol cost : 9843.87, iterazioni : 26
+time : 6507124, sol cost : 9569.76, iterazioni : 23
+time : 6486831, sol cost : 9730.26, iterazioni : 19
+time : 6813070, sol cost : 9745.52, iterazioni : 26
+time : 6669873, sol cost : 10139.3, iterazioni : 22
+time : 6653935, sol cost : 9751.24, iterazioni : 20
+time : 6614409, sol cost : 9788.79, iterazioni : 20
+avgTime = 6.64476e+06	sqmTime = 102838
+avgCost = 9804.19	sqmCost = 138.782
+avgIt = 22.6	sqmIt = 2.57078
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 100
+time : 6669403, sol cost : 9720.71, iterazioni : 125
+time : 6591265, sol cost : 9837.94, iterazioni : 117
+time : 6536779, sol cost : 9710.63, iterazioni : 119
+time : 6747900, sol cost : 9743.01, iterazioni : 119
+time : 6656574, sol cost : 9628.14, iterazioni : 117
+time : 6654692, sol cost : 9715.12, iterazioni : 115
+time : 6648343, sol cost : 9753.9, iterazioni : 119
+time : 6860567, sol cost : 10173.9, iterazioni : 123
+time : 6502784, sol cost : 9680.75, iterazioni : 114
+time : 6689377, sol cost : 9661.71, iterazioni : 114
+avgTime = 6.65577e+06	sqmTime = 96709.1
+avgCost = 9762.58	sqmCost = 147.335
+avgIt = 118.2	sqmIt = 3.49529
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 5 maxAttempt : 500
+time : 6643285, sol cost : 9696.45, iterazioni : 517
+time : 6681843, sol cost : 9904.18, iterazioni : 519
+time : 6773952, sol cost : 9760.64, iterazioni : 517
+time : 6810631, sol cost : 9816.68, iterazioni : 515
+time : 6695140, sol cost : 9637.49, iterazioni : 516
+time : 6578729, sol cost : 9702.49, iterazioni : 516
+time : 6752934, sol cost : 9760.95, iterazioni : 521
+time : 6766569, sol cost : 10122.9, iterazioni : 517
+time : 6728527, sol cost : 9552.61, iterazioni : 519
+time : 6850264, sol cost : 9658.42, iterazioni : 522
+avgTime = 6.72819e+06	sqmTime = 76593.7
+avgCost = 9761.28	sqmCost = 152.154
+avgIt = 517.9	sqmIt = 2.24489
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 5
+time : 6601047, sol cost : 9758.19, iterazioni : 20
+time : 6504570, sol cost : 9946.52, iterazioni : 18
+time : 6585930, sol cost : 9820.18, iterazioni : 21
+time : 6612693, sol cost : 9736.55, iterazioni : 25
+time : 6521827, sol cost : 9575.78, iterazioni : 19
+time : 6765752, sol cost : 9722.83, iterazioni : 29
+time : 6512222, sol cost : 9743.12, iterazioni : 22
+time : 6514931, sol cost : 10135.2, iterazioni : 22
+time : 6580601, sol cost : 9913.36, iterazioni : 20
+time : 6542547, sol cost : 9601.59, iterazioni : 19
+avgTime = 6.57421e+06	sqmTime = 74175.8
+avgCost = 9795.33	sqmCost = 158.621
+avgIt = 21.5	sqmIt = 3.17403
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 100
+time : 6472661, sol cost : 9760.35, iterazioni : 117
+time : 6552091, sol cost : 9858.26, iterazioni : 113
+time : 6769107, sol cost : 9714.26, iterazioni : 121
+time : 6744937, sol cost : 9748.34, iterazioni : 117
+time : 6555789, sol cost : 9623.25, iterazioni : 116
+time : 6671310, sol cost : 9673.37, iterazioni : 119
+time : 6761809, sol cost : 9761.28, iterazioni : 114
+time : 6553116, sol cost : 10121.4, iterazioni : 115
+time : 6873588, sol cost : 9781.53, iterazioni : 114
+time : 6978714, sol cost : 9613.21, iterazioni : 115
+avgTime = 6.69331e+06	sqmTime = 153211
+avgCost = 9765.53	sqmCost = 138.054
+avgIt = 116.1	sqmIt = 2.40986
+----------------------------------------------------------
+Iperparametri GeneticAlgorithm ---------------------------
+popGenerator : RandomInsertionGenerator, PopN : 5000
+Selection : MonteCarlo
+Alt OrderCrossOver : 0, 198
+steady state replacement N : 2500
+Stop Criteria : NotImprCriteria, minImpr 10 maxAttempt : 500
+time : 6740954, sol cost : 9676.15, iterazioni : 521
+time : 6683799, sol cost : 9908.66, iterazioni : 517
+time : 6572906, sol cost : 9802.3, iterazioni : 520
+time : 6726290, sol cost : 9773.42, iterazioni : 515
+time : 6814602, sol cost : 9609.58, iterazioni : 517
+time : 6636067, sol cost : 9673.21, iterazioni : 513
+time : 6782915, sol cost : 9678.23, iterazioni : 513
+time : 6825461, sol cost : 10204.5, iterazioni : 511
+time : 6715770, sol cost : 9745.41, iterazioni : 513
+time : 6813495, sol cost : 9535.79, iterazioni : 517
+avgTime = 6.73123e+06	sqmTime = 78739.8
+avgCost = 9760.73	sqmCost = 177.806
+avgIt = 515.7	sqmIt = 3.13863
+----------------------------------------------------------
+best configuration : 
+bestCost = 9722.03iterazione = 130 , bestTime = 6452412 ,popN = 5000, repN = 500, bestMi = 5, bestMa 100
+sballari@sballari-ThinkPad-T480s:~/Desktop/MemocoEx/tsp/Part2$ 
