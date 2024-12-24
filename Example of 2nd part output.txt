@@ -1,0 +1,161 @@
+Phase 1: Generating Training Instances
+Generated instance: data/medium/board_50x50_1735029768_0.dat (nodes: 32)
+Generated instance: data/medium/board_50x50_1735029768_1.dat (nodes: 23)
+Generated instance: data/medium/board_50x50_1735029768_2.dat (nodes: 23)
+Generated instance: data/medium/board_50x50_1735029768_3.dat (nodes: 23)
+Generated instance: data/small/board_50x50_1735029768_4.dat (nodes: 20)
+Generated instance: data/small/board_50x50_1735029768_5.dat (nodes: 17)
+Generated instance: data/small/board_50x50_1735029768_6.dat (nodes: 20)
+Generated instance: data/medium/board_50x50_1735029768_7.dat (nodes: 26)
+Generated instance: data/medium/board_50x50_1735029768_8.dat (nodes: 23)
+Generated instance: data/small/board_50x50_1735029768_9.dat (nodes: 14)
+Generated instance: data/medium/board_75x75_1735029768_0.dat (nodes: 34)
+Generated instance: data/medium/board_75x75_1735029768_1.dat (nodes: 22)
+Generated instance: data/large/board_75x75_1735029768_2.dat (nodes: 37)
+Generated instance: data/large/board_75x75_1735029768_3.dat (nodes: 37)
+Generated instance: data/medium/board_75x75_1735029768_4.dat (nodes: 25)
+Generated instance: data/small/board_75x75_1735029768_5.dat (nodes: 19)
+Generated instance: data/medium/board_75x75_1735029768_6.dat (nodes: 31)
+Generated instance: data/large/board_75x75_1735029768_7.dat (nodes: 46)
+Generated instance: data/large/board_75x75_1735029768_8.dat (nodes: 40)
+Generated instance: data/medium/board_75x75_1735029768_9.dat (nodes: 31)
+Generated instance: data/medium/board_100x100_1735029768_0.dat (nodes: 22)
+Generated instance: data/medium/board_100x100_1735029768_1.dat (nodes: 31)
+Generated instance: data/medium/board_100x100_1735029768_2.dat (nodes: 25)
+Generated instance: data/medium/board_100x100_1735029768_3.dat (nodes: 34)
+Generated instance: data/medium/board_100x100_1735029768_4.dat (nodes: 34)
+Generated instance: data/medium/board_100x100_1735029769_5.dat (nodes: 25)
+Generated instance: data/medium/board_100x100_1735029769_6.dat (nodes: 34)
+Generated instance: data/large/board_100x100_1735029769_7.dat (nodes: 37)
+Generated instance: data/medium/board_100x100_1735029769_8.dat (nodes: 25)
+Generated instance: data/medium/board_100x100_1735029769_9.dat (nodes: 31)
+Generated instance: data/large/board_125x125_1735029769_0.dat (nodes: 39)
+Generated instance: data/medium/board_125x125_1735029769_1.dat (nodes: 27)
+Generated instance: data/large/board_125x125_1735029769_2.dat (nodes: 36)
+Generated instance: data/large/board_125x125_1735029769_3.dat (nodes: 42)
+Generated instance: data/medium/board_125x125_1735029769_4.dat (nodes: 30)
+Generated instance: data/large/board_125x125_1735029769_5.dat (nodes: 45)
+Generated instance: data/large/board_125x125_1735029769_6.dat (nodes: 51)
+Generated instance: data/large/board_125x125_1735029769_7.dat (nodes: 45)
+Generated instance: data/large/board_125x125_1735029769_8.dat (nodes: 42)
+Generated instance: data/large/board_125x125_1735029769_9.dat (nodes: 39)
+Generated instance: data/large/board_150x150_1735029769_0.dat (nodes: 56)
+Generated instance: data/large/board_150x150_1735029769_1.dat (nodes: 47)
+Generated instance: data/large/board_150x150_1735029769_2.dat (nodes: 47)
+Generated instance: data/large/board_150x150_1735029769_3.dat (nodes: 41)
+Generated instance: data/large/board_150x150_1735029769_4.dat (nodes: 56)
+Generated instance: data/large/board_150x150_1735029769_5.dat (nodes: 53)
+Generated instance: data/large/board_150x150_1735029769_6.dat (nodes: 53)
+Generated instance: data/large/board_150x150_1735029769_7.dat (nodes: 41)
+Generated instance: data/large/board_150x150_1735029769_8.dat (nodes: 44)
+Generated instance: data/large/board_150x150_1735029769_9.dat (nodes: 50)
+
+Phase 2: Parameter Calibration
+
+Testing tenure=5, iterations=230
+Quality: 441.79 (circa171.868)
+Time: 44.64ms
+
+Testing tenure=5, iterations=345
+Quality: 437.381 (circa168.746)
+Time: 66.44ms
+
+Testing tenure=5, iterations=460
+Quality: 436.658 (circa170.314)
+Time: 87.64ms
+
+Testing tenure=5, iterations=575
+Quality: 438.167 (circa172.052)
+Time: 110.6ms
+
+Testing tenure=5, iterations=690
+Quality: 437.043 (circa171.876)
+Time: 134.28ms
+
+Testing tenure=7, iterations=230
+Quality: 436.116 (circa170.762)
+Time: 53.32ms
+
+Testing tenure=7, iterations=345
+Quality: 436.253 (circa170.879)
+Time: 81ms
+
+Testing tenure=7, iterations=460
+Quality: 441.805 (circa175.67)
+Time: 110.2ms
+
+Testing tenure=7, iterations=575
+Quality: 438.153 (circa172.021)
+Time: 142.44ms
+
+Testing tenure=7, iterations=690
+Quality: 439.937 (circa172.845)
+Time: 167.76ms
+
+Testing tenure=9, iterations=230
+Quality: 434.219 (circa167.981)
+Time: 64.52ms
+
+Testing tenure=9, iterations=345
+Quality: 437.456 (circa171.102)
+Time: 98.04ms
+
+Testing tenure=9, iterations=460
+Quality: 434.111 (circa168.811)
+Time: 132.64ms
+
+Testing tenure=9, iterations=575
+Quality: 440.665 (circa174.052)
+Time: 167.4ms
+
+Testing tenure=9, iterations=690
+Quality: 434.965 (circa168.8)
+Time: 204.96ms
+
+Testing tenure=11, iterations=230
+Quality: 435.933 (circa171.005)
+Time: 74.4ms
+
+Testing tenure=11, iterations=345
+Quality: 435.353 (circa167.547)
+Time: 115.88ms
+
+Testing tenure=11, iterations=460
+Quality: 436.983 (circa170.469)
+Time: 153.48ms
+
+Testing tenure=11, iterations=575
+Quality: 435.008 (circa168.845)
+Time: 200.76ms
+
+Testing tenure=11, iterations=690
+Quality: 434.394 (circa166.988)
+Time: 238.44ms
+
+Testing tenure=13, iterations=230
+Quality: 437.47 (circa170.768)
+Time: 89.68ms
+
+Testing tenure=13, iterations=345
+Quality: 436.648 (circa172.244)
+Time: 137.32ms
+
+Testing tenure=13, iterations=460
+Quality: 434.204 (circa169.025)
+Time: 186.96ms
+
+Testing tenure=13, iterations=575
+Quality: 435.199 (circa171.038)
+Time: 232.64ms
+
+Testing tenure=13, iterations=690
+Quality: 434.934 (circa169.781)
+Time: 283.84ms
+
+Calibration complete. Optimal parameters found:
+Small instances - Tenure: 9, Iterations: 340
+Medium instances - Tenure: 9, Iterations: 640
+Large instances - Tenure: 9, Iterations: 760
+
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\ilolpex1.exe (processo 101980) terminato. Codice restituito: 0 (0x0).
+Premere un tasto qualsiasi per chiudere questa finestra...
