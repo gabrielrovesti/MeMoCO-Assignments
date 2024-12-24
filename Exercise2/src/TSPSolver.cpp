@@ -1,4 +1,5 @@
 #include "TSPSolver.h"
+#include "data_generator.h"
 
 bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol) {
     try {

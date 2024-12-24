@@ -22,6 +22,7 @@
 #include <deque>
 #include "TSPSolution.h"
 #include "TSP.h"
+#include "data_generator.h"
 
 class TSPSolver {
 public:

@@ -1,2 +1,38 @@
-﻿  main.cpp
+﻿  TSPSolver.cpp
+  main.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18): warning C4244: '=': conversione da 'wchar_t' a 'char'. Possibile perdita di dati.
+  (compilazione del file di origine 'src/main.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xutility(4689,18):
+      il contesto di creazione dell'istanza del modello (prima il meno recente) è
+          C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\main.cpp(112,37):
+          vedere il riferimento all'istanza 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\main.cpp(112,37):
+              vedere il primo riferimento a 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'main'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(793,17):
+          vedere il riferimento all'istanza 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\xstring(949,18):
+          vedere il riferimento all'istanza '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  parameter_calibration.cpp
+  Generazione del codice in corso...
   ilolpex1.vcxproj -> C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\ilolpex1.exe
