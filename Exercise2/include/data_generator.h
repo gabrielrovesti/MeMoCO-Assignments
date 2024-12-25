@@ -193,6 +193,8 @@ public:
             "Board dimensions: " + std::to_string(board_width) + "x" +
             std::to_string(board_height) + " mm\n" + board_info);
 
+        last_generated_points = hole_positions;
+
         return costs;
     }
 
@@ -257,11 +259,17 @@ public:
         }
         return costs;
     }
+    static const std::vector<Point>& getLastGeneratedPoints() {
+        return last_generated_points;
+    }
     private:
         static bool isValidPosition(const Point& p, double board_width, double board_height) {
             return p.x >= EDGE_MARGIN && p.x <= board_width - EDGE_MARGIN &&
                 p.y >= EDGE_MARGIN && p.y <= board_height - EDGE_MARGIN;
         }
+        static std::vector<Point> last_generated_points;
 };
+
+inline std::vector<TSPGenerator::Point> TSPGenerator::last_generated_points;
 
 #endif

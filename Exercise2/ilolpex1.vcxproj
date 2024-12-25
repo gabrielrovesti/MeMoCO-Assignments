@@ -17,6 +17,7 @@
     <ClInclude Include="include\TSP.h" />
     <ClInclude Include="include\TSPSolution.h" />
     <ClInclude Include="include\TSPSolver.h" />
+    <ClInclude Include="visualization.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />

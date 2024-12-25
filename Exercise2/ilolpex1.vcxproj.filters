@@ -27,6 +27,9 @@
     <ClInclude Include="include\parameter_calibration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="visualization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

@@ -1,7 +1,8 @@
 #include "TSPSolver.h"
 #include "data_generator.h"
+#include "visualization.h"
 
-bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol) {
+bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points, int save_every) {
     try {
         int iteration = 0;
         bool stop = false;
@@ -21,6 +22,12 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
             if (move.cost_change >= tsp.infinite) {
                 stop = true;
                 continue;
+            }
+
+            // Save visualization periodically
+            if (iteration % save_every == 0) {
+                std::string filename = "solution_iter_" + std::to_string(iteration) + ".svg";
+                BoardVisualizer::generateSVG(points, currSol.sequence, filename, true);
             }
 
             // Update tabu list

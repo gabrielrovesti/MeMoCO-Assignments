@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 125">
+<g>
+<circle cx="5" cy="5" r="1" fill="blue"/>
+<circle cx="120" cy="5" r="1" fill="blue"/>
+<circle cx="5" cy="120" r="1" fill="blue"/>
+<circle cx="120" cy="120" r="1" fill="blue"/>
+<circle cx="38.2673" cy="79.474" r="1" fill="blue"/>
+<circle cx="40.8073" cy="79.474" r="1" fill="blue"/>
+<circle cx="43.3473" cy="79.474" r="1" fill="blue"/>
+<circle cx="45.8873" cy="79.474" r="1" fill="blue"/>
+<circle cx="48.4273" cy="79.474" r="1" fill="blue"/>
+<circle cx="5.03635" cy="99.2763" r="1" fill="blue"/>
+<circle cx="7.57635" cy="99.2763" r="1" fill="blue"/>
+<circle cx="10.1164" cy="99.2763" r="1" fill="blue"/>
+<circle cx="12.6564" cy="99.2763" r="1" fill="blue"/>
+<circle cx="15.1964" cy="99.2763" r="1" fill="blue"/>
+<circle cx="32.0457" cy="58.9556" r="1" fill="blue"/>
+<circle cx="32.0457" cy="61.4956" r="1" fill="blue"/>
+<circle cx="32.0457" cy="64.0356" r="1" fill="blue"/>
+<circle cx="32.0457" cy="66.5756" r="1" fill="blue"/>
+<circle cx="32.0457" cy="69.1156" r="1" fill="blue"/>
+<circle cx="32.0457" cy="71.6556" r="1" fill="blue"/>
+<circle cx="32.0457" cy="74.1956" r="1" fill="blue"/>
+<circle cx="39.6657" cy="58.9556" r="1" fill="blue"/>
+<circle cx="39.6657" cy="61.4956" r="1" fill="blue"/>
+<circle cx="39.6657" cy="64.0356" r="1" fill="blue"/>
+<circle cx="39.6657" cy="66.5756" r="1" fill="blue"/>
+<circle cx="39.6657" cy="69.1156" r="1" fill="blue"/>
+<circle cx="39.6657" cy="71.6556" r="1" fill="blue"/>
+<circle cx="39.6657" cy="74.1956" r="1" fill="blue"/>
+<circle cx="100.374" cy="50.0417" r="1" fill="blue"/>
+<circle cx="102.914" cy="50.0417" r="1" fill="blue"/>
+<circle cx="105.454" cy="50.0417" r="1" fill="blue"/>
+<circle cx="107.994" cy="50.0417" r="1" fill="blue"/>
+<circle cx="110.534" cy="50.0417" r="1" fill="blue"/>
+</g>
+</svg>

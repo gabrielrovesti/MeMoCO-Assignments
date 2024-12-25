@@ -87,7 +87,9 @@ ParameterCalibration::CalibrationResult ParameterCalibration::testParameterCombi
 
         auto start = std::chrono::high_resolution_clock::now();
 
-        if (solver.solveWithTabuSearch(instance, initial, final)) {
+        std::vector<std::pair<double, double>> points; 
+
+        if (solver.solveWithTabuSearch(instance, initial, final, points)) {
             auto end = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
                 end - start).count();

@@ -22,7 +22,6 @@
 #include <deque>
 #include "TSPSolution.h"
 #include "TSP.h"
-#include "data_generator.h"
 
 class TSPSolver {
 public:
@@ -34,8 +33,7 @@ public:
     bool initRnd(TSPSolution& sol);
 
     // New Tabu Search methods
-    bool solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol);
-
+    bool solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points, int save_every = 100);
     // Configuration methods
     void setTabuTenure(int tenure) { tabu_tenure = tenure; }
     void setMaxIterations(int iterations) { max_iterations = iterations; }

@@ -7,6 +7,7 @@
 #include "TSPSolver.h"
 #include "data_generator.h"
 #include "parameter_calibration.h"
+#include "visualization.h"
 #include <filesystem>
 
 int status;
@@ -91,79 +92,55 @@ int main(int argc, char const* argv[]) {
             << ", Iterations: " << params.large_iterations << "\n";
 
         // Phase 3: Solution Visualization
-        std::cout << "\nPhase 3: Solution Visualization\n";
-        for (const auto& category : { "small", "medium", "large" }) {
-            std::cout << "Processing " << category << " instances...\n";
+        std::cout << "\nGenerating Visualizations...\n";
+        for (const auto& config : board_configs) {
+            int width = std::get<0>(config);
+            int height = std::get<1>(config);
+            int components = std::get<2>(config);
 
-            std::string data_path = "data/" + std::string(category);
-            std::wstring search_path = std::wstring(data_path.begin(), data_path.end()) + L"\\*.dat";
+            // Generate a single instance for visualization
+            auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
+            TSP tsp;
+            tsp.n = costs.size();
+            tsp.cost = costs;
 
-            WIN32_FIND_DATAW file_data;
-            HANDLE dir = FindFirstFileW(search_path.c_str(), &file_data);
-
-            if (dir == INVALID_HANDLE_VALUE) {
-                std::cout << "No instances found in " << data_path << "\n";
-                continue;
+            // Get the points from the generator 
+            std::vector<TSPGenerator::Point> points = TSPGenerator::getLastGeneratedPoints();
+            std::vector<std::pair<double, double>> viz_points;
+            for (const auto& p : points) {
+                viz_points.push_back({ p.x, p.y });
             }
 
-            do {
-                // Convert wide string to regular string for comparison
-                std::wstring ws(file_data.cFileName);
-                std::string filename(ws.begin(), ws.end());
+            TSPSolution initialSol(tsp);
+            TSPSolution bestSol(tsp);
+            TSPSolver solver;
 
-                if (filename == "." || filename == "..") {
-                    continue;
-                }
+            // Configure solver based on problem size
+            if (tsp.n <= 20) {
+                solver.setTabuTenure(params.small_tenure);
+                solver.setMaxIterations(params.small_iterations);
+            }
+            else if (tsp.n <= 35) {
+                solver.setTabuTenure(params.medium_tenure);
+                solver.setMaxIterations(params.medium_iterations);
+            }
+            else {
+                solver.setTabuTenure(params.large_tenure);
+                solver.setMaxIterations(params.large_iterations);
+            }
 
-                std::string instance_file = data_path + "\\" + filename;
-                std::cout << "Processing instance: " << filename << "\n";
+            solver.initRnd(initialSol);
+            if (solver.solveWithTabuSearch(tsp, initialSol, bestSol, viz_points, 100)) {
+                std::string filename = "board_" +
+                    std::to_string(width) + "x" +
+                    std::to_string(height);
 
-                try {
-                    auto costs = TSPGenerator::loadFromFile(instance_file);
-                    TSP tsp;
-                    tsp.n = costs.size();
-                    tsp.cost = costs;
-
-                    // Rest of the solver configuration and execution remains the same
-                    TSPSolution initialSol(tsp);
-                    TSPSolution bestSol(tsp);
-                    TSPSolver solver;
-
-                    if (tsp.n <= 20) {
-                        solver.setTabuTenure(params.small_tenure);
-                        solver.setMaxIterations(params.small_iterations);
-                    }
-                    else if (tsp.n <= 35) {
-                        solver.setTabuTenure(params.medium_tenure);
-                        solver.setMaxIterations(params.medium_iterations);
-                    }
-                    else {
-                        solver.setTabuTenure(params.large_tenure);
-                        solver.setMaxIterations(params.large_iterations);
-                    }
-
-                    solver.initRnd(initialSol);
-                    solver.solveWithTabuSearch(tsp, initialSol, bestSol);
-                }
-                catch (const std::exception& e) {
-                    std::cout << "Error processing instance " << filename
-                        << ": " << e.what() << "\n";
-                    continue;
-                }
-
-            } while (FindNextFileW(dir, &file_data));
-
-            FindClose(dir);
-        }
-
-        std::cout << "\nGenerating Performance Analysis...\n";
-        std::string command = "python plot.py data";  // Pass data directory for analysis
-        int result = system(command.c_str());
-        if (result == 0) {
-            std::cout << "Performance analysis complete. Check performance_analysis.png\n";
-        }
-        else {
-            std::cout << "Warning: Performance analysis generation failed\n";
+                // Use viz_points for visualization
+                BoardVisualizer::generateSVG(viz_points, {},
+                    filename + "_layout.svg", false);
+                BoardVisualizer::generateSVG(viz_points, bestSol.sequence,
+                    filename + "_solution.svg", true);
+            }
         }
 
         return 0;
