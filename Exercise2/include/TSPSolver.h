@@ -9,16 +9,15 @@
 
 class TSPSolver {
 public:
-    // Constructor with enhanced initialization
+    // Constructor
     TSPSolver();
-
     // Core methods
     double evaluate(const TSPSolution& sol, const TSP& tsp) const;
     bool initRnd(TSPSolution& sol);
-    bool solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
-                           TSPSolution& bestSol,
-                           const std::vector<std::pair<double, double>>& points,
-                           int save_every = 100);
+    bool solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol,
+        TSPSolution& bestSol,
+        const std::vector<std::pair<double, double>>& points,
+        int save_every = 100);
 
     // Configuration methods
     void setTabuTenure(int tenure) { tabu_tenure = tenure; }

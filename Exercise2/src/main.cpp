@@ -4,11 +4,14 @@
 #include <iomanip>
 #include <algorithm>
 #include <direct.h>
+#include <filesystem>
+#include <fstream>
+#include <limits>
+#include <numeric>
 #include "TSPSolver.h"
 #include "data_generator.h"
 #include "parameter_calibration.h"
 #include "visualization.h"
-#include <filesystem>
 
 int status;
 char errmsg[255];
@@ -19,9 +22,8 @@ bool createDirectory(const std::string& path) {
 
 void generateInstanceSet(const std::vector<std::tuple<int, int, int>>& board_configs,
     int instances_per_size) {
-    if (!createDirectory("data")) {
-        throw std::runtime_error("Failed to create data directory");
-    }
+
+    createDirectory("data");
     createDirectory("data/small");
     createDirectory("data/medium");
     createDirectory("data/large");
@@ -41,16 +43,13 @@ void generateInstanceSet(const std::vector<std::tuple<int, int, int>>& board_con
                 costs.size() <= 35 ? "medium" : "large";
 
             std::string filename = "data/" + category + "/board_" +
-                std::to_string(width) + "x" +
-                std::to_string(height) + "_" +
-                std::to_string(timestamp) + "_" +
-                std::to_string(i) + ".dat";
+                std::to_string(width) + "x" + std::to_string(height) + "_" +
+                std::to_string(timestamp) + "_" + std::to_string(i) + ".dat";
 
             try {
                 TSPGenerator::saveToFile(filename, costs,
-                    "Circuit board instance\n"
-                    "Size: " + category + "\n"
-                    "Nodes: " + std::to_string(costs.size()));
+                    "Circuit board instance\nSize: " + category + "\nNodes: " +
+                    std::to_string(costs.size()));
 
                 std::cout << "Generated instance: " << filename
                     << " (nodes: " << costs.size() << ")\n";
@@ -62,102 +61,178 @@ void generateInstanceSet(const std::vector<std::tuple<int, int, int>>& board_con
     }
 }
 
+void calculateStats(const std::vector<double>& values, double& avg, double& min, double& max) {
+    if (values.empty()) return;
+
+    min = values[0];
+    max = values[0];
+    double sum = 0.0;
+
+    for (const auto& val : values) {
+        sum += val;
+        if (val < min) min = val;
+        if (val > max) max = val;
+    }
+
+    avg = sum / values.size();
+}
+
+void runBenchmark(const TSP& tsp, TSPSolver& solver, int num_runs = 10) {
+    std::vector<double> solution_costs;
+    std::vector<double> run_times;
+
+    for (int run = 0; run < num_runs; run++) {
+        TSPSolution initial(tsp);
+        TSPSolution best(tsp);
+        solver.initRnd(initial);
+
+        auto start = std::chrono::high_resolution_clock::now();
+        solver.solveWithTabuSearch(tsp, initial, best, {});  // Empty points for benchmark runs
+        auto end = std::chrono::high_resolution_clock::now();
+
+        double cost = solver.evaluate(best, tsp);
+        double time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+        solution_costs.push_back(cost);
+        run_times.push_back(time);
+    }
+
+    double avg_cost, min_cost, max_cost, avg_time, min_time, max_time;
+    calculateStats(solution_costs, avg_cost, min_cost, max_cost);
+    calculateStats(run_times, avg_time, min_time, max_time);
+
+    std::cout << "Benchmark Results (" << num_runs << " runs):\n"
+        << "  Average Cost: " << std::fixed << std::setprecision(2) << avg_cost << "\n"
+        << "  Best Cost: " << min_cost << "\n"
+        << "  Worst Cost: " << max_cost << "\n"
+        << "  Average Time: " << avg_time << "ms\n";
+}
+
+void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, double>>& points,
+    const ParameterCalibration::Parameters& params, const std::string& output_prefix) {
+
+    TSPSolver solver;
+
+    // Configure solver based on problem size
+    if (tsp.n <= 20) {
+        solver.setTabuTenure(params.small_tenure);
+        solver.setMaxIterations(params.small_iterations);
+    }
+    else if (tsp.n <= 35) {
+        solver.setTabuTenure(params.medium_tenure);
+        solver.setMaxIterations(params.medium_iterations);
+    }
+    else {
+        solver.setTabuTenure(params.large_tenure);
+        solver.setMaxIterations(params.large_iterations);
+    }
+
+    // Create and save initial solution
+    TSPSolution initialSol(tsp);
+    solver.initRnd(initialSol);
+    double initialCost = solver.evaluate(initialSol, tsp);
+
+    // Solve and measure performance
+    TSPSolution bestSol(tsp);
+    auto start = std::chrono::high_resolution_clock::now();
+    solver.solveWithTabuSearch(tsp, initialSol, bestSol, points);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    double finalCost = solver.evaluate(bestSol, tsp);
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    // Generate visualizations
+    BoardVisualizer::generateSVG(points, initialSol.sequence,
+        output_prefix + "_initial.svg", true, 0, initialCost);
+
+    BoardVisualizer::generateSVG(points, bestSol.sequence,
+        output_prefix + "_final.svg", true, -1, finalCost);
+
+    BoardVisualizer::generateComparisonSVG(points, initialSol.sequence, bestSol.sequence,
+        output_prefix + "_comparison.svg", initialCost, finalCost);
+
+    // Report results
+    double improvement = ((initialCost - finalCost) / initialCost) * 100.0;
+    std::cout << "Results for " << output_prefix << ":\n"
+        << "  Initial cost: " << initialCost << "\n"
+        << "  Final cost: " << finalCost << "\n"
+        << "  Improvement: " << std::fixed << std::setprecision(2)
+        << improvement << "%\n"
+        << "  Time: " << duration.count() << "ms\n\n";
+}
+
 int main(int argc, char const* argv[]) {
     try {
-        // Board configurations for testing
         std::vector<std::tuple<int, int, int>> board_configs = {
-            {50, 50, 2},    // Small boards (~10-15 holes)
-            {75, 75, 3},    // Medium-small boards (~15-20 holes)
-            {100, 100, 3},  // Medium boards (~25-30 holes)
-            {125, 125, 4},  // Medium-large boards (~35-40 holes)
-            {150, 150, 5},  // Large boards (~45-50 holes)
+            {50, 50, 2},    // Small boards
+            {75, 75, 3},    // Medium-small boards
+            {100, 100, 3},  // Medium boards
+            {125, 125, 4},  // Medium-large boards
+            {150, 150, 5}   // Large boards
         };
 
-        // Phase 1: Instance Generation
-        std::cout << "Phase 1: Generating Training Instances\n";
-        const int INSTANCES_PER_SIZE = 10;
-        generateInstanceSet(board_configs, INSTANCES_PER_SIZE);
+        // Create output directories
+        createDirectory("data");
+        createDirectory("visualizations");
 
-        // Phase 2: Parameter Calibration
-        std::cout << "\nPhase 2: Parameter Calibration\n";
+        std::cout << "Phase 1: Generating Training Instances\n"
+            << "=====================================\n";
+        generateInstanceSet(board_configs, 10);
+
+        std::cout << "\nPhase 2: Parameter Calibration\n"
+            << "=============================\n";
         ParameterCalibration calibrator;
-        ParameterCalibration::Parameters params = calibrator.calibrateParameters(board_configs);
+        auto params = calibrator.calibrateParameters(board_configs);
 
-        std::cout << "\nCalibration complete. Optimal parameters found:\n";
-        std::cout << "Small instances - Tenure: " << params.small_tenure
-            << ", Iterations: " << params.small_iterations << "\n";
-        std::cout << "Medium instances - Tenure: " << params.medium_tenure
-            << ", Iterations: " << params.medium_iterations << "\n";
-        std::cout << "Large instances - Tenure: " << params.large_tenure
-            << ", Iterations: " << params.large_iterations << "\n";
-
-        std::cout << "\nGenerating Visualizations...\n";
-        if (!std::filesystem::exists("visualizations")) {
-            std::filesystem::create_directory("visualizations");
-        }
+        std::cout << "\nPhase 3: Testing and Visualization\n"
+            << "================================\n";
 
         for (const auto& config : board_configs) {
             int width = std::get<0>(config);
             int height = std::get<1>(config);
             int components = std::get<2>(config);
 
-            // Generate instance and solve
+            // Generate test instance
             auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
+            std::vector<std::pair<double, double>> points;
+            for (const auto& p : TSPGenerator::getLastGeneratedPoints()) {
+                points.push_back({ p.x, p.y });
+            }
+
+            // Setup problem instance
             TSP tsp;
             tsp.n = costs.size();
             tsp.cost = costs;
+            tsp.infinite = std::numeric_limits<double>::infinity();
 
-            std::vector<TSPGenerator::Point> points = TSPGenerator::getLastGeneratedPoints();
-            std::vector<std::pair<double, double>> viz_points;
-            for (const auto& p : points) {
-                viz_points.push_back({ p.x, p.y });
-            }
+            std::string prefix = "visualizations/board_" +
+                std::to_string(width) + "x" + std::to_string(height);
 
-            TSPSolution initialSol(tsp);
-            TSPSolution bestSol(tsp);
-            TSPSolver solver;
+            std::cout << "\nTesting " << width << "x" << height
+                << " board (" << tsp.n << " holes):\n";
 
-            // Configure solver
-            int maxIter;
+            // Solve with visualization
+            solveAndVisualize(tsp, points, params, prefix);
+
+            // Run benchmarks
+            std::cout << "Running benchmarks...\n";
+            TSPSolver benchmark_solver;
             if (tsp.n <= 20) {
-                solver.setTabuTenure(params.small_tenure);
-                maxIter = params.small_iterations;
+                benchmark_solver.setTabuTenure(params.small_tenure);
+                benchmark_solver.setMaxIterations(params.small_iterations);
             }
             else if (tsp.n <= 35) {
-                solver.setTabuTenure(params.medium_tenure);
-                maxIter = params.medium_iterations;
+                benchmark_solver.setTabuTenure(params.medium_tenure);
+                benchmark_solver.setMaxIterations(params.medium_iterations);
             }
             else {
-                solver.setTabuTenure(params.large_tenure);
-                maxIter = params.large_iterations;
+                benchmark_solver.setTabuTenure(params.large_tenure);
+                benchmark_solver.setMaxIterations(params.large_iterations);
             }
-            solver.setMaxIterations(maxIter);
+            runBenchmark(tsp, benchmark_solver);
+        }
 
-            solver.initRnd(initialSol);
-
-            // Generate base filename
-            std::string baseName = "visualizations/board_" +
-                std::to_string(width) + "x" + std::to_string(height) + "_n" +
-                std::to_string(tsp.n);
-
-            // Save initial board layout
-            BoardVisualizer::generateSVG(viz_points, {},
-                baseName + "_layout.svg", false);
-            std::cout << "Saved board layout: " << baseName + "_layout.svg\n";
-
-            // Solve and save solution
-            if (solver.solveWithTabuSearch(tsp, initialSol, bestSol, viz_points)) {
-                BoardVisualizer::generateSVG(viz_points, bestSol.sequence,
-                    baseName + "_solution.svg", true);
-                std::cout << "Saved solution visualization: " << baseName + "_solution.svg\n";
-
-                double finalCost = solver.evaluate(bestSol, tsp);
-                std::cout << "Board " << width << "x" << height << " (" << tsp.n
-                    << " holes) - Final cost: " << finalCost << "\n\n";
-            }
-		}
-		return 0;
-
+        return 0;
     }
     catch (std::exception& e) {
         std::cout << ">>>EXCEPTION: " << e.what() << std::endl;

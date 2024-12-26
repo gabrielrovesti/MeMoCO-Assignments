@@ -1,9 +1,20 @@
 #include "TSPSolver.h"
 #include "data_generator.h"
 #include "visualization.h"
+#include <limits>
+#include <cstdlib>
+#include <ctime>
+
+TSPSolver::TSPSolver() :
+    tabu_tenure(7), max_iterations(1000),
+    min_tenure(5), max_tenure(20),
+    iterations_without_improvement(0),
+    best_known_value(std::numeric_limits<double>::max()),
+    in_intensification_phase(false) {}
 
 bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol,
-    TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points, int save_every) {
+    TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points,
+    int save_every) {
     try {
         int iteration = 0;
         bool stop = false;
@@ -12,45 +23,67 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol,
         double bestValue = evaluate(currSol, tsp);
         double currValue = bestValue;
         bestSol = currSol;
+        best_known_value = bestValue;
 
         // Initialize tabu list
         tabu_list.clear();
+        search_history.clear();
 
+        // Save initial solution
         BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
-            "solution", iteration, currValue, false);
+            "visualizations/solution", iteration, currValue);
 
         while (!stop) {
-            // Find best non-tabu neighbor or one that meets aspiration criteria
+            // Find best neighbor
             Move move = findBestNeighbor(tsp, currSol, iteration);
 
             if (move.cost_change >= tsp.infinite) {
+                if (in_intensification_phase) {
+                    in_intensification_phase = false;
+                    continue;
+                }
                 stop = true;
                 continue;
             }
 
-            // Update tabu list
+            // Update tabu list and apply move
             updateTabuList(currSol.sequence[move.from], currSol.sequence[move.to], iteration);
-
-            // Apply move
             currSol = applyMove(currSol, move);
             currValue += move.cost_change;
 
-            // Update best solution if improved
-            if (currValue < bestValue - 0.01) {
+            // Track search progress
+            search_history.push_back({
+                iteration, currValue, tabu_tenure,
+                currValue < bestValue - 0.01
+                });
+
+            // Adjust search strategy
+            if (shouldIntensify(currValue, bestValue)) {
                 bestValue = currValue;
                 bestSol = currSol;
+                in_intensification_phase = true;
+                intensifySearch(tsp, currSol);
+                currValue = evaluate(currSol, tsp);
 
-                // Save visualization when we find a better solution
+                // Save visualization of improvement
                 BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
                     "visualizations/solution", iteration, currValue);
             }
-            // Also save at regular intervals defined by save_every
+            else if (shouldDiversify()) {
+                diversifySearch(currSol);
+                currValue = evaluate(currSol, tsp);
+                BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
+                    "visualizations/solution", iteration, currValue);
+            }
             else if (iteration % save_every == 0) {
                 BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
                     "visualizations/solution", iteration, currValue);
             }
 
-            // Stopping criteria
+            // Update reactive parameters
+            adjustTabuTenure(currValue);
+
+            // Check stopping criteria
             iteration++;
             if (iteration >= max_iterations) {
                 stop = true;
@@ -69,7 +102,66 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol,
     }
 }
 
-TSPSolver::Move TSPSolver::findBestNeighbor(const TSP& tsp, const TSPSolution& currSol, int iteration) {
+void TSPSolver::adjustTabuTenure(double current_value) {
+    if (current_value >= best_known_value) {
+        iterations_without_improvement++;
+        if (iterations_without_improvement > MAX_ITERATIONS_WITHOUT_IMPROVEMENT / 2) {
+            tabu_tenure = std::min(tabu_tenure + 2, max_tenure);
+        }
+    }
+    else {
+        tabu_tenure = std::max(tabu_tenure - 1, min_tenure);
+        iterations_without_improvement = 0;
+        best_known_value = current_value;
+    }
+}
+
+void TSPSolver::intensifySearch(const TSP& tsp, TSPSolution& current_sol) {
+    TSPSolution backup = current_sol;
+    double backup_value = evaluate(backup, tsp);
+
+    // Perform intensified local search with shorter tabu tenure
+    int original_tenure = tabu_tenure;
+    tabu_tenure = min_tenure;
+
+    for (int i = 0; i < INTENSIFICATION_ITERATIONS; i++) {
+        Move move = findBestNeighbor(tsp, current_sol, i);
+        if (move.cost_change >= tsp.infinite) break;
+
+        current_sol = applyMove(current_sol, move);
+        updateTabuList(current_sol.sequence[move.from],
+            current_sol.sequence[move.to], i);
+    }
+
+    // Restore original tenure and best solution if no improvement
+    tabu_tenure = original_tenure;
+    if (evaluate(current_sol, tsp) > backup_value) {
+        current_sol = backup;
+    }
+}
+
+void TSPSolver::diversifySearch(TSPSolution& current_sol) {
+    // Perform multiple random moves
+    int num_diversification_moves = current_sol.sequence.size() / 3;
+    for (int i = 0; i < num_diversification_moves; i++) {
+        int idx1 = 1 + rand() % (current_sol.sequence.size() - 2);
+        int idx2 = 1 + rand() % (current_sol.sequence.size() - 2);
+        std::swap(current_sol.sequence[idx1], current_sol.sequence[idx2]);
+    }
+    // Clear tabu list after diversification
+    tabu_list.clear();
+}
+
+bool TSPSolver::shouldIntensify(double current_value, double best_value) const {
+    return current_value < best_value - 0.01;
+}
+
+bool TSPSolver::shouldDiversify() const {
+    return iterations_without_improvement >= MAX_ITERATIONS_WITHOUT_IMPROVEMENT;
+}
+
+TSPSolver::Move TSPSolver::findBestNeighbor(const TSP& tsp, const TSPSolution& currSol,
+    int iteration) {
     Move bestMove;
     bestMove.cost_change = tsp.infinite;
 
@@ -126,14 +218,12 @@ double TSPSolver::evaluate(const TSPSolution& sol, const TSP& tsp) const {
 }
 
 bool TSPSolver::initRnd(TSPSolution& sol) {
-    // Initialize random seed
     static bool seeded = false;
     if (!seeded) {
         srand(static_cast<unsigned>(time(nullptr)));
         seeded = true;
     }
 
-    // Perform random swaps
     for (std::size_t i = 1; i < sol.sequence.size() - 1; i++) {
         int j = rand() % (sol.sequence.size() - 2) + 1;
         std::swap(sol.sequence[i], sol.sequence[j]);
@@ -142,7 +232,6 @@ bool TSPSolver::initRnd(TSPSolution& sol) {
 }
 
 TSPSolution& TSPSolver::applyMove(TSPSolution& tspSol, const Move& move) {
-    // Reverse the subsequence between from and to
     int left = move.from;
     int right = move.to;
     while (left < right) {
@@ -153,8 +242,8 @@ TSPSolution& TSPSolver::applyMove(TSPSolution& tspSol, const Move& move) {
     return tspSol;
 }
 
-double TSPSolver::calculateMoveCost(const TSP& tsp, const TSPSolution& sol, const Move& move) {
-    // Calculate the cost difference for a 2-opt move
+double TSPSolver::calculateMoveCost(const TSP& tsp, const TSPSolution& sol,
+    const Move& move) {
     int h = sol.sequence[move.from - 1];
     int i = sol.sequence[move.from];
     int j = sol.sequence[move.to];
