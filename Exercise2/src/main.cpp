@@ -91,20 +91,22 @@ int main(int argc, char const* argv[]) {
         std::cout << "Large instances - Tenure: " << params.large_tenure
             << ", Iterations: " << params.large_iterations << "\n";
 
-        // Phase 3: Solution Visualization
         std::cout << "\nGenerating Visualizations...\n";
+        if (!std::filesystem::exists("visualizations")) {
+            std::filesystem::create_directory("visualizations");
+        }
+
         for (const auto& config : board_configs) {
             int width = std::get<0>(config);
             int height = std::get<1>(config);
             int components = std::get<2>(config);
 
-            // Generate a single instance for visualization
+            // Generate instance and solve
             auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
             TSP tsp;
             tsp.n = costs.size();
             tsp.cost = costs;
 
-            // Get the points from the generator 
             std::vector<TSPGenerator::Point> points = TSPGenerator::getLastGeneratedPoints();
             std::vector<std::pair<double, double>> viz_points;
             for (const auto& p : points) {
@@ -115,35 +117,47 @@ int main(int argc, char const* argv[]) {
             TSPSolution bestSol(tsp);
             TSPSolver solver;
 
-            // Configure solver based on problem size
+            // Configure solver
+            int maxIter;
             if (tsp.n <= 20) {
                 solver.setTabuTenure(params.small_tenure);
-                solver.setMaxIterations(params.small_iterations);
+                maxIter = params.small_iterations;
             }
             else if (tsp.n <= 35) {
                 solver.setTabuTenure(params.medium_tenure);
-                solver.setMaxIterations(params.medium_iterations);
+                maxIter = params.medium_iterations;
             }
             else {
                 solver.setTabuTenure(params.large_tenure);
-                solver.setMaxIterations(params.large_iterations);
+                maxIter = params.large_iterations;
             }
+            solver.setMaxIterations(maxIter);
 
             solver.initRnd(initialSol);
-            if (solver.solveWithTabuSearch(tsp, initialSol, bestSol, viz_points, 100)) {
-                std::string filename = "board_" +
-                    std::to_string(width) + "x" +
-                    std::to_string(height);
 
-                // Use viz_points for visualization
-                BoardVisualizer::generateSVG(viz_points, {},
-                    filename + "_layout.svg", false);
+            // Generate base filename
+            std::string baseName = "visualizations/board_" +
+                std::to_string(width) + "x" + std::to_string(height) + "_n" +
+                std::to_string(tsp.n);
+
+            // Save initial board layout
+            BoardVisualizer::generateSVG(viz_points, {},
+                baseName + "_layout.svg", false);
+            std::cout << "Saved board layout: " << baseName + "_layout.svg\n";
+
+            // Solve and save solution
+            if (solver.solveWithTabuSearch(tsp, initialSol, bestSol, viz_points)) {
                 BoardVisualizer::generateSVG(viz_points, bestSol.sequence,
-                    filename + "_solution.svg", true);
-            }
-        }
+                    baseName + "_solution.svg", true);
+                std::cout << "Saved solution visualization: " << baseName + "_solution.svg\n";
 
-        return 0;
+                double finalCost = solver.evaluate(bestSol, tsp);
+                std::cout << "Board " << width << "x" << height << " (" << tsp.n
+                    << " holes) - Final cost: " << finalCost << "\n\n";
+            }
+		}
+		return 0;
+
     }
     catch (std::exception& e) {
         std::cout << ">>>EXCEPTION: " << e.what() << std::endl;

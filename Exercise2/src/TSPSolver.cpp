@@ -2,7 +2,8 @@
 #include "data_generator.h"
 #include "visualization.h"
 
-bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points, int save_every) {
+bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol,
+    TSPSolution& bestSol, const std::vector<std::pair<double, double>>& points, int save_every) {
     try {
         int iteration = 0;
         bool stop = false;
@@ -15,6 +16,9 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
         // Initialize tabu list
         tabu_list.clear();
 
+        BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
+            "solution", iteration, currValue, false);
+
         while (!stop) {
             // Find best non-tabu neighbor or one that meets aspiration criteria
             Move move = findBestNeighbor(tsp, currSol, iteration);
@@ -22,12 +26,6 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
             if (move.cost_change >= tsp.infinite) {
                 stop = true;
                 continue;
-            }
-
-            // Save visualization periodically
-            if (iteration % save_every == 0) {
-                std::string filename = "solution_iter_" + std::to_string(iteration) + ".svg";
-                BoardVisualizer::generateSVG(points, currSol.sequence, filename, true);
             }
 
             // Update tabu list
@@ -41,6 +39,15 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
             if (currValue < bestValue - 0.01) {
                 bestValue = currValue;
                 bestSol = currSol;
+
+                // Save visualization when we find a better solution
+                BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
+                    "visualizations/solution", iteration, currValue);
+            }
+            // Also save at regular intervals defined by save_every
+            else if (iteration % save_every == 0) {
+                BoardVisualizer::saveKeySnapshots(points, currSol.sequence,
+                    "visualizations/solution", iteration, currValue);
             }
 
             // Stopping criteria
@@ -49,6 +56,10 @@ bool TSPSolver::solveWithTabuSearch(const TSP& tsp, const TSPSolution& initSol, 
                 stop = true;
             }
         }
+
+        // Save final solution
+        BoardVisualizer::saveKeySnapshots(points, bestSol.sequence,
+            "visualizations/solution", iteration, bestValue);
 
         return true;
     }
