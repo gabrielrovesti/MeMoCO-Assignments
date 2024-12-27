@@ -1,0 +1,4 @@
+Calibration Results:
+Small instances - Tenure: 13, Iterations: 600
+Medium instances - Tenure: 13, Iterations: 1050
+Large instances - Tenure: 13, Iterations: 1410

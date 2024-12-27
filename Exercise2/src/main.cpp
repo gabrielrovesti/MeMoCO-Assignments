@@ -16,6 +16,16 @@
 int status;
 char errmsg[255];
 
+struct TestResults {
+    double initial_cost;
+    double final_cost;
+    double improvement_percentage;
+    double execution_time;
+    double avg_time;
+    double best_cost;
+    double worst_cost;
+};
+
 bool createDirectory(const std::string& path) {
     return _mkdir(path.c_str()) == 0 || errno == EEXIST;
 }
@@ -77,17 +87,22 @@ void calculateStats(const std::vector<double>& values, double& avg, double& min,
     avg = sum / values.size();
 }
 
-void runBenchmark(const TSP& tsp, TSPSolver& solver, int num_runs = 10) {
+TestResults runBenchmark(const TSP& tsp, TSPSolver& solver, int num_runs = 10) {
     std::vector<double> solution_costs;
     std::vector<double> run_times;
+    double initial_cost = 0.0;
 
     for (int run = 0; run < num_runs; run++) {
         TSPSolution initial(tsp);
         TSPSolution best(tsp);
         solver.initRnd(initial);
 
+        if (run == 0) {
+            initial_cost = solver.evaluate(initial, tsp);
+        }
+
         auto start = std::chrono::high_resolution_clock::now();
-        solver.solveWithTabuSearch(tsp, initial, best, {});  // Empty points for benchmark runs
+        solver.solveWithTabuSearch(tsp, initial, best, {});
         auto end = std::chrono::high_resolution_clock::now();
 
         double cost = solver.evaluate(best, tsp);
@@ -106,6 +121,17 @@ void runBenchmark(const TSP& tsp, TSPSolver& solver, int num_runs = 10) {
         << "  Best Cost: " << min_cost << "\n"
         << "  Worst Cost: " << max_cost << "\n"
         << "  Average Time: " << avg_time << "ms\n";
+
+    TestResults results;
+    results.initial_cost = initial_cost;
+    results.final_cost = min_cost;
+    results.improvement_percentage = ((initial_cost - min_cost) / initial_cost) * 100.0;
+    results.execution_time = avg_time;
+    results.avg_time = avg_time;
+    results.best_cost = min_cost;
+    results.worst_cost = max_cost;
+
+    return results;
 }
 
 void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, double>>& points,
@@ -113,7 +139,6 @@ void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, doubl
 
     TSPSolver solver;
 
-    // Configure solver based on problem size
     if (tsp.n <= 20) {
         solver.setTabuTenure(params.small_tenure);
         solver.setMaxIterations(params.small_iterations);
@@ -127,12 +152,10 @@ void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, doubl
         solver.setMaxIterations(params.large_iterations);
     }
 
-    // Create and save initial solution
     TSPSolution initialSol(tsp);
     solver.initRnd(initialSol);
     double initialCost = solver.evaluate(initialSol, tsp);
 
-    // Solve and measure performance
     TSPSolution bestSol(tsp);
     auto start = std::chrono::high_resolution_clock::now();
     solver.solveWithTabuSearch(tsp, initialSol, bestSol, points);
@@ -141,7 +164,6 @@ void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, doubl
     double finalCost = solver.evaluate(bestSol, tsp);
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-    // Generate visualizations
     BoardVisualizer::generateSVG(points, initialSol.sequence,
         output_prefix + "_initial.svg", true, 0, initialCost);
 
@@ -151,7 +173,6 @@ void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, doubl
     BoardVisualizer::generateComparisonSVG(points, initialSol.sequence, bestSol.sequence,
         output_prefix + "_comparison.svg", initialCost, finalCost);
 
-    // Report results
     double improvement = ((initialCost - finalCost) / initialCost) * 100.0;
     std::cout << "Results for " << output_prefix << ":\n"
         << "  Initial cost: " << initialCost << "\n"
@@ -159,6 +180,35 @@ void solveAndVisualize(const TSP& tsp, const std::vector<std::pair<double, doubl
         << "  Improvement: " << std::fixed << std::setprecision(2)
         << improvement << "%\n"
         << "  Time: " << duration.count() << "ms\n\n";
+}
+
+void analyzeResults(const std::vector<TestResults>& results, std::ofstream& log_file) {
+    double total_improvement = 0.0;
+    double total_time = 0.0;
+    double best_improvement = 0.0;
+    double worst_improvement = (std::numeric_limits<double>::max)();
+
+    for (const auto& result : results) {
+        total_improvement += result.improvement_percentage;
+        total_time += result.execution_time;
+        // Replace std::max/min with direct comparisons
+        if (result.improvement_percentage > best_improvement) {
+            best_improvement = result.improvement_percentage;
+        }
+        if (result.improvement_percentage < worst_improvement) {
+            worst_improvement = result.improvement_percentage;
+        }
+    }
+
+    double avg_improvement = total_improvement / results.size();
+    double avg_time = total_time / results.size();
+
+    log_file << "\nFinal Analysis:\n"
+        << "Average Improvement: " << std::fixed << std::setprecision(2)
+        << avg_improvement << "%\n"
+        << "Best Improvement: " << best_improvement << "%\n"
+        << "Worst Improvement: " << worst_improvement << "%\n"
+        << "Average Execution Time: " << avg_time << "ms\n";
 }
 
 int main(int argc, char const* argv[]) {
@@ -171,9 +221,9 @@ int main(int argc, char const* argv[]) {
             {150, 150, 5}   // Large boards
         };
 
-        // Create output directories
         createDirectory("data");
         createDirectory("visualizations");
+        createDirectory("results");
 
         std::cout << "Phase 1: Generating Training Instances\n"
             << "=====================================\n";
@@ -184,22 +234,31 @@ int main(int argc, char const* argv[]) {
         ParameterCalibration calibrator;
         auto params = calibrator.calibrateParameters(board_configs);
 
+        std::ofstream calibration_log("results/calibration_results.txt");
+        calibration_log << "Calibration Results:\n"
+            << "Small instances - Tenure: " << params.small_tenure
+            << ", Iterations: " << params.small_iterations << "\n"
+            << "Medium instances - Tenure: " << params.medium_tenure
+            << ", Iterations: " << params.medium_iterations << "\n"
+            << "Large instances - Tenure: " << params.large_tenure
+            << ", Iterations: " << params.large_iterations << "\n";
+
         std::cout << "\nPhase 3: Testing and Visualization\n"
             << "================================\n";
+        std::ofstream results_log("results/benchmark_results.txt");
+        std::vector<TestResults> all_results;
 
         for (const auto& config : board_configs) {
             int width = std::get<0>(config);
             int height = std::get<1>(config);
             int components = std::get<2>(config);
 
-            // Generate test instance
             auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
             std::vector<std::pair<double, double>> points;
             for (const auto& p : TSPGenerator::getLastGeneratedPoints()) {
                 points.push_back({ p.x, p.y });
             }
 
-            // Setup problem instance
             TSP tsp;
             tsp.n = costs.size();
             tsp.cost = costs;
@@ -211,26 +270,37 @@ int main(int argc, char const* argv[]) {
             std::cout << "\nTesting " << width << "x" << height
                 << " board (" << tsp.n << " holes):\n";
 
-            // Solve with visualization
-            solveAndVisualize(tsp, points, params, prefix);
-
-            // Run benchmarks
-            std::cout << "Running benchmarks...\n";
-            TSPSolver benchmark_solver;
+            TSPSolver solver;
             if (tsp.n <= 20) {
-                benchmark_solver.setTabuTenure(params.small_tenure);
-                benchmark_solver.setMaxIterations(params.small_iterations);
+                solver.setTabuTenure(params.small_tenure);
+                solver.setMaxIterations(params.small_iterations);
             }
             else if (tsp.n <= 35) {
-                benchmark_solver.setTabuTenure(params.medium_tenure);
-                benchmark_solver.setMaxIterations(params.medium_iterations);
+                solver.setTabuTenure(params.medium_tenure);
+                solver.setMaxIterations(params.medium_iterations);
             }
             else {
-                benchmark_solver.setTabuTenure(params.large_tenure);
-                benchmark_solver.setMaxIterations(params.large_iterations);
+                solver.setTabuTenure(params.large_tenure);
+                solver.setMaxIterations(params.large_iterations);
             }
-            runBenchmark(tsp, benchmark_solver);
+
+            solveAndVisualize(tsp, points, params, prefix);
+            TestResults bench_results = runBenchmark(tsp, solver);
+            all_results.push_back(bench_results);
+
+            results_log << "\nInstance " << width << "x" << height
+                << " (" << tsp.n << " nodes):\n"
+                << "Initial Cost: " << bench_results.initial_cost << "\n"
+                << "Best Cost: " << bench_results.best_cost << "\n"
+                << "Worst Cost: " << bench_results.worst_cost << "\n"
+                << "Improvement: " << bench_results.improvement_percentage << "%\n"
+                << "Average Time: " << bench_results.avg_time << "ms\n";
         }
+
+        analyzeResults(all_results, results_log);
+
+        results_log.close();
+        calibration_log.close();
 
         return 0;
     }

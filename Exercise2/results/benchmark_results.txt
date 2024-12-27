@@ -1,0 +1,41 @@
+
+Instance 50x50 (17 nodes):
+Initial Cost: 306.468
+Best Cost: 143.319
+Worst Cost: 150.677
+Improvement: 53.2351%
+Average Time: 70.2ms
+
+Instance 75x75 (31 nodes):
+Initial Cost: 991.82
+Best Cost: 250.494
+Worst Cost: 265.49
+Improvement: 74.744%
+Average Time: 440.7ms
+
+Instance 100x100 (28 nodes):
+Initial Cost: 1269.07
+Best Cost: 314.701
+Worst Cost: 352.49
+Improvement: 75.2023%
+Average Time: 297.6ms
+
+Instance 125x125 (36 nodes):
+Initial Cost: 2141.76
+Best Cost: 423.594
+Worst Cost: 465.77
+Improvement: 80.2221%
+Average Time: 695.5ms
+
+Instance 150x150 (50 nodes):
+Initial Cost: 3646.42
+Best Cost: 524.779
+Worst Cost: 586.444
+Improvement: 85.6084%
+Average Time: 1425.6ms
+
+Final Analysis:
+Average Improvement: 73.80%
+Best Improvement: 85.61%
+Worst Improvement: 53.24%
+Average Execution Time: 585.92ms
