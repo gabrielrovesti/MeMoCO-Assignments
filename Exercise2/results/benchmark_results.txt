@@ -1,41 +1,41 @@
 
-Instance 50x50 (17 nodes):
-Initial Cost: 306.468
-Best Cost: 143.319
-Worst Cost: 150.677
-Improvement: 53.2351%
-Average Time: 70.2ms
+Instance 50x50 (14 nodes):
+Initial Cost: 282.641
+Best Cost: 141.355
+Worst Cost: 156.214
+Improvement: 49.9876%
+Average Time: 27.9ms
 
 Instance 75x75 (31 nodes):
-Initial Cost: 991.82
-Best Cost: 250.494
-Worst Cost: 265.49
-Improvement: 74.744%
-Average Time: 440.7ms
+Initial Cost: 800.798
+Best Cost: 259.406
+Worst Cost: 300.012
+Improvement: 67.6066%
+Average Time: 276.5ms
 
-Instance 100x100 (28 nodes):
-Initial Cost: 1269.07
-Best Cost: 314.701
-Worst Cost: 352.49
-Improvement: 75.2023%
-Average Time: 297.6ms
+Instance 100x100 (25 nodes):
+Initial Cost: 1135.5
+Best Cost: 298.353
+Worst Cost: 337.743
+Improvement: 73.725%
+Average Time: 172.7ms
 
 Instance 125x125 (36 nodes):
-Initial Cost: 2141.76
-Best Cost: 423.594
-Worst Cost: 465.77
-Improvement: 80.2221%
-Average Time: 695.5ms
+Initial Cost: 2139.88
+Best Cost: 418.758
+Worst Cost: 481.658
+Improvement: 80.4308%
+Average Time: 573.3ms
 
-Instance 150x150 (50 nodes):
-Initial Cost: 3646.42
-Best Cost: 524.779
-Worst Cost: 586.444
-Improvement: 85.6084%
-Average Time: 1425.6ms
+Instance 150x150 (47 nodes):
+Initial Cost: 3115.97
+Best Cost: 547.879
+Worst Cost: 588.707
+Improvement: 82.4171%
+Average Time: 1148.8ms
 
 Final Analysis:
-Average Improvement: 73.80%
-Best Improvement: 85.61%
-Worst Improvement: 53.24%
-Average Execution Time: 585.92ms
+Average Improvement: 70.83%
+Best Improvement: 82.42%
+Worst Improvement: 49.99%
+Average Execution Time: 439.84ms
