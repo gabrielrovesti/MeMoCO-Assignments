@@ -3,41 +3,47 @@
 <g transform="translate(0,0)">
 <rect x="-5" y="-5" width="60" height="60" fill="white"/>
 <g>
-<line x1="5" y1="5" x2="25.8269" y2="28.7198" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="25.8269" y1="28.7198" x2="33.4469" y2="28.7198" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="33.4469" y1="28.7198" x2="14.5174" y2="42.9296" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="14.5174" y1="42.9296" x2="45" y2="5" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="45" y1="5" x2="22.1374" y2="42.9296" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="22.1374" y1="42.9296" x2="24.6774" y2="42.9296" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="24.6774" y1="42.9296" x2="19.5974" y2="42.9296" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="19.5974" y1="42.9296" x2="30.9069" y2="28.7198" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="30.9069" y1="28.7198" x2="45" y2="45" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="45" y1="45" x2="5" y2="45" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="5" y1="45" x2="28.3669" y2="28.7198" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="28.3669" y1="28.7198" x2="23.2869" y2="28.7198" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="23.2869" y1="28.7198" x2="17.0574" y2="42.9296" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="17.0574" y1="42.9296" x2="5" y2="5" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="5" y1="5" x2="26.9752" y2="37.1497" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="26.9752" y1="37.1497" x2="30.9167" y2="11.1485" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.9167" y1="11.1485" x2="5" y2="45" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="5" y1="45" x2="29.5152" y2="37.1497" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="29.5152" y1="37.1497" x2="35.9967" y2="9.87849" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="35.9967" y1="9.87849" x2="24.4352" y2="37.1497" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="24.4352" y1="37.1497" x2="32.0552" y2="37.1497" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="32.0552" y1="37.1497" x2="34.5952" y2="37.1497" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="34.5952" y1="37.1497" x2="30.9167" y2="8.60849" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.9167" y1="8.60849" x2="35.9967" y2="11.1485" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="35.9967" y1="11.1485" x2="45" y2="45" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="45" y1="45" x2="30.9167" y2="12.4185" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.9167" y1="12.4185" x2="35.9967" y2="8.60849" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="35.9967" y1="8.60849" x2="35.9967" y2="12.4185" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="35.9967" y1="12.4185" x2="30.9167" y2="9.87849" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.9167" y1="9.87849" x2="45" y2="5" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="45" y1="5" x2="5" y2="5" stroke="rgb(128,0,127)" stroke-width="0.8"/>
 </g>
-<text x="0" y="10" font-family="Arial" font-size="10">Initial Solution (Cost: 331.99)</text>
+<text x="0" y="10" font-family="Arial" font-size="10">Initial Solution (Cost: 377.15)</text>
 </g>
 <g transform="translate(66.00,0)">
 <rect x="-5.00" y="-5.00" width="60.00" height="60.00" fill="white"/>
 <g>
-<line x1="45.00" y1="45.00" x2="24.68" y2="42.93" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="24.68" y1="42.93" x2="22.14" y2="42.93" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="22.14" y1="42.93" x2="19.60" y2="42.93" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="19.60" y1="42.93" x2="17.06" y2="42.93" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="17.06" y1="42.93" x2="14.52" y2="42.93" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="14.52" y1="42.93" x2="5.00" y2="45.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="5.00" y1="45.00" x2="23.29" y2="28.72" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="23.29" y1="28.72" x2="25.83" y2="28.72" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="25.83" y1="28.72" x2="28.37" y2="28.72" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="28.37" y1="28.72" x2="30.91" y2="28.72" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="30.91" y1="28.72" x2="33.45" y2="28.72" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="33.45" y1="28.72" x2="45.00" y2="5.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
-<line x1="45.00" y1="5.00" x2="5.00" y2="5.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.92" y1="8.61" x2="30.92" y2="9.88" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.92" y1="9.88" x2="30.92" y2="11.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.92" y1="11.15" x2="30.92" y2="12.42" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="30.92" y1="12.42" x2="36.00" y2="12.42" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="36.00" y1="12.42" x2="36.00" y2="11.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="36.00" y1="11.15" x2="36.00" y2="9.88" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="36.00" y1="9.88" x2="36.00" y2="8.61" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="36.00" y1="8.61" x2="45.00" y2="5.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="45.00" y1="5.00" x2="45.00" y2="45.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="45.00" y1="45.00" x2="34.60" y2="37.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="34.60" y1="37.15" x2="32.06" y2="37.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="32.06" y1="37.15" x2="29.52" y2="37.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="29.52" y1="37.15" x2="26.98" y2="37.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="26.98" y1="37.15" x2="24.44" y2="37.15" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="24.44" y1="37.15" x2="5.00" y2="45.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
+<line x1="5.00" y1="45.00" x2="5.00" y2="5.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
 <line x1="5.00" y1="5.00" x2="5.00" y2="5.00" stroke="rgb(128,0,127)" stroke-width="0.8"/>
 </g>
-<text x="0.00" y="10.00" font-family="Arial" font-size="10">Final Solution (Cost: 141.36)</text>
+<text x="0.00" y="10.00" font-family="Arial" font-size="10">Final Solution (Cost: 146.55)</text>
 </g>
 </svg>
