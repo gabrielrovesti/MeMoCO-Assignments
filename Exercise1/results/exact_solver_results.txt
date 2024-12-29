@@ -1,0 +1,1565 @@
+
+=== Testing circuit board 50x50 with 2 components ===
+
+
+Instance 1:
+- Holes: 26
+- File: data/medium/board_50x50_17354834685204233_0.dat
+
+Time limit 0.1s:
+- Setup time: 0.0125251s
+- Solve time: 0.121101s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 31.37%
+- Objective value: 284.39
+- Average distance: 10.94 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.37s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 201.32
+- Average distance: 7.74 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.31s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 201.32
+- Average distance: 7.74 mm
+
+Instance 2:
+- Holes: 17
+- File: data/small/board_50x50_17354834693442756_1.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 30.98%
+- Objective value: 252.43
+- Average distance: 14.85 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.16s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 177.39
+- Average distance: 10.43 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.25s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 177.39
+- Average distance: 10.43 mm
+
+Instance 3:
+- Holes: 14
+- File: data/small/board_50x50_17354834698714109_2.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 8.31%
+- Objective value: 179.22
+- Average distance: 12.80 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.06s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 171.51
+- Average distance: 12.25 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.09s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 171.51
+- Average distance: 12.25 mm
+
+Instance 4:
+- Holes: 23
+- File: data/medium/board_50x50_17354834701345186_3.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 34.85%
+- Objective value: 285.92
+- Average distance: 12.43 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.44s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 196.14
+- Average distance: 8.53 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.33s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 196.14
+- Average distance: 8.53 mm
+
+Instance 5:
+- Holes: 26
+- File: data/medium/board_50x50_17354834710345202_4.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 35.90%
+- Objective value: 296.59
+- Average distance: 11.41 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.66s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 203.11
+- Average distance: 7.81 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.52s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 203.11
+- Average distance: 7.81 mm
+
+Instance 6:
+- Holes: 32
+- File: data/medium/board_50x50_17354834723343032_5.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 38.16%
+- Objective value: 327.46
+- Average distance: 10.23 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.74s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 215.91
+- Average distance: 6.75 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.67s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 215.91
+- Average distance: 6.75 mm
+
+Instance 7:
+- Holes: 26
+- File: data/medium/board_50x50_17354834738650648_6.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 35.71%
+- Objective value: 291.56
+- Average distance: 11.21 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 0.32s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 199.04
+- Average distance: 7.66 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.32s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 199.04
+- Average distance: 7.66 mm
+
+Instance 8:
+- Holes: 20
+- File: data/small/board_50x50_17354834746367527_7.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 21.95%
+- Objective value: 236.35
+- Average distance: 11.82 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.23s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 189.65
+- Average distance: 9.48 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.21s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 189.65
+- Average distance: 9.48 mm
+
+Instance 9:
+- Holes: 17
+- File: data/small/board_50x50_17354834751931836_8.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 23.62%
+- Objective value: 240.07
+- Average distance: 14.12 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 0.18s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 186.01
+- Average distance: 10.94 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.23s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 186.01
+- Average distance: 10.94 mm
+
+Instance 10:
+- Holes: 20
+- File: data/small/board_50x50_17354834757242240_9.dat
+
+Time limit 0.10s:
+- Setup time: 0.00s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 30.72%
+- Objective value: 248.20
+- Average distance: 12.41 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.18s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 173.41
+- Average distance: 8.67 mm
+
+Time limit 10.00s:
+- Setup time: 0.00s
+- Solve time: 0.23s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 173.41
+- Average distance: 8.67 mm
+
+=== Testing circuit board 75x75 with 3 components ===
+
+
+Instance 1:
+- Holes: 31
+- File: data/medium/board_75x75_17354834762629354_0.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 35.22%
+- Objective value: 456.66
+- Average distance: 14.73 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 15.31%
+- Objective value: 363.02
+- Average distance: 11.71 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 2.46s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 311.51
+- Average distance: 10.05 mm
+
+Instance 2:
+- Holes: 28
+- File: data/medium/board_75x75_17354834798842243_1.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 38.42%
+- Objective value: 426.28
+- Average distance: 15.22 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.05s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 16.52%
+- Objective value: 344.08
+- Average distance: 12.29 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.87s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 299.28
+- Average distance: 10.69 mm
+
+Instance 3:
+- Holes: 22
+- File: data/medium/board_75x75_17354834829756528_2.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 43.94%
+- Objective value: 444.91
+- Average distance: 20.22 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 0.57s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 300.96
+- Average distance: 13.68 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 0.60s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 300.96
+- Average distance: 13.68 mm
+
+Instance 4:
+- Holes: 37
+- File: data/large/board_75x75_17354834843024985_3.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 467.84
+- Average distance: 12.64 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 36.32%
+- Objective value: 467.84
+- Average distance: 12.64 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 3.46s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 329.78
+- Average distance: 8.91 mm
+
+Instance 5:
+- Holes: 28
+- File: data/medium/board_75x75_17354834889794092_4.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 33.65%
+- Objective value: 453.94
+- Average distance: 16.21 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 0.46s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 310.43
+- Average distance: 11.09 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 0.44s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 310.43
+- Average distance: 11.09 mm
+
+Instance 6:
+- Holes: 28
+- File: data/medium/board_75x75_17354834900284299_5.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 481.15
+- Average distance: 17.18 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 8.61%
+- Objective value: 295.24
+- Average distance: 10.54 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.87s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 284.50
+- Average distance: 10.16 mm
+
+Instance 7:
+- Holes: 28
+- File: data/medium/board_75x75_17354834930852108_6.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 437.92
+- Average distance: 15.64 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 2.34%
+- Objective value: 317.05
+- Average distance: 11.32 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.49s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 314.56
+- Average distance: 11.23 mm
+
+Instance 8:
+- Holes: 40
+- File: data/large/board_75x75_17354834957748271_7.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 491.80
+- Average distance: 12.30 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 17.29%
+- Objective value: 379.46
+- Average distance: 9.49 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.25%
+- Objective value: 334.09
+- Average distance: 8.35 mm
+
+Instance 9:
+- Holes: 31
+- File: data/medium/board_75x75_17354835070544478_8.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 39.39%
+- Objective value: 456.10
+- Average distance: 14.71 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.06s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 11.14%
+- Objective value: 329.36
+- Average distance: 10.62 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.59s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 308.65
+- Average distance: 9.96 mm
+
+Instance 10:
+- Holes: 40
+- File: data/large/board_75x75_17354835098631308_9.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 480.50
+- Average distance: 12.01 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 16.73%
+- Objective value: 381.61
+- Average distance: 9.54 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 6.50s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 339.84
+- Average distance: 8.50 mm
+
+=== Testing circuit board 100x100 with 3 components ===
+
+
+Instance 1:
+- Holes: 28
+- File: data/medium/board_100x100_17354835175800511_0.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 24.69%
+- Objective value: 554.66
+- Average distance: 19.81 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.05s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 3.09%
+- Objective value: 442.57
+- Average distance: 15.81 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 2.37s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 436.71
+- Average distance: 15.60 mm
+
+Instance 2:
+- Holes: 31
+- File: data/medium/board_100x100_17354835211707142_1.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 638.99
+- Average distance: 20.61 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.07s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 3.62%
+- Objective value: 405.90
+- Average distance: 13.09 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.51s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 405.90
+- Average distance: 13.09 mm
+
+Instance 3:
+- Holes: 37
+- File: data/large/board_100x100_17354835239335152_2.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 590.05
+- Average distance: 15.95 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 13.87%
+- Objective value: 462.14
+- Average distance: 12.49 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 7.32s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 445.40
+- Average distance: 12.04 mm
+
+Instance 4:
+- Holes: 34
+- File: data/medium/board_100x100_17354835324806966_3.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 578.18
+- Average distance: 17.01 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.06s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 18.32%
+- Objective value: 510.19
+- Average distance: 15.01 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 2.07s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 429.96
+- Average distance: 12.65 mm
+
+Instance 5:
+- Holes: 31
+- File: data/medium/board_100x100_17354835357907912_4.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 697.10
+- Average distance: 22.49 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.05s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 9.66%
+- Objective value: 429.74
+- Average distance: 13.86 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 7.92s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 409.30
+- Average distance: 13.20 mm
+
+Instance 6:
+- Holes: 25
+- File: data/medium/board_100x100_17354835449289629_5.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 29.85%
+- Objective value: 503.41
+- Average distance: 20.14 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 1.07%
+- Objective value: 391.47
+- Average distance: 15.66 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.22s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 391.00
+- Average distance: 15.64 mm
+
+Instance 7:
+- Holes: 31
+- File: data/medium/board_100x100_17354835473535304_6.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 39.61%
+- Objective value: 640.26
+- Average distance: 20.65 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 10.12%
+- Objective value: 449.87
+- Average distance: 14.51 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 4.68s
+- Solution found: Yes
+- Status: Optimal
+- Gap: -0.00%
+- Objective value: 439.61
+- Average distance: 14.18 mm
+
+Instance 8:
+- Holes: 37
+- File: data/large/board_100x100_17354835532111606_7.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 620.84
+- Average distance: 16.78 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 17.39%
+- Objective value: 509.57
+- Average distance: 13.77 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 7.75s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 465.25
+- Average distance: 12.57 mm
+
+Instance 9:
+- Holes: 25
+- File: data/medium/board_100x100_17354835621887036_8.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 41.54%
+- Objective value: 606.96
+- Average distance: 24.28 mm
+
+Time limit 1.00s:
+- Setup time: 0.00s
+- Solve time: 0.92s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 384.05
+- Average distance: 15.36 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 0.95s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 384.05
+- Average distance: 15.36 mm
+
+Instance 10:
+- Holes: 28
+- File: data/medium/board_100x100_17354835641968594_9.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 33.80%
+- Objective value: 543.13
+- Average distance: 19.40 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.01s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.52%
+- Objective value: 411.99
+- Average distance: 14.71 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.67s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 411.75
+- Average distance: 14.71 mm
+
+=== Testing circuit board 125x125 with 4 components ===
+
+
+Instance 1:
+- Holes: 60
+- File: data/large/board_125x125_17354835670528629_0.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 940.27
+- Average distance: 15.67 mm
+
+Time limit 1.00s:
+- Setup time: 0.03s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 46.93%
+- Objective value: 940.27
+- Average distance: 15.67 mm
+
+Time limit 10.00s:
+- Setup time: 0.03s
+- Solve time: 10.07s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 12.69%
+- Objective value: 620.04
+- Average distance: 10.33 mm
+
+Instance 2:
+- Holes: 42
+- File: data/large/board_125x125_17354835784090339_1.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 919.81
+- Average distance: 21.90 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 26.94%
+- Objective value: 660.12
+- Average distance: 15.72 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.05s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 1.19%
+- Objective value: 537.61
+- Average distance: 12.80 mm
+
+Instance 3:
+- Holes: 36
+- File: data/large/board_125x125_17354835897149634_2.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 789.41
+- Average distance: 21.93 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 4.86%
+- Objective value: 546.48
+- Average distance: 15.18 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 2.24s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 541.57
+- Average distance: 15.04 mm
+
+Instance 4:
+- Holes: 51
+- File: data/large/board_125x125_17354835931676403_3.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 896.91
+- Average distance: 17.59 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 41.73%
+- Objective value: 896.91
+- Average distance: 17.59 mm
+
+Time limit 10.00s:
+- Setup time: 0.03s
+- Solve time: 10.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 2.55%
+- Objective value: 571.46
+- Average distance: 11.21 mm
+
+Instance 5:
+- Holes: 36
+- File: data/large/board_125x125_17354836044795185_4.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 767.88
+- Average distance: 21.33 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 7.56%
+- Objective value: 566.90
+- Average distance: 15.75 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 4.85s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 563.04
+- Average distance: 15.64 mm
+
+Instance 6:
+- Holes: 30
+- File: data/medium/board_125x125_17354836105741556_5.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 823.31
+- Average distance: 27.44 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 15.15%
+- Objective value: 581.80
+- Average distance: 19.39 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 2.62s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 521.75
+- Average distance: 17.39 mm
+
+Instance 7:
+- Holes: 39
+- File: data/large/board_125x125_17354836144087327_6.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 776.17
+- Average distance: 19.90 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 23.07%
+- Objective value: 617.54
+- Average distance: 15.83 mm
+
+Time limit 10.00s:
+- Setup time: 0.04s
+- Solve time: 10.05s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 7.88%
+- Objective value: 546.61
+- Average distance: 14.02 mm
+
+Instance 8:
+- Holes: 45
+- File: data/large/board_125x125_17354836257379843_7.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.13s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 802.58
+- Average distance: 17.84 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 17.36%
+- Objective value: 657.67
+- Average distance: 14.61 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 7.77s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 579.00
+- Average distance: 12.87 mm
+
+Instance 9:
+- Holes: 30
+- File: data/medium/board_125x125_17354836347685715_8.dat
+
+Time limit 0.10s:
+- Setup time: 0.01s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 47.85%
+- Objective value: 851.16
+- Average distance: 28.37 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 6.25%
+- Objective value: 532.56
+- Average distance: 17.75 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 1.62s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 512.50
+- Average distance: 17.08 mm
+
+Instance 10:
+- Holes: 42
+- File: data/large/board_125x125_17354836376328285_9.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 942.40
+- Average distance: 22.44 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 33.23%
+- Objective value: 692.43
+- Average distance: 16.49 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 8.59s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.00%
+- Objective value: 527.80
+- Average distance: 12.57 mm
+
+=== Testing circuit board 150x150 with 5 components ===
+
+
+Instance 1:
+- Holes: 53
+- File: data/large/board_150x150_17354836474600964_0.dat
+
+Time limit 0.10s:
+- Setup time: 0.04s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1124.41
+- Average distance: 21.22 mm
+
+Time limit 1.00s:
+- Setup time: 0.03s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 52.96%
+- Objective value: 1124.41
+- Average distance: 21.22 mm
+
+Time limit 10.00s:
+- Setup time: 0.03s
+- Solve time: 10.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 19.65%
+- Objective value: 741.38
+- Average distance: 13.99 mm
+
+Instance 2:
+- Holes: 62
+- File: data/large/board_150x150_17354836588655043_1.dat
+
+Time limit 0.10s:
+- Setup time: 0.06s
+- Solve time: 0.14s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1112.13
+- Average distance: 17.94 mm
+
+Time limit 1.00s:
+- Setup time: 0.03s
+- Solve time: 1.04s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 47.96%
+- Objective value: 1112.13
+- Average distance: 17.94 mm
+
+Time limit 10.00s:
+- Setup time: 0.04s
+- Solve time: 10.10s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 11.94%
+- Objective value: 769.69
+- Average distance: 12.41 mm
+
+Instance 3:
+- Holes: 41
+- File: data/large/board_150x150_17354836703144091_2.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1159.95
+- Average distance: 28.29 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 50.86%
+- Objective value: 1159.95
+- Average distance: 28.29 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 5.72s
+- Solution found: Yes
+- Status: Optimal
+- Gap: 0.00%
+- Objective value: 622.48
+- Average distance: 15.18 mm
+
+Instance 4:
+- Holes: 53
+- File: data/large/board_150x150_17354836772952304_3.dat
+
+Time limit 0.10s:
+- Setup time: 0.04s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1187.80
+- Average distance: 22.41 mm
+
+Time limit 1.00s:
+- Setup time: 0.03s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 54.09%
+- Objective value: 1187.80
+- Average distance: 22.41 mm
+
+Time limit 10.00s:
+- Setup time: 0.03s
+- Solve time: 10.06s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 22.22%
+- Objective value: 812.34
+- Average distance: 15.33 mm
+
+Instance 5:
+- Holes: 47
+- File: data/large/board_150x150_17354836886161723_4.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.14s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 928.97
+- Average distance: 19.77 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 34.37%
+- Objective value: 928.97
+- Average distance: 19.77 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.07s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 13.74%
+- Objective value: 748.73
+- Average distance: 15.93 mm
+
+Instance 6:
+- Holes: 41
+- File: data/large/board_150x150_17354836999797758_5.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1161.22
+- Average distance: 28.32 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 33.66%
+- Objective value: 779.13
+- Average distance: 19.00 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 7.67%
+- Objective value: 659.03
+- Average distance: 16.07 mm
+
+Instance 7:
+- Holes: 44
+- File: data/large/board_150x150_17354837112674643_6.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.12s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1000.00
+- Average distance: 22.73 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 30.82%
+- Objective value: 857.34
+- Average distance: 19.49 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.06s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 8.22%
+- Objective value: 669.95
+- Average distance: 15.23 mm
+
+Instance 8:
+- Holes: 35
+- File: data/medium/board_150x150_17354837225863100_7.dat
+
+Time limit 0.10s:
+- Setup time: 0.02s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 984.76
+- Average distance: 28.14 mm
+
+Time limit 1.00s:
+- Setup time: 0.01s
+- Solve time: 1.06s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 25.51%
+- Objective value: 748.79
+- Average distance: 21.39 mm
+
+Time limit 10.00s:
+- Setup time: 0.01s
+- Solve time: 4.87s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 0.01%
+- Objective value: 662.03
+- Average distance: 18.92 mm
+
+Instance 9:
+- Holes: 50
+- File: data/large/board_150x150_17354837287078003_8.dat
+
+Time limit 0.10s:
+- Setup time: 0.03s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1119.15
+- Average distance: 22.38 mm
+
+Time limit 1.00s:
+- Setup time: 0.02s
+- Solve time: 1.02s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 33.62%
+- Objective value: 874.19
+- Average distance: 17.48 mm
+
+Time limit 10.00s:
+- Setup time: 0.02s
+- Solve time: 10.08s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 24.00%
+- Objective value: 804.33
+- Average distance: 16.09 mm
+
+Instance 10:
+- Holes: 62
+- File: data/large/board_150x150_17354837400371790_9.dat
+
+Time limit 0.10s:
+- Setup time: 0.05s
+- Solve time: 0.11s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 100.00%
+- Objective value: 1201.74
+- Average distance: 19.38 mm
+
+Time limit 1.00s:
+- Setup time: 0.05s
+- Solve time: 1.03s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 48.54%
+- Objective value: 1201.74
+- Average distance: 19.38 mm
+
+Time limit 10.00s:
+- Setup time: 0.04s
+- Solve time: 10.09s
+- Solution found: Yes
+- Status: Not optimal
+- Gap: 16.31%
+- Objective value: 773.30
+- Average distance: 12.47 mm

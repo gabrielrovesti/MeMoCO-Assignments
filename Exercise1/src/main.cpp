@@ -53,29 +53,14 @@
 #include <data_generator.h>
 #include <chrono>
 #include <tuple>
+#include <direct.h>
+#include <fstream>
 
-// For Windows directory operations (std::filesystem was the first idea - was not able to make it work)
-// so I found a workaround with this one instead
-#include <direct.h> 
-
-// Error status and message buffer
 int status;
 char errmsg[BUF_SIZE];
 
-bool directoryExists(const std::string& path) {
-    struct stat info;
-    return stat(path.c_str(), &info) == 0;
-}
-
 bool createDirectoryIfNeeded(const std::string& path) {
-    if (!directoryExists(path)) {
-#ifdef _WIN32
-        return _mkdir(path.c_str()) == 0;
-#else
-        return mkdir(path.c_str(), 0777) == 0;
-#endif
-    }
-    return true;
+    return _mkdir(path.c_str()) == 0 || errno == EEXIST;
 }
 
 std::string getSizeCategory(int N) {
@@ -86,13 +71,25 @@ std::string getSizeCategory(int N) {
 
 int main(int argc, char const* argv[]) {
     try {
-        // Test different board configurations
         std::vector<std::tuple<int, int, int>> board_configs = {
-            {50, 50, 2},     // Small board (~10-15 holes)
-            {100, 100, 3},   // Medium board (~25-30 holes)
-            {150, 150, 5},   // Large board (~45-50 holes)
-            {200, 200, 8}    // Extra large board (~80-85 holes)
+            {50, 50, 2},     // Small boards
+            {75, 75, 3},     // Medium-small boards
+            {100, 100, 3},   // Medium boards
+            {125, 125, 4},   // Medium-large boards
+            {150, 150, 5}    // Large boards
         };
+
+        if (!createDirectoryIfNeeded("data")) {
+            std::cerr << "Failed to create data directory" << std::endl;
+            return 1;
+        }
+
+        for (const auto& folder : { "small", "medium", "large" }) {
+            if (!createDirectoryIfNeeded("data/" + std::string(folder))) {
+                std::cerr << "Failed to create " << folder << " directory" << std::endl;
+                return 1;
+            }
+        }
 
         for (const auto& config : board_configs) {
             int width = std::get<0>(config);
@@ -100,56 +97,32 @@ int main(int argc, char const* argv[]) {
             int components = std::get<2>(config);
 
             std::cout << "\n=== Testing circuit board " << width << "x" << height
-                << " with " << components << " components ===\n";
+                << " with " << components << " components ===\n\n";
 
-            // Generate circuit board instance
-            auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
-            int N = costs.size();
+            for (int instance = 0; instance < 10; instance++) {
+                auto costs = TSPGenerator::generateCircuitBoard(width, height, components);
+                int N = costs.size();
+                std::string category = getSizeCategory(N);
 
-            // Determine correct size category based on number of holes
-            std::string folder = getSizeCategory(N);
+                auto timestamp = std::chrono::system_clock::now().time_since_epoch().count();
+                std::string filename = "data/" + category + "/board_" +
+                    std::to_string(width) + "x" +
+                    std::to_string(height) + "_" +
+                    std::to_string(timestamp) + "_" +
+                    std::to_string(instance) + ".dat";
 
-            // Ensure base data directory exists
-            if (!createDirectoryIfNeeded("data")) {
-                std::cerr << "Failed to create data directory" << std::endl;
-                continue;
-            }
+                TSPGenerator::saveToFile(filename, costs,
+                    "Circuit board instance\nSize: " + category + "\nNodes: " + std::to_string(N));
 
-            // Ensure category subdirectory exists
-            std::string directory = "data/" + folder;
-            if (!createDirectoryIfNeeded(directory)) {
-                std::cerr << "Failed to create category directory: " << directory << std::endl;
-                continue;
-            }
+                std::cout << "Generated instance: " << filename << " (nodes: " << N << ")\n";
 
-            // Create unique filename with timestamp
-            auto now = std::chrono::system_clock::now();
-            auto timestamp = std::chrono::duration_cast<std::chrono::seconds>(
-                now.time_since_epoch()).count();
+                std::cout << "\nBoard Manufacturing Specifications:\n"
+                    << "- Dimensions: " << width << "x" << height << " mm\n"
+                    << "- Components: " << components << "\n"
+                    << "- Total holes: " << N << "\n"
+                    << "- Min hole spacing: " << TSPGenerator::MIN_HOLE_SPACING << " mm\n"
+                    << "- Edge clearance: " << TSPGenerator::EDGE_MARGIN << " mm\n\n";
 
-            std::string filename = directory + "/board_" +
-                std::to_string(width) + "x" +
-                std::to_string(height) + "_" +
-                std::to_string(timestamp) + ".dat";
-
-            // Save metadata about the board configuration
-            std::string metadata = "Circuit board instance\n"
-                "Width: " + std::to_string(width) + "\n"
-                "Height: " + std::to_string(height) + "\n"
-                "Components: " + std::to_string(components) + "\n"
-                "Total holes: " + std::to_string(N) + "\n"
-                "Size category: " + folder;
-
-            // Save the instance with proper error handling
-            try {
-                TSPGenerator::saveToFile(filename, costs, metadata);
-                std::cout << "Instance saved to: " << filename << "\n";
-            }
-            catch (const std::exception& e) {
-                std::cerr << "Error saving instance: " << e.what() << "\n";
-            }
-
-            try {
                 DECL_ENV(env);
                 DECL_PROB(env, lp);
 
@@ -160,15 +133,6 @@ int main(int argc, char const* argv[]) {
 
                 CHECKED_CPX_CALL(CPXsetdblparam, env, CPX_PARAM_TILIM, time_limit);
 
-                // Print detailed board analysis
-                std::cout << "\nBoard Manufacturing Specifications:\n";
-                std::cout << "- Dimensions: " << width << "x" << height << " mm\n";
-                std::cout << "- Components: " << components << "\n";
-                std::cout << "- Total holes: " << N << "\n";
-                std::cout << "- Min hole spacing: " << TSPGenerator::MIN_HOLE_SPACING << " mm\n";
-                std::cout << "- Edge clearance: " << TSPGenerator::EDGE_MARGIN << " mm\n\n";
-
-                // Create and solve model
                 auto model_start = std::chrono::high_resolution_clock::now();
                 TSPModel model;
                 model.createModel(env, lp, N, costs);
@@ -176,35 +140,42 @@ int main(int argc, char const* argv[]) {
 
                 double objval;
                 std::vector<int> tour;
+                bool solved = model.solve(env, lp, objval, tour);
+                auto end = std::chrono::high_resolution_clock::now();
 
-                if (model.solve(env, lp, objval, tour)) {
-                    auto end = std::chrono::high_resolution_clock::now();
-
+                if (solved) {
                     double setup_time = std::chrono::duration<double>(solve_start - model_start).count();
                     double solve_time = std::chrono::duration<double>(end - solve_start).count();
                     double total_time = setup_time + solve_time;
 
-                    std::cout << "Performance Metrics:\n";
-                    std::cout << "- Model setup time: " << setup_time << " seconds\n";
-                    std::cout << "- Solution time: " << solve_time << " seconds\n";
-                    std::cout << "- Total time: " << total_time << " seconds\n\n";
+                    int solstat = CPXgetstat(env, lp);
+                    bool optimal = (solstat == CPXMIP_OPTIMAL);
 
-                    std::cout << "Solution Quality:\n";
-                    std::cout << "- Total drilling path length: " << objval << " mm\n";
-                    std::cout << "- Average distance between holes: " << objval / N << " mm\n";
+                    double best_bound;
+                    CPXgetbestobjval(env, lp, &best_bound);
+                    double gap = ((objval - best_bound) / objval) * 100.0;
 
-                    std::cout << "\nDrilling sequence: ";
+                    std::cout << "Performance Metrics:\n"
+                        << "- Model setup time: " << setup_time << " seconds\n"
+                        << "- Solution time: " << solve_time << " seconds\n"
+                        << "- Total time: " << total_time << " seconds\n"
+                        << "- Solution status: " << (optimal ? "Optimal" : "Not optimal") << "\n"
+                        << "- Optimality gap: " << std::fixed << std::setprecision(2)
+                        << gap << "%\n\n";
+
+                    std::cout << "Solution Quality:\n"
+                        << "- Total drilling path length: " << objval << " mm\n"
+                        << "- Average distance between holes: " << objval / N << " mm\n\n";
+
+                    std::cout << "Drilling sequence: ";
                     for (int node : tour) {
                         std::cout << node << " -> ";
                     }
-                    std::cout << "0\n";
+                    std::cout << "0\n\n";
                 }
 
                 CPXfreeprob(env, &lp);
                 CPXcloseCPLEX(&env);
-            }
-            catch (std::exception& e) {
-                std::cout << "Error solving instance: " << e.what() << "\n";
             }
         }
 

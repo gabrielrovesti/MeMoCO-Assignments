@@ -1,73 +1,1118 @@
 
 === Testing circuit board 50x50 with 2 components ===
-Instance saved to: data/medium/board_50x50_1735029908.dat
+
+Generated instance: data/medium/board_50x50_17354839411405973_0.dat (nodes: 26)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 26
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5 mm
+
+Performance Metrics:
+- Model setup time: 0.0064279 seconds
+- Solution time: 1.06062 seconds
+- Total time: 1.06705 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 203.62 mm
+- Average distance between holes: 7.83 mm
+
+Drilling sequence: 0 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 2 -> 18 -> 25 -> 3 -> 11 -> 10 -> 9 -> 8 -> 4 -> 5 -> 6 -> 7 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 1 -> 0
+
+Generated instance: data/medium/board_50x50_17354839422186992_1.dat (nodes: 23)
 
 Board Manufacturing Specifications:
 - Dimensions: 50x50 mm
 - Components: 2
 - Total holes: 23
 - Min hole spacing: 2.54 mm
-- Edge clearance: 5 mm
+- Edge clearance: 5.00 mm
 
 Performance Metrics:
-- Model setup time: 0.0141703 seconds
-- Solution time: 0.176453 seconds
-- Total time: 0.190624 seconds
+- Model setup time: 0.00 seconds
+- Solution time: 0.51 seconds
+- Total time: 0.51 seconds
+- Solution status: Optimal
+- Optimality gap: -0.00%
 
 Solution Quality:
-- Total drilling path length: 194.56 mm
-- Average distance between holes: 8.45912 mm
+- Total drilling path length: 190.19 mm
+- Average distance between holes: 8.27 mm
 
-Drilling sequence: 0 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 2 -> 3 -> 1 -> 8 -> 7 -> 6 -> 5 -> 4 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 16 -> 9 -> 0
+Drilling sequence: 0 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 2 -> 4 -> 5 -> 6 -> 7 -> 8 -> 3 -> 1 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 16 -> 9 -> 0
+
+Generated instance: data/medium/board_50x50_17354839427459094_2.dat (nodes: 26)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 26
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 0.81 seconds
+- Total time: 0.82 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 197.45 mm
+- Average distance between holes: 7.59 mm
+
+Drilling sequence: 0 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 2 -> 18 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 4 -> 5 -> 6 -> 7 -> 3 -> 11 -> 10 -> 9 -> 8 -> 1 -> 0
+
+Generated instance: data/small/board_50x50_17354839435755334_3.dat (nodes: 17)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 17
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.11 seconds
+- Total time: 0.12 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 176.31 mm
+- Average distance between holes: 10.37 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 11 -> 10 -> 9 -> 8 -> 12 -> 13 -> 14 -> 15 -> 16 -> 1 -> 3 -> 2 -> 0
+
+Generated instance: data/small/board_50x50_17354839437001469_4.dat (nodes: 17)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 17
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.51 seconds
+- Total time: 0.51 seconds
+- Solution status: Optimal
+- Optimality gap: -0.00%
+
+Solution Quality:
+- Total drilling path length: 190.52 mm
+- Average distance between holes: 11.21 mm
+
+Drilling sequence: 0 -> 2 -> 7 -> 6 -> 5 -> 4 -> 11 -> 10 -> 9 -> 8 -> 12 -> 13 -> 14 -> 15 -> 16 -> 3 -> 1 -> 0
+
+Generated instance: data/medium/board_50x50_17354839442163895_5.dat (nodes: 32)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 32
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 0.96 seconds
+- Total time: 0.97 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 214.94 mm
+- Average distance between holes: 6.72 mm
+
+Drilling sequence: 0 -> 11 -> 12 -> 13 -> 14 -> 15 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 1 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 3 -> 17 -> 16 -> 10 -> 2 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 0
+
+Generated instance: data/medium/board_50x50_17354839452073625_6.dat (nodes: 23)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 23
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.60 seconds
+- Total time: 0.60 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 201.25 mm
+- Average distance between holes: 8.75 mm
+
+Drilling sequence: 0 -> 4 -> 2 -> 3 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 16 -> 1 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 8 -> 7 -> 6 -> 5 -> 0
+
+Generated instance: data/small/board_50x50_17354839458292066_7.dat (nodes: 17)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 17
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.11 seconds
+- Total time: 0.11 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 174.12 mm
+- Average distance between holes: 10.24 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 1 -> 13 -> 14 -> 15 -> 16 -> 3 -> 12 -> 11 -> 10 -> 9 -> 2 -> 0
+
+Generated instance: data/medium/board_50x50_17354839459552586_8.dat (nodes: 26)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 26
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.31 seconds
+- Total time: 0.32 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 197.55 mm
+- Average distance between holes: 7.60 mm
+
+Drilling sequence: 0 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 21 -> 20 -> 19 -> 18 -> 25 -> 24 -> 23 -> 22 -> 1 -> 3 -> 2 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 0
+
+Generated instance: data/medium/board_50x50_17354839462828897_9.dat (nodes: 23)
+
+Board Manufacturing Specifications:
+- Dimensions: 50x50 mm
+- Components: 2
+- Total holes: 23
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.23 seconds
+- Total time: 0.23 seconds
+- Solution status: Optimal
+- Optimality gap: -0.00%
+
+Solution Quality:
+- Total drilling path length: 194.67 mm
+- Average distance between holes: 8.46 mm
+
+Drilling sequence: 0 -> 1 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 3 -> 22 -> 21 -> 20 -> 19 -> 2 -> 18 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 0
+
+
+=== Testing circuit board 75x75 with 3 components ===
+
+Generated instance: data/medium/board_75x75_17354839465278114_0.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.45 seconds
+- Total time: 0.45 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 314.03 mm
+- Average distance between holes: 10.13 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 26 -> 25 -> 24 -> 23 -> 27 -> 28 -> 29 -> 30 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 16 -> 1 -> 3 -> 2 -> 0
+
+Generated instance: data/medium/board_75x75_17354839469920653_1.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 1.70 seconds
+- Total time: 1.70 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 309.00 mm
+- Average distance between holes: 9.97 mm
+
+Drilling sequence: 0 -> 2 -> 7 -> 6 -> 5 -> 4 -> 8 -> 9 -> 10 -> 11 -> 3 -> 25 -> 24 -> 23 -> 18 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 22 -> 21 -> 20 -> 19 -> 1 -> 30 -> 29 -> 28 -> 27 -> 26 -> 0
+
+Generated instance: data/medium/board_75x75_17354839487102042_2.dat (nodes: 25)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 25
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.00 seconds
+- Solution time: 0.68 seconds
+- Total time: 0.68 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 298.92 mm
+- Average distance between holes: 11.96 mm
+
+Drilling sequence: 0 -> 20 -> 21 -> 22 -> 23 -> 24 -> 15 -> 14 -> 13 -> 12 -> 1 -> 16 -> 17 -> 18 -> 19 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 3 -> 2 -> 0
+
+Generated instance: data/medium/board_75x75_17354839494121168_3.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 2.21 seconds
+- Total time: 2.23 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 313.71 mm
+- Average distance between holes: 10.12 mm
+
+Drilling sequence: 0 -> 4 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 1 -> 3 -> 30 -> 29 -> 28 -> 27 -> 26 -> 2 -> 21 -> 20 -> 19 -> 18 -> 25 -> 24 -> 23 -> 22 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 0
+
+Generated instance: data/large/board_75x75_17354839516900618_4.dat (nodes: 40)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 40
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 4.45 seconds
+- Total time: 4.47 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 342.68 mm
+- Average distance between holes: 8.57 mm
+
+Drilling sequence: 0 -> 2 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 11 -> 12 -> 13 -> 14 -> 15 -> 18 -> 19 -> 20 -> 21 -> 17 -> 16 -> 22 -> 23 -> 24 -> 25 -> 3 -> 1 -> 33 -> 34 -> 35 -> 36 -> 37 -> 38 -> 39 -> 32 -> 31 -> 30 -> 29 -> 28 -> 27 -> 26 -> 0
+
+Generated instance: data/medium/board_75x75_17354839562025712_5.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 4.74 seconds
+- Total time: 4.75 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 331.85 mm
+- Average distance between holes: 10.70 mm
+
+Drilling sequence: 0 -> 1 -> 30 -> 29 -> 28 -> 27 -> 26 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 18 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 3 -> 2 -> 0
+
+Generated instance: data/large/board_75x75_17354839610036001_6.dat (nodes: 37)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 37
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 5.81 seconds
+- Total time: 5.83 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 338.27 mm
+- Average distance between holes: 9.14 mm
+
+Drilling sequence: 0 -> 32 -> 33 -> 34 -> 35 -> 36 -> 6 -> 7 -> 8 -> 9 -> 10 -> 2 -> 3 -> 31 -> 30 -> 29 -> 28 -> 27 -> 26 -> 25 -> 1 -> 18 -> 19 -> 20 -> 21 -> 22 -> 23 -> 24 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 5 -> 4 -> 0
+
+Generated instance: data/medium/board_75x75_17354839668745994_7.dat (nodes: 28)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 28
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.17 seconds
+- Total time: 2.18 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 297.15 mm
+- Average distance between holes: 10.61 mm
+
+Drilling sequence: 0 -> 2 -> 4 -> 5 -> 6 -> 7 -> 8 -> 3 -> 27 -> 26 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 16 -> 1 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 0
+
+Generated instance: data/large/board_75x75_17354839690984665_8.dat (nodes: 40)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 40
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 22.39 seconds
+- Total time: 22.41 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 342.51 mm
+- Average distance between holes: 8.56 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 11 -> 10 -> 9 -> 8 -> 1 -> 3 -> 39 -> 38 -> 37 -> 36 -> 35 -> 34 -> 33 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 2 -> 18 -> 17 -> 16 -> 15 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 14 -> 13 -> 12 -> 0
+
+Generated instance: data/medium/board_75x75_17354839915454749_9.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 75x75 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 1.77 seconds
+- Total time: 1.78 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 311.38 mm
+- Average distance between holes: 10.04 mm
+
+Drilling sequence: 0 -> 9 -> 10 -> 11 -> 12 -> 16 -> 15 -> 14 -> 13 -> 1 -> 24 -> 25 -> 26 -> 27 -> 28 -> 29 -> 3 -> 30 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 8 -> 7 -> 6 -> 5 -> 2 -> 4 -> 0
+
 
 === Testing circuit board 100x100 with 3 components ===
-Instance saved to: data/large/board_100x100_1735029908.dat
+
+Generated instance: data/medium/board_100x100_17354839933501705_0.dat (nodes: 22)
 
 Board Manufacturing Specifications:
 - Dimensions: 100x100 mm
 - Components: 3
-- Total holes: 46
+- Total holes: 22
 - Min hole spacing: 2.54 mm
-- Edge clearance: 5 mm
+- Edge clearance: 5.00 mm
 
 Performance Metrics:
-- Model setup time: 0.0092401 seconds
-- Solution time: 5.69832 seconds
-- Total time: 5.70756 seconds
+- Model setup time: 0.01 seconds
+- Solution time: 1.38 seconds
+- Total time: 1.39 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
 
 Solution Quality:
-- Total drilling path length: 472.058 mm
-- Average distance between holes: 10.2621 mm
+- Total drilling path length: 393.23 mm
+- Average distance between holes: 17.87 mm
 
-Drilling sequence: 0 -> 32 -> 33 -> 34 -> 35 -> 36 -> 37 -> 38 -> 2 -> 45 -> 44 -> 43 -> 42 -> 41 -> 40 -> 39 -> 18 -> 19 -> 20 -> 21 -> 22 -> 23 -> 24 -> 3 -> 31 -> 30 -> 29 -> 28 -> 27 -> 26 -> 25 -> 1 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 0
+Drilling sequence: 0 -> 1 -> 3 -> 21 -> 20 -> 19 -> 18 -> 17 -> 13 -> 14 -> 15 -> 16 -> 2 -> 12 -> 11 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 0
+
+Generated instance: data/medium/board_100x100_17354839947674576_1.dat (nodes: 25)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 25
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 1.66 seconds
+- Total time: 1.66 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 384.97 mm
+- Average distance between holes: 15.40 mm
+
+Drilling sequence: 0 -> 8 -> 9 -> 10 -> 11 -> 4 -> 5 -> 6 -> 7 -> 2 -> 20 -> 21 -> 22 -> 23 -> 24 -> 3 -> 19 -> 18 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 1 -> 0
+
+Generated instance: data/medium/board_100x100_17354839964542594_2.dat (nodes: 28)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 28
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.03 seconds
+- Solution time: 3.40 seconds
+- Total time: 3.43 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 392.51 mm
+- Average distance between holes: 14.02 mm
+
+Drilling sequence: 0 -> 8 -> 9 -> 10 -> 11 -> 4 -> 5 -> 6 -> 7 -> 2 -> 3 -> 15 -> 14 -> 13 -> 12 -> 19 -> 18 -> 17 -> 16 -> 1 -> 24 -> 25 -> 26 -> 27 -> 23 -> 22 -> 21 -> 20 -> 0
+
+Generated instance: data/medium/board_100x100_17354839999224490_3.dat (nodes: 28)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 28
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 1.86 seconds
+- Total time: 1.86 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 427.07 mm
+- Average distance between holes: 15.25 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 2 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 18 -> 19 -> 20 -> 21 -> 22 -> 23 -> 24 -> 25 -> 26 -> 27 -> 3 -> 1 -> 0
+
+Generated instance: data/medium/board_100x100_17354840018098499_4.dat (nodes: 28)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 28
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.22 seconds
+- Total time: 2.24 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 413.52 mm
+- Average distance between holes: 14.77 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 2 -> 3 -> 27 -> 26 -> 23 -> 22 -> 21 -> 20 -> 25 -> 24 -> 15 -> 14 -> 13 -> 12 -> 19 -> 18 -> 17 -> 16 -> 1 -> 0
+
+Generated instance: data/large/board_100x100_17354840040937106_5.dat (nodes: 40)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 40
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 9.99 seconds
+- Total time: 10.01 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 449.49 mm
+- Average distance between holes: 11.24 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 11 -> 10 -> 9 -> 8 -> 1 -> 19 -> 20 -> 21 -> 22 -> 23 -> 24 -> 25 -> 18 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 33 -> 34 -> 35 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 36 -> 37 -> 38 -> 39 -> 3 -> 2 -> 0
+
+Generated instance: data/large/board_100x100_17354840141454368_6.dat (nodes: 40)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 40
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 8.11 seconds
+- Total time: 8.13 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 437.28 mm
+- Average distance between holes: 10.93 mm
+
+Drilling sequence: 0 -> 18 -> 22 -> 23 -> 24 -> 25 -> 1 -> 33 -> 34 -> 35 -> 36 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 37 -> 38 -> 39 -> 3 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 2 -> 21 -> 20 -> 19 -> 0
+
+Generated instance: data/medium/board_100x100_17354840223172705_7.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.46 seconds
+- Total time: 2.47 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 428.55 mm
+- Average distance between holes: 13.82 mm
+
+Drilling sequence: 0 -> 4 -> 2 -> 26 -> 25 -> 24 -> 23 -> 27 -> 28 -> 29 -> 30 -> 15 -> 14 -> 13 -> 12 -> 11 -> 10 -> 9 -> 16 -> 17 -> 18 -> 19 -> 20 -> 21 -> 22 -> 3 -> 1 -> 8 -> 7 -> 6 -> 5 -> 0
+
+Generated instance: data/medium/board_100x100_17354840248271182_8.dat (nodes: 31)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 31
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 1.79 seconds
+- Total time: 1.81 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 431.54 mm
+- Average distance between holes: 13.92 mm
+
+Drilling sequence: 0 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 18 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 1 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 3 -> 2 -> 30 -> 29 -> 28 -> 27 -> 26 -> 0
+
+Generated instance: data/medium/board_100x100_17354840266575096_9.dat (nodes: 25)
+
+Board Manufacturing Specifications:
+- Dimensions: 100x100 mm
+- Components: 3
+- Total holes: 25
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.02 seconds
+- Total time: 2.03 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 404.14 mm
+- Average distance between holes: 16.17 mm
+
+Drilling sequence: 0 -> 20 -> 21 -> 22 -> 23 -> 24 -> 1 -> 3 -> 2 -> 7 -> 6 -> 5 -> 4 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 19 -> 18 -> 17 -> 16 -> 0
+
+
+=== Testing circuit board 125x125 with 4 components ===
+
+Generated instance: data/large/board_125x125_17354840287141462_0.dat (nodes: 45)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 45
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 2.56 seconds
+- Total time: 2.59 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 572.65 mm
+- Average distance between holes: 12.73 mm
+
+Drilling sequence: 0 -> 18 -> 19 -> 20 -> 21 -> 25 -> 24 -> 23 -> 22 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 39 -> 38 -> 37 -> 36 -> 35 -> 34 -> 33 -> 1 -> 3 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 44 -> 43 -> 42 -> 41 -> 40 -> 2 -> 0
+
+Generated instance: data/medium/board_125x125_17354840313311580_1.dat (nodes: 27)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 27
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.39 seconds
+- Total time: 2.40 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 507.38 mm
+- Average distance between holes: 18.79 mm
+
+Drilling sequence: 0 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 1 -> 23 -> 24 -> 25 -> 26 -> 19 -> 20 -> 21 -> 22 -> 3 -> 18 -> 17 -> 16 -> 15 -> 14 -> 2 -> 4 -> 0
+
+Generated instance: data/large/board_125x125_17354840337701750_2.dat (nodes: 45)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 45
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 22.16 seconds
+- Total time: 22.19 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 574.91 mm
+- Average distance between holes: 12.78 mm
+
+Drilling sequence: 0 -> 17 -> 18 -> 19 -> 20 -> 24 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 21 -> 22 -> 23 -> 2 -> 9 -> 10 -> 11 -> 12 -> 16 -> 15 -> 14 -> 13 -> 37 -> 36 -> 35 -> 34 -> 33 -> 32 -> 31 -> 38 -> 39 -> 40 -> 41 -> 42 -> 43 -> 44 -> 4 -> 5 -> 6 -> 7 -> 8 -> 3 -> 1 -> 0
+
+Generated instance: data/large/board_125x125_17354840560081527_3.dat (nodes: 39)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 39
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 2.99 seconds
+- Total time: 3.01 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 546.55 mm
+- Average distance between holes: 14.01 mm
+
+Drilling sequence: 0 -> 31 -> 32 -> 33 -> 34 -> 38 -> 37 -> 36 -> 35 -> 17 -> 18 -> 19 -> 20 -> 21 -> 22 -> 23 -> 30 -> 29 -> 28 -> 27 -> 26 -> 25 -> 24 -> 4 -> 5 -> 6 -> 7 -> 11 -> 10 -> 9 -> 8 -> 1 -> 3 -> 16 -> 15 -> 14 -> 13 -> 12 -> 2 -> 0
+
+Generated instance: data/large/board_125x125_17354840590574432_4.dat (nodes: 54)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 54
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.03 seconds
+- Solution time: 18.96 seconds
+- Total time: 18.99 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 576.57 mm
+- Average distance between holes: 10.68 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 2 -> 17 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 40 -> 41 -> 42 -> 43 -> 44 -> 45 -> 46 -> 53 -> 52 -> 51 -> 50 -> 49 -> 48 -> 47 -> 3 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 39 -> 38 -> 37 -> 36 -> 35 -> 34 -> 1 -> 33 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 0
+
+Generated instance: data/large/board_125x125_17354840781099680_5.dat (nodes: 36)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 36
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 3.14 seconds
+- Total time: 3.15 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 531.63 mm
+- Average distance between holes: 14.77 mm
+
+Drilling sequence: 0 -> 14 -> 15 -> 16 -> 17 -> 21 -> 20 -> 19 -> 18 -> 1 -> 13 -> 12 -> 11 -> 10 -> 9 -> 3 -> 35 -> 34 -> 33 -> 32 -> 31 -> 30 -> 29 -> 22 -> 23 -> 24 -> 25 -> 26 -> 27 -> 28 -> 8 -> 7 -> 6 -> 5 -> 4 -> 2 -> 0
+
+Generated instance: data/medium/board_125x125_17354840812989920_6.dat (nodes: 30)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 30
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.01 seconds
+- Solution time: 2.08 seconds
+- Total time: 2.09 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 538.64 mm
+- Average distance between holes: 17.95 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 2 -> 20 -> 19 -> 18 -> 17 -> 21 -> 22 -> 23 -> 24 -> 3 -> 16 -> 15 -> 14 -> 13 -> 12 -> 11 -> 10 -> 9 -> 29 -> 28 -> 27 -> 26 -> 25 -> 1 -> 0
+
+Generated instance: data/large/board_125x125_17354840834217240_7.dat (nodes: 45)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 45
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 10.26 seconds
+- Total time: 10.29 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 584.04 mm
+- Average distance between holes: 12.98 mm
+
+Drilling sequence: 0 -> 2 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 24 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 7 -> 6 -> 5 -> 4 -> 8 -> 9 -> 10 -> 11 -> 3 -> 12 -> 13 -> 14 -> 15 -> 16 -> 1 -> 38 -> 39 -> 40 -> 41 -> 42 -> 43 -> 44 -> 37 -> 36 -> 35 -> 34 -> 33 -> 32 -> 31 -> 0
+
+Generated instance: data/large/board_125x125_17354840937600155_8.dat (nodes: 48)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 48
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 23.03 seconds
+- Total time: 23.06 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 561.83 mm
+- Average distance between holes: 11.70 mm
+
+Drilling sequence: 0 -> 36 -> 37 -> 38 -> 39 -> 32 -> 33 -> 34 -> 35 -> 2 -> 3 -> 17 -> 16 -> 15 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 14 -> 13 -> 12 -> 11 -> 1 -> 44 -> 45 -> 46 -> 47 -> 43 -> 42 -> 41 -> 40 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 0
+
+Generated instance: data/large/board_125x125_17354841168894715_9.dat (nodes: 39)
+
+Board Manufacturing Specifications:
+- Dimensions: 125x125 mm
+- Components: 4
+- Total holes: 39
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 6.51 seconds
+- Total time: 6.52 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 532.00 mm
+- Average distance between holes: 13.64 mm
+
+Drilling sequence: 0 -> 34 -> 33 -> 32 -> 31 -> 35 -> 36 -> 37 -> 38 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 1 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 3 -> 22 -> 23 -> 24 -> 25 -> 21 -> 20 -> 19 -> 18 -> 30 -> 29 -> 28 -> 27 -> 26 -> 2 -> 0
+
 
 === Testing circuit board 150x150 with 5 components ===
-Instance saved to: data/large/board_150x150_1735029914.dat
+
+Generated instance: data/large/board_150x150_17354841234628984_0.dat (nodes: 47)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 47
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 20.12 seconds
+- Total time: 20.15 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 674.38 mm
+- Average distance between holes: 14.35 mm
+
+Drilling sequence: 0 -> 23 -> 24 -> 25 -> 26 -> 27 -> 18 -> 19 -> 20 -> 21 -> 22 -> 1 -> 11 -> 12 -> 13 -> 14 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 15 -> 16 -> 17 -> 3 -> 46 -> 45 -> 44 -> 43 -> 42 -> 41 -> 40 -> 39 -> 38 -> 37 -> 36 -> 35 -> 28 -> 29 -> 30 -> 31 -> 32 -> 33 -> 34 -> 2 -> 0
+
+Generated instance: data/large/board_150x150_17354841436708498_1.dat (nodes: 41)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 41
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 18.85 seconds
+- Total time: 18.87 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 661.81 mm
+- Average distance between holes: 16.14 mm
+
+Drilling sequence: 0 -> 17 -> 18 -> 19 -> 20 -> 21 -> 1 -> 3 -> 11 -> 10 -> 9 -> 8 -> 4 -> 5 -> 6 -> 7 -> 16 -> 15 -> 14 -> 13 -> 12 -> 2 -> 33 -> 32 -> 31 -> 30 -> 40 -> 39 -> 38 -> 37 -> 36 -> 35 -> 34 -> 29 -> 28 -> 27 -> 26 -> 25 -> 24 -> 23 -> 22 -> 0
+
+Generated instance: data/large/board_150x150_17354841625954285_2.dat (nodes: 44)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 44
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 21.28 seconds
+- Total time: 21.30 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 662.10 mm
+- Average distance between holes: 15.05 mm
+
+Drilling sequence: 0 -> 24 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 33 -> 34 -> 35 -> 1 -> 8 -> 7 -> 6 -> 5 -> 4 -> 40 -> 41 -> 36 -> 37 -> 38 -> 39 -> 42 -> 43 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 3 -> 2 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 0
+
+Generated instance: data/large/board_150x150_17354841839382031_3.dat (nodes: 47)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 47
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.03 seconds
+- Solution time: 7.15 seconds
+- Total time: 7.18 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 698.85 mm
+- Average distance between holes: 14.87 mm
+
+Drilling sequence: 0 -> 2 -> 39 -> 38 -> 37 -> 36 -> 35 -> 34 -> 33 -> 40 -> 41 -> 42 -> 43 -> 44 -> 45 -> 46 -> 4 -> 5 -> 6 -> 7 -> 8 -> 3 -> 32 -> 31 -> 30 -> 29 -> 28 -> 1 -> 16 -> 17 -> 18 -> 19 -> 20 -> 21 -> 22 -> 15 -> 14 -> 13 -> 12 -> 11 -> 10 -> 9 -> 27 -> 26 -> 25 -> 24 -> 23 -> 0
+
+Generated instance: data/large/board_150x150_17354841911739865_4.dat (nodes: 59)
 
 Board Manufacturing Specifications:
 - Dimensions: 150x150 mm
 - Components: 5
 - Total holes: 59
 - Min hole spacing: 2.54 mm
-- Edge clearance: 5 mm
+- Edge clearance: 5.00 mm
 
 Performance Metrics:
-- Model setup time: 0.0108383 seconds
-- Solution time: 94.4292 seconds
-- Total time: 94.4401 seconds
+- Model setup time: 0.04 seconds
+- Solution time: 96.50 seconds
+- Total time: 96.54 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
 
 Solution Quality:
-- Total drilling path length: 690.636 mm
-- Average distance between holes: 11.7057 mm
+- Total drilling path length: 682.11 mm
+- Average distance between holes: 11.56 mm
 
-Drilling sequence: 0 -> 4 -> 5 -> 6 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 7 -> 8 -> 9 -> 10 -> 2 -> 3 -> 39 -> 38 -> 37 -> 32 -> 31 -> 30 -> 29 -> 28 -> 27 -> 26 -> 36 -> 35 -> 34 -> 33 -> 46 -> 45 -> 44 -> 43 -> 42 -> 41 -> 40 -> 53 -> 52 -> 51 -> 50 -> 49 -> 48 -> 47 -> 1 -> 58 -> 57 -> 56 -> 55 -> 54 -> 22 -> 23 -> 24 -> 25 -> 21 -> 20 -> 19 -> 18 -> 0
+Drilling sequence: 0 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 33 -> 34 -> 35 -> 36 -> 37 -> 38 -> 39 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 2 -> 40 -> 41 -> 42 -> 43 -> 44 -> 3 -> 1 -> 52 -> 53 -> 54 -> 55 -> 56 -> 57 -> 58 -> 51 -> 50 -> 49 -> 48 -> 47 -> 46 -> 45 -> 17 -> 16 -> 15 -> 14 -> 25 -> 24 -> 23 -> 22 -> 11 -> 12 -> 13 -> 21 -> 20 -> 19 -> 18 -> 4 -> 0
 
-=== Testing circuit board 200x200 with 8 components ===
-Instance saved to: data/large/board_200x200_1735030009.dat
+Generated instance: data/large/board_150x150_17354842877912667_5.dat (nodes: 53)
 
 Board Manufacturing Specifications:
-- Dimensions: 200x200 mm
-- Components: 8
-- Total holes: 77
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 53
 - Min hole spacing: 2.54 mm
-- Edge clearance: 5 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.03 seconds
+- Solution time: 87.05 seconds
+- Total time: 87.08 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 692.91 mm
+- Average distance between holes: 13.07 mm
+
+Drilling sequence: 0 -> 45 -> 46 -> 47 -> 48 -> 49 -> 50 -> 51 -> 52 -> 16 -> 17 -> 18 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 19 -> 20 -> 21 -> 22 -> 23 -> 24 -> 25 -> 26 -> 27 -> 28 -> 2 -> 29 -> 36 -> 35 -> 34 -> 33 -> 32 -> 31 -> 30 -> 3 -> 1 -> 8 -> 7 -> 6 -> 5 -> 4 -> 41 -> 42 -> 43 -> 44 -> 40 -> 39 -> 38 -> 37 -> 0
+
+Generated instance: data/large/board_150x150_17354843749461000_6.dat (nodes: 41)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 41
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 12.38 seconds
+- Total time: 12.40 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 668.60 mm
+- Average distance between holes: 16.31 mm
+
+Drilling sequence: 0 -> 2 -> 26 -> 27 -> 28 -> 29 -> 30 -> 21 -> 20 -> 19 -> 18 -> 22 -> 23 -> 24 -> 25 -> 3 -> 40 -> 39 -> 38 -> 37 -> 36 -> 1 -> 11 -> 12 -> 13 -> 14 -> 15 -> 16 -> 17 -> 10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 35 -> 34 -> 33 -> 32 -> 31 -> 0
+
+Generated instance: data/large/board_150x150_17354843873838592_7.dat (nodes: 41)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 41
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 5.04 seconds
+- Total time: 5.06 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.01%
+
+Solution Quality:
+- Total drilling path length: 646.22 mm
+- Average distance between holes: 15.76 mm
+
+Drilling sequence: 0 -> 33 -> 34 -> 35 -> 36 -> 37 -> 38 -> 39 -> 40 -> 8 -> 7 -> 6 -> 5 -> 4 -> 2 -> 25 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 32 -> 9 -> 10 -> 11 -> 12 -> 13 -> 3 -> 14 -> 15 -> 16 -> 17 -> 18 -> 1 -> 0
+
+Generated instance: data/large/board_150x150_17354843924873117_8.dat (nodes: 44)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 44
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.03 seconds
+- Solution time: 19.31 seconds
+- Total time: 19.34 seconds
+- Solution status: Optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 668.64 mm
+- Average distance between holes: 15.20 mm
+
+Drilling sequence: 0 -> 4 -> 5 -> 6 -> 7 -> 8 -> 1 -> 13 -> 14 -> 15 -> 16 -> 3 -> 12 -> 11 -> 10 -> 9 -> 38 -> 37 -> 36 -> 35 -> 34 -> 33 -> 32 -> 25 -> 26 -> 27 -> 28 -> 29 -> 30 -> 31 -> 43 -> 42 -> 41 -> 40 -> 39 -> 2 -> 24 -> 23 -> 22 -> 21 -> 20 -> 19 -> 18 -> 17 -> 0
+
+Generated instance: data/large/board_150x150_17354844118578097_9.dat (nodes: 44)
+
+Board Manufacturing Specifications:
+- Dimensions: 150x150 mm
+- Components: 5
+- Total holes: 44
+- Min hole spacing: 2.54 mm
+- Edge clearance: 5.00 mm
+
+Performance Metrics:
+- Model setup time: 0.02 seconds
+- Solution time: 4.02 seconds
+- Total time: 4.04 seconds
+- Solution status: Not optimal
+- Optimality gap: 0.00%
+
+Solution Quality:
+- Total drilling path length: 625.76 mm
+- Average distance between holes: 14.22 mm
+
+Drilling sequence: 0 -> 36 -> 37 -> 38 -> 39 -> 40 -> 41 -> 42 -> 43 -> 15 -> 14 -> 13 -> 12 -> 16 -> 17 -> 18 -> 19 -> 20 -> 21 -> 22 -> 23 -> 27 -> 26 -> 25 -> 24 -> 28 -> 29 -> 30 -> 31 -> 35 -> 34 -> 33 -> 32 -> 1 -> 8 -> 9 -> 10 -> 11 -> 4 -> 5 -> 6 -> 7 -> 3 -> 2 -> 0
+
+
+C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise1\ilolpex1.exe (processo 192740) terminato. Codice restituito: 0 (0x0).
+Premere un tasto qualsiasi per chiudere questa finestra...
