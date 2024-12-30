@@ -1,20 +1,45 @@
-CC = g++
-CPPFLAGS = -g -Wall -O2
-LDFLAGS =
+# Compiler and flags
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -O2
 
-# Object files
-OBJ = main.o TSPSolver.o TSPSolution.o TSP.o ParameterCalibration.o
+# Directories
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
+OBJ_DIR = $(BUILD_DIR)/obj
+BIN_DIR = $(BUILD_DIR)/bin
+DATA_DIR = data
+RESULTS_DIR = results
+VIS_DIR = visualizations
 
-# Build rules
-%.o: %.cpp
-	$(CC) $(CPPFLAGS) -c $^ -o $@
+# Include paths
+INCLUDES = -I$(INC_DIR)
+
+# Source and object files
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+TARGET = $(BIN_DIR)/ilolpex1
+
+# Create all necessary directories
+$(shell mkdir -p $(OBJ_DIR) $(BIN_DIR) $(DATA_DIR) $(RESULTS_DIR) $(VIS_DIR))
 
 # Main target
-main: $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o main $(LDFLAGS)
+all: $(TARGET)
 
-# Clean rule
+# Linking
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $(TARGET)
+
+# Compilation
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+# Clean built files but preserve data and results
 clean:
-	rm -rf $(OBJ) main
+	rm -rf $(BUILD_DIR)
 
-.PHONY: clean
+# Clean everything including data and results
+distclean: clean
+	rm -rf $(DATA_DIR)/* $(RESULTS_DIR)/* $(VIS_DIR)/*
+
+.PHONY: all clean distclean

@@ -1,24 +1,39 @@
-# Compiler
+# Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -O2
+CXXFLAGS = -std=c++17 -Wall -O2 -DIL_STD
 
-# CPLEX directories - MODIFY THESE PATHS
-CPLEX_DIR = /opt/ibm/ILOG/CPLEX_Studio2211/cplex
-CONCERT_DIR = /opt/ibm/ILOG/CPLEX_Studio2211/concert
+# Directories
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
+OBJ_DIR = $(BUILD_DIR)/obj
+BIN_DIR = $(BUILD_DIR)/bin
 
-# Include directories
-INCLUDES = -I$(CPLEX_DIR)/include -I$(CONCERT_DIR)/include
+# CPLEX directories - for Linux lab environment
+CPLEX_DIR = /opt/ibm/ILOG/CPLEX_Studio2211
+CPLEX_INCDIR = $(CPLEX_DIR)/cplex/include
+CONCERT_INCDIR = $(CPLEX_DIR)/concert/include
+SYSTEM = x86-64_linux
+LIBFORMAT = static_pic
+CPLEX_LIBDIR = $(CPLEX_DIR)/cplex/lib/$(SYSTEM)/$(LIBFORMAT)
+CONCERT_LIBDIR = $(CPLEX_DIR)/concert/lib/$(SYSTEM)/$(LIBFORMAT)
 
-# Library directories and libraries
-LDFLAGS = -L$(CPLEX_DIR)/lib/x86-64_linux/static_pic -L$(CONCERT_DIR)/lib/x86-64_linux/static_pic
-LDLIBS = -lilocplex -lcplex -lpthread -ldl
+# Include paths
+INCLUDES = -I$(INC_DIR) -I$(CPLEX_INCDIR) -I$(CONCERT_INCDIR)
 
-# Source files
-SRCS = src/main.cpp src/model.cpp
-OBJS = $(SRCS:.cpp=.o)
-TARGET = tsp_solver
+# Libraries
+LDFLAGS = -L$(CPLEX_LIBDIR) -L$(CONCERT_LIBDIR)
+LDLIBS = -lilocplex -lcplex -lconcert -lm -lpthread -ldl
 
-# Default target
+# Source and object files
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+TARGET = $(BIN_DIR)/ilolpex1
+
+# Create necessary directories
+$(shell mkdir -p $(OBJ_DIR) $(BIN_DIR))
+
+# Main target
 all: $(TARGET)
 
 # Linking
@@ -26,15 +41,11 @@ $(TARGET): $(OBJS)
 	$(CXX) $(OBJS) -o $(TARGET) $(LDFLAGS) $(LDLIBS)
 
 # Compilation
-%.o: %.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 # Clean
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -rf $(BUILD_DIR)
 
-# Run
-run: $(TARGET)
-	./$(TARGET)
-
-.PHONY: all clean run
+.PHONY: all clean
