@@ -12,142 +12,284 @@
 #include <cmath>
 #include <filesystem>
 
+using namespace std;
+
 namespace {
-    double best_recorded_cost = std::numeric_limits<double>::infinity();
+    double best_recorded_cost = numeric_limits<double>::infinity();
 }
 
 class BoardVisualizer {
 private:
-    static double& getBestRecordedCost() { return best_recorded_cost; }
+    // Visualization constants
+    static constexpr double BASE_SVG_SIZE = 800.0;
+    static constexpr double BASE_MARGIN = 50.0;
+    static constexpr double POINT_RADIUS = 8.0;
+    static constexpr double TEXT_SIZE = 12.0;
+    static constexpr double TEXT_OFFSET_X = 15.0;
+    static constexpr double TEXT_OFFSET_Y = 5.0;
+    static constexpr double PATH_STROKE_WIDTH = 2.0;
 
-    static void writeSearchMetrics(std::ofstream& file, double x, double y,
-        int iteration, double currentCost, int tenure = -1) {
-        file << "<text x=\"" << x << "\" y=\"" << y
-            << "\" font-family=\"Arial\" font-size=\"10\" fill=\"black\">";
-        file << "Iteration: " << iteration;
-        if (currentCost >= 0) {
-            file << " | Cost: " << std::fixed << std::setprecision(2) << currentCost;
+    static double& getBestRecordedCost() {
+        return best_recorded_cost;
+    }
+
+    static void calculateBounds(const vector<pair<double, double>>& points,
+        double& minX, double& minY, double& maxX, double& maxY) {
+        if (points.empty()) return;
+
+        // Initialize with first point
+        minX = points[0].first;
+        minY = points[0].second;
+        maxX = points[0].first;
+        maxY = points[0].second;
+
+        for (size_t i = 1; i < points.size(); ++i) {
+            if (points[i].first < minX) minX = points[i].first;
+            if (points[i].second < minY) minY = points[i].second;
+            if (points[i].first > maxX) maxX = points[i].first;
+            if (points[i].second > maxY) maxY = points[i].second;
         }
-        if (tenure >= 0) {
-            file << " | Tenure: " << tenure;
+    }
+
+    static void calculateScaling(double width, double height, double& scale) {
+        double maxDim = width > height ? width : height;
+        scale = maxDim > 0 ? BASE_SVG_SIZE / maxDim : 1.0;
+    }
+
+    static void writeSearchMetrics(ofstream& file, double x, double y,
+        int iteration, double currentCost, double textSize) {
+        file << "<text x=\"" << x << "\" y=\"" << y
+            << "\" font-family=\"Arial\" font-size=\"" << textSize
+            << "\" fill=\"black\">";
+        if (iteration >= 0) {
+            file << "Iteration: " << iteration;
+        }
+        if (currentCost >= 0) {
+            file << " Cost: " << fixed << setprecision(2) << currentCost;
         }
         file << "</text>\n";
     }
 
-    static void drawPath(std::ofstream& file,
-        const std::vector<std::pair<double, double>>& points,
-        const std::vector<int>& tour,
+    static void drawNodes(ofstream& file,
+        const vector<pair<double, double>>& points,
+        double scale) {
+        file << "<g>\n";
+        for (size_t i = 0; i < points.size(); ++i) {
+            double x = points[i].first * scale;
+            double y = points[i].second * scale;
+
+            // Draw point
+            file << "<circle cx=\"" << x << "\" cy=\"" << y
+                << "\" r=\"" << POINT_RADIUS << "\" fill=\"blue\"/>\n";
+
+            // Position text
+            double textX = x + TEXT_OFFSET_X;
+            double textY = y + TEXT_OFFSET_Y;
+
+            file << "<text x=\"" << textX << "\" y=\"" << textY
+                << "\" font-family=\"Arial\" font-size=\"" << TEXT_SIZE
+                << "\" fill=\"black\">" << i << "</text>\n";
+        }
+        file << "</g>\n";
+    }
+
+    static void drawPath(ofstream& file,
+        const vector<pair<double, double>>& points,
+        const vector<int>& tour,
+        double scale,
         bool useGradient = true) {
+
+        if (tour.size() < 2) return;
 
         file << "<g>\n";
         for (size_t i = 0; i < tour.size() - 1; ++i) {
             int idx1 = tour[i];
             int idx2 = tour[i + 1];
+
             if (idx1 >= 0 && idx1 < static_cast<int>(points.size()) &&
                 idx2 >= 0 && idx2 < static_cast<int>(points.size())) {
 
-                int intensity = useGradient ?
-                    static_cast<int>((255 * i) / (tour.size() - 1)) : 128;
+                int colorVal = useGradient ?
+                    static_cast<int>((255.0 * i) / (tour.size() - 1)) : 128;
+
+                double x1 = points[idx1].first * scale;
+                double y1 = points[idx1].second * scale;
+                double x2 = points[idx2].first * scale;
+                double y2 = points[idx2].second * scale;
 
                 file << "<line "
-                    << "x1=\"" << points[idx1].first << "\" "
-                    << "y1=\"" << points[idx1].second << "\" "
-                    << "x2=\"" << points[idx2].first << "\" "
-                    << "y2=\"" << points[idx2].second << "\" "
-                    << "stroke=\"rgb(" << intensity << ",0," << (255 - intensity)
-                    << ")\" stroke-width=\"0.8\"/>\n";
+                    << "x1=\"" << x1 << "\" y1=\"" << y1
+                    << "\" x2=\"" << x2 << "\" y2=\"" << y2
+                    << "\" stroke=\"rgb(" << colorVal << ",0,"
+                    << (255 - colorVal) << ")\" "
+                    << "stroke-width=\"" << PATH_STROKE_WIDTH << "\"/>\n";
             }
         }
         file << "</g>\n";
     }
 
 public:
-    static void generateSVG(const std::vector<std::pair<double, double>>& points,
-        const std::vector<int>& tour,
-        const std::string& filename,
+    static void generateSVG(const vector<pair<double, double>>& points,
+        const vector<int>& tour,
+        const string& filename,
         bool showPath = true,
         int iteration = -1,
-        double currentCost = -1.0,
-        int tenure = -1) {
+        double currentCost = -1.0) {
 
         try {
-            std::filesystem::path filePath(filename);
-            std::filesystem::path dir = filePath.parent_path();
+            filesystem::path filePath(filename);
+            filesystem::path dir = filePath.parent_path();
 
-            if (!dir.empty() && !std::filesystem::exists(dir)) {
-                std::filesystem::create_directories(dir);
+            if (!dir.empty() && !filesystem::exists(dir)) {
+                filesystem::create_directories(dir);
             }
 
-            std::ofstream file(filename);
+            ofstream file(filename);
             if (!file.is_open()) return;
 
-            // Calculate bounds (keeping the exact same calculation method)
-            double minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
-            for (size_t i = 0; i < points.size(); ++i) {
-                if (points[i].first < minX) minX = points[i].first;
-                if (points[i].second < minY) minY = points[i].second;
-                if (points[i].first > maxX) maxX = points[i].first;
-                if (points[i].second > maxY) maxY = points[i].second;
-            }
+            // Calculate bounds
+            double minX, minY, maxX, maxY;
+            calculateBounds(points, minX, minY, maxX, maxY);
 
-            double margin = 10.0;
-            minX -= margin;
-            minY -= margin;
-            maxX += margin;
-            maxY += margin;
+            // Add margins
+            minX -= BASE_MARGIN;
+            minY -= BASE_MARGIN;
+            maxX += BASE_MARGIN;
+            maxY += BASE_MARGIN;
 
-            // SVG header and background
+            // Calculate scale
+            double scale;
+            calculateScaling(maxX - minX, maxY - minY, scale);
+
+            // Calculate final dimensions
+            double width = (maxX - minX) * scale;
+            double height = (maxY - minY) * scale;
+
+            // Write SVG header
             file << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
                 << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
-                << "viewBox=\"" << minX << " " << minY << " "
-                << (maxX - minX) << " " << (maxY - minY) << "\">\n"
-                << "<rect x=\"" << minX << "\" y=\"" << minY
-                << "\" width=\"" << (maxX - minX)
-                << "\" height=\"" << (maxY - minY)
+                << "width=\"" << width << "\" height=\"" << height << "\" "
+                << "viewBox=\"" << minX * scale << " " << minY * scale << " "
+                << width << " " << height << "\">\n";
+
+            // Background
+            file << "<rect x=\"" << minX * scale << "\" y=\"" << minY * scale
+                << "\" width=\"" << width << "\" height=\"" << height
                 << "\" fill=\"white\"/>\n";
 
+            // Draw path if requested
+            if (showPath) {
+                drawPath(file, points, tour, scale);
+            }
+
+            // Draw nodes
+            drawNodes(file, points, scale);
+
             // Add metrics if available
-            if (iteration >= 0) {
-                writeSearchMetrics(file, minX + 5, minY + 15,
-                    iteration, currentCost, tenure);
+            if (iteration >= 0 || currentCost >= 0) {
+                writeSearchMetrics(file,
+                    minX * scale + BASE_MARGIN / 2,
+                    minY * scale + BASE_MARGIN / 2,
+                    iteration, currentCost, TEXT_SIZE * 1.2);
             }
 
-            // Draw drilling path
-            if (showPath && !tour.empty()) {
-                drawPath(file, points, tour);
+            file << "</svg>\n";
+            file.close();
+        }
+        catch (const exception&) {
+            // Silent error handling
+        }
+    }
+
+    static void generateComparisonSVG(
+        const vector<pair<double, double>>& points,
+        const vector<int>& initialTour,
+        const vector<int>& finalTour,
+        const string& filename,
+        double initialCost,
+        double finalCost) {
+
+        try {
+            filesystem::path filePath(filename);
+            filesystem::path dir = filePath.parent_path();
+
+            if (!dir.empty() && !filesystem::exists(dir)) {
+                filesystem::create_directories(dir);
             }
 
-            // Draw holes with labels
-            file << "<g>\n";
-            for (size_t i = 0; i < points.size(); ++i) {
-                const auto& point = points[i];
-                // Draw hole
-                file << "<circle cx=\"" << point.first
-                    << "\" cy=\"" << point.second
-                    << "\" r=\"2\" fill=\"blue\"/>\n"
-                    << "<text x=\"" << point.first + 2.5
-                    << "\" y=\"" << point.second
-                    << "\" font-family=\"Arial\" font-size=\"5\" "
-                    << "fill=\"black\">" << i << "</text>\n";
-            }
+            ofstream file(filename);
+            if (!file.is_open()) return;
+
+            // Calculate bounds
+            double minX, minY, maxX, maxY;
+            calculateBounds(points, minX, minY, maxX, maxY);
+
+            // Add margins
+            minX -= BASE_MARGIN;
+            minY -= BASE_MARGIN;
+            maxX += BASE_MARGIN;
+            maxY += BASE_MARGIN;
+
+            // Double width for side-by-side display
+            double singleWidth = maxX - minX;
+            double height = maxY - minY;
+            double width = singleWidth * 2.2; // 2.2 for spacing between views
+
+            // Calculate scale
+            double scale;
+            calculateScaling(singleWidth, height, scale);
+
+            file << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
+                << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
+                << "width=\"" << width * scale << "\" height=\"" << height * scale << "\" "
+                << "viewBox=\"" << minX * scale << " " << minY * scale << " "
+                << width * scale << " " << height * scale << "\">\n";
+
+            // Left side: Initial solution
+            file << "<g transform=\"translate(0,0)\">\n"
+                << "<rect x=\"" << minX * scale << "\" y=\"" << minY * scale
+                << "\" width=\"" << singleWidth * scale
+                << "\" height=\"" << height * scale
+                << "\" fill=\"white\"/>\n";
+            drawPath(file, points, initialTour, scale, false);
+            drawNodes(file, points, scale);
+            writeSearchMetrics(file,
+                minX * scale + BASE_MARGIN / 2,
+                minY * scale + BASE_MARGIN / 2,
+                -1, initialCost, TEXT_SIZE * 1.2);
+            file << "</g>\n";
+
+            // Right side: Final solution
+            file << "<g transform=\"translate(" << singleWidth * 1.1 * scale << ",0)\">\n"
+                << "<rect x=\"" << minX * scale << "\" y=\"" << minY * scale
+                << "\" width=\"" << singleWidth * scale
+                << "\" height=\"" << height * scale
+                << "\" fill=\"white\"/>\n";
+            drawPath(file, points, finalTour, scale, false);
+            drawNodes(file, points, scale);
+            writeSearchMetrics(file,
+                minX * scale + BASE_MARGIN / 2,
+                minY * scale + BASE_MARGIN / 2,
+                -1, finalCost, TEXT_SIZE * 1.2);
             file << "</g>\n";
 
             file << "</svg>\n";
             file.close();
         }
-        catch (const std::exception&) {
+        catch (const exception&) {
             // Silent error handling
         }
     }
 
-    static void saveKeySnapshots(const std::vector<std::pair<double, double>>& points,
-        const std::vector<int>& tour,
-        const std::string& baseFilename,
+    static void saveKeySnapshots(
+        const vector<pair<double, double>>& points,
+        const vector<int>& tour,
+        const string& baseFilename,
         int iteration,
         double cost,
         bool isCalibration = true) {
 
-        if (isCalibration) return;  // Skip visualization during calibration
+        if (isCalibration) return;
 
         bool shouldSave = false;
 
@@ -164,82 +306,9 @@ public:
         }
 
         if (shouldSave) {
-            std::string filename = baseFilename + "_iter" +
-                std::to_string(iteration) + ".svg";
+            string filename = baseFilename + "_iter" +
+                to_string(iteration) + ".svg";
             generateSVG(points, tour, filename, true, iteration, cost);
-        }
-    }
-
-    // New method for side-by-side comparison visualization
-    static void generateComparisonSVG(
-        const std::vector<std::pair<double, double>>& points,
-        const std::vector<int>& initialTour,
-        const std::vector<int>& finalTour,
-        const std::string& filename,
-        double initialCost,
-        double finalCost) {
-
-        try {
-            std::ofstream file(filename);
-            if (!file.is_open()) return;
-
-            // Calculate bounds (using the same method)
-            double minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
-            for (size_t i = 0; i < points.size(); ++i) {
-                if (points[i].first < minX) minX = points[i].first;
-                if (points[i].second < minY) minY = points[i].second;
-                if (points[i].first > maxX) maxX = points[i].first;
-                if (points[i].second > maxY) maxY = points[i].second;
-            }
-
-            double margin = 10.0;
-            minX -= margin;
-            minY -= margin;
-            maxX += margin;
-            maxY += margin;
-
-            // Double the width for side-by-side display
-            double width = (maxX - minX) * 2.2;
-            double height = maxY - minY;
-
-            file << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
-                << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
-                << "viewBox=\"" << minX << " " << minY << " "
-                << width << " " << height << "\">\n";
-
-            // Left side: Initial solution
-            file << "<g transform=\"translate(0,0)\">\n";
-            file << "<rect x=\"" << minX << "\" y=\"" << minY
-                << "\" width=\"" << (maxX - minX)
-                << "\" height=\"" << height
-                << "\" fill=\"white\"/>\n";
-            drawPath(file, points, initialTour, false);
-            file << "<text x=\"" << minX + 5 << "\" y=\"" << minY + 15
-                << "\" font-family=\"Arial\" font-size=\"10\">"
-                << "Initial Solution (Cost: " << std::fixed
-                << std::setprecision(2) << initialCost << ")"
-                << "</text>\n";
-            file << "</g>\n";
-
-            // Right side: Final solution
-            file << "<g transform=\"translate(" << (maxX - minX) * 1.1 << ",0)\">\n";
-            file << "<rect x=\"" << minX << "\" y=\"" << minY
-                << "\" width=\"" << (maxX - minX)
-                << "\" height=\"" << height
-                << "\" fill=\"white\"/>\n";
-            drawPath(file, points, finalTour, false);
-            file << "<text x=\"" << minX + 5 << "\" y=\"" << minY + 15
-                << "\" font-family=\"Arial\" font-size=\"10\">"
-                << "Final Solution (Cost: " << std::fixed
-                << std::setprecision(2) << finalCost << ")"
-                << "</text>\n";
-            file << "</g>\n";
-
-            file << "</svg>\n";
-            file.close();
-        }
-        catch (const std::exception&) {
-            // Silent error handling
         }
     }
 };

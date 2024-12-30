@@ -1,2 +1,29 @@
-﻿  parameter_calibration.cpp
+﻿  TSPSolver.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4267: 'inizializzazione': conversione da 'size_t' a '_Ty1'. Possibile perdita di dati.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4267:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4267:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4267:             _Ty1=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4267:         ]
+  (compilazione del file di origine 'src/TSPSolver.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
+      il contesto di creazione dell'istanza del modello (prima il meno recente) è
+          C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\TSPSolver.cpp(193,44):
+          vedere il riferimento all'istanza 'std::pair<int,int>::pair<size_t&,size_t&,0>(_Other1,_Other2) noexcept' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Other1=size_t &,
+              _Other2=size_t &
+          ]
+              C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\src\TSPSolver.cpp(193,43):
+              vedere il primo riferimento a 'std::pair<int,int>::pair' in 'TSPSolver::diversifySearch'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4267: 'inizializzazione': conversione da 'size_t' a '_Ty2'. Possibile perdita di dati.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4267:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4267:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4267:             _Ty2=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4267:         ]
+  (compilazione del file di origine 'src/TSPSolver.cpp')
+  
+  main.cpp
+  Generazione del codice in corso...
   ilolpex1.vcxproj -> C:\Users\roves\OneDrive\Documenti\GitHub\MeMoCO-Assignments\Exercise2\ilolpex1.exe
