@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:src\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\cpxmacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:include\\cpxmacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -19,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:include\\data_generator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:src\\model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\cpxmacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A5334DE3-5DEE-4223-9634-3468597998BB}|ilolpex1.vcxproj|solutionrelative:include\\cpxmacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "include\\model.h",
               "ToolTip": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\model.h",
               "RelativeToolTip": "include\\model.h",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwCkAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwDMAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-29T14:07:35.085Z"
             },
@@ -52,46 +52,46 @@
               "RelativeDocumentMoniker": "include\\data_generator.h",
               "ToolTip": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\data_generator.h",
               "RelativeToolTip": "include\\data_generator.h",
-              "ViewState": "AgIAAO4AAAAAAAAAAAAAwAoBAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAYwAoBAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-29T14:07:30.775Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "cpxmacro.h",
               "DocumentMoniker": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\cpxmacro.h",
               "RelativeDocumentMoniker": "include\\cpxmacro.h",
               "ToolTip": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\include\\cpxmacro.h",
               "RelativeToolTip": "include\\cpxmacro.h",
-              "ViewState": "AgIAADQAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAYwEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-29T14:07:30.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\main.cpp",
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAowI8AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAYwLsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-27T08:23:42.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T08:23:42.563Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "model.cpp",
               "DocumentMoniker": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\model.cpp",
               "RelativeDocumentMoniker": "src\\model.cpp",
               "ToolTip": "C:\\Users\\roves\\OneDrive\\Documenti\\GitHub\\MeMoCO-Assignments\\Exercise1\\src\\model.cpp",
               "RelativeToolTip": "src\\model.cpp",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAAwMQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAYwMQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-27T08:37:19.389Z"
+              "WhenOpened": "2024-11-27T08:37:19.389Z",
+              "EditorCaption": ""
             }
           ]
         }
