@@ -92,14 +92,10 @@ make            # Build project
 ## Directory Structure
 ```
 .
-├── part1/                    # Exact method implementation  
-├── part2/                    # Tabu Search implementation
-├── data/                     # Test instances
-│   ├── small/               # ≤20 holes
-│   ├── medium/              # 21-35 holes 
-│   └── large/               # >35 holes
-├── results/                  # Analysis results
-├── visualizations/           # Solution visualization
+├── Exercise1/                    # Exact method implementation  
+├── Exercise2/                    # Tabu Search implementation
+├── Report/                       # Report of the project
+├── References/                   # Texts of both assignments
 └── README.md
 ```
 
