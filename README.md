@@ -1,112 +1,115 @@
-# MeMoCO-Assignments
-First and second exam assignments for the Methods and Models for Combinatorial Optimization (MeMoCO) course at the University of Padova.
+# Circuit Board Drilling Optimization
+This project implements and compares exact (CPLEX) and metaheuristic (Tabu Search) approaches for optimizing drilling sequences on PCB (Printed Circuit Board) manufacturing.
 
-# 1 Assignment - Circuit Board Drilling Optimization
+## Problem Description
+A manufacturing company produces circuit boards that require precise hole drilling. A drilling machine moves across the board surface, stops at predetermined positions, and creates holes. Once a board is completely drilled, it's replaced with another one and the process repeats. The goal is to minimize the total drilling time by determining the optimal sequence of drilling operations, considering fixed drilling time per hole.
 
-## Project Overview
-This project implements an optimization solution for the circuit board drilling problem using Mixed Integer Linear Programming (MILP). The goal is to determine the optimal sequence for drilling holes in circuit boards to minimize the total travel time of the drilling machine. The problem is modeled as a variant of the Traveling Salesman Problem (TSP) using a flow-based formulation from Gavish & Graves (1978).
+The problem is modeled as a Traveling Salesman Problem (TSP) where:
+- Nodes represent hole positions 
+- Edges represent drill movement paths
+- Edge weights represent movement time between holes
+- The objective is to find the minimum-weight Hamiltonian cycle
 
-## Mathematical Formulation
-The problem is modeled on a complete weighted graph G = (N, A), where:
-- N represents the set of hole positions
-- A represents the possible drill movements between holes
-- cij represents the time/cost to move from hole i to j
+## Part 1: Exact Method (CPLEX)
+The first part implements an exact solution using Mixed Integer Linear Programming (MILP) with CPLEX:
 
-The implemented mathematical model minimizes the total drilling path cost:
+- Uses Gavish-Graves flow-based TSP formulation
+- Provides optimality guarantees for small instances
+- Solves small boards (≤50 holes) optimally within seconds
+- Shows exponential runtime growth for larger instances
 
+### Project Structure
 ```
-Min Σ(i,j∈A) cij * yij                                 (9)
-s.t.
-Σ(i:(i,k)∈A) xik - Σ(j:(k,j),j≠0) xkj = 1            (10)
-Σ(j:(i,j)∈A) yij = 1                                  (11)
-Σ(i:(i,j)∈A) yij = 1                                  (12)
-xij ≤ (|N|-1)yij                     ∀(i,j)∈A, j≠0    (13)
-xij ∈ R+                             ∀(i,j)∈A, j≠0    (14)
-yij ∈ {0,1}                          ∀(i,j)∈A         (15)
-```
-
-## Project Structure
-```
-.
+part1/
 ├── include/
-│   ├── cpxmacro.h       # CPLEX helper macros
-│   ├── data_generator.h # Instance generation utilities
-│   └── model.h         # TSP model class definition
+│   ├── cpxmacro.h            # CPLEX helper macros
+│   ├── data_generator.h      # Instance generation utilities
+│   └── model.h               # TSP model definition
 ├── src/
-│   ├── main.cpp        # Main program
-│   └── model.cpp       # Model implementation
-├── CMakeLists.txt      # CMake build configuration
-└── Makefile           # Make build configuration
+│   ├── main.cpp              # Program entry point
+│   ├── model.cpp             # Model implementation 
+├── data/                     # Generated test instances
+├── results/                  # Performance analysis
+├── Makefile
+└── README.md
 ```
 
-## Requirements
-- IBM ILOG CPLEX Optimization Studio 22.1.1
-- C++11 compatible compiler
-- CMake 3.10 or higher (if using CMake build)
-- Linux environment (tested on x86-64)
+## Part 2: Metaheuristic Method (Tabu Search)
+The second part implements an advanced Tabu Search metaheuristic:
+
+- Uses 2-opt neighborhood structure
+- Incorporates dynamic tabu tenure adjustment
+- Features intensification and diversification strategies 
+- Achieves near-optimal solutions quickly
+- Scales effectively to large instances
+
+### Project Structure
+```
+part2/
+├── include/
+│   ├── TSPSolver.h           # Tabu Search implementation
+│   ├── TSPSolution.h         # Solution representation
+│   ├── parameter_calibration.h  # Parameter tuning
+│   └── visualization.h       # Solution visualization
+├── src/
+│   ├── main.cpp              # Program entry point
+│   ├── TSPSolver.cpp         # Core algorithm
+│   ├── parameter_calibration.cpp 
+├── data/                     # Test instances
+├── results/                  # Analysis output
+├── visualizations/           # Solution diagrams
+├── Makefile
+└── README.md
+```
 
 ## Build Instructions
 
-### Using Make
-1. Edit the `Makefile` to set your CPLEX installation path:
+### Prerequisites
+- IBM ILOG CPLEX Optimization Studio (22.1.1 or higher)
+- C++11 compatible compiler
+- CMake 3.10+ (optional)
+- Linux environment (tested on x86-64)
+
+### Compilation 
+For both parts, execute in order:
 ```bash
-CPLEX_DIR = /path/to/cplex
-CONCERT_DIR = /path/to/concert
+make clean       # Clean previous build
+# or
+make distclean  # Full clean including data/results
+
+make            # Build project
+
+./build/bin/ilolpex1  # Run executable
 ```
 
-2. Build the project:
-```bash
-make
+## Results Summary
+- Small instances (≤20 holes): Both methods find optimal solutions, CPLEX faster
+- Medium instances (21-35 holes): CPLEX optimal but slower, TS near-optimal quickly  
+- Large instances (>35 holes): TS clearly superior in runtime and scalability
+- Solution quality: TS achieves 61-84% improvement vs initial solutions
+- Runtime scaling: TS maintains reasonable times even for 100+ holes
+
+## Directory Structure
+```
+.
+├── part1/                    # Exact method implementation  
+├── part2/                    # Tabu Search implementation
+├── data/                     # Test instances
+│   ├── small/               # ≤20 holes
+│   ├── medium/              # 21-35 holes 
+│   └── large/               # >35 holes
+├── results/                  # Analysis results
+├── visualizations/           # Solution visualization
+└── README.md
 ```
 
-### Using CMake
-1. Edit `CMakeLists.txt` to set your CPLEX path:
-```cmake
-set(CPLEX_ROOT_DIR "/path/to/cplex" CACHE PATH "CPLEX root directory")
-```
-
-2. Build the project:
-```bash
-mkdir build
-cd build
-cmake ..
-make
-```
-
-## Usage
-The program can be run with:
-```bash
-./tsp_solver
-```
-
-The solver will test different board configurations:
-- Small boards (~15-20 holes)
-- Medium boards (~25-35 holes)
-- Large boards (~40-50 holes)
-
-Results include:
-- Solution time
-- Total drilling path length
-- Complete drilling sequence
-- Generated instance files in data/{small,medium,large} directories
-
-## Performance Analysis
-The implementation has been tested with various problem sizes:
-- Small instances (≤20 holes): Solved optimally within 0.1-1 seconds
-- Medium instances (21-35 holes): Solved optimally within 1-10 seconds
-- Large instances (36-50 holes): May require several minutes, with a 5-minute time limit
-
-## Documentation
-- Source code is documented using Doxygen-style comments
-- The mathematical model follows the formulation from Gavish & Graves (1978)
-- Generated instances include metadata about board configuration
-
-## Contributing
-When contributing to this project:
-1. Ensure all code follows the existing style
-2. Document new features and changes
-3. Add appropriate test cases
-4. Update the README as needed
+## Acknowledgments
+Based on:
+- Gavish & Graves (1978) TSP formulation
+- Fred Glover's Tabu Search metaheuristic
+- Lin-Kernighan local search heuristics
 
 ## References
-Gavish, B., & Graves, S. C. (1978). The travelling salesman problem and related problems. Working Paper OR-078-78. Operations Research Center, Massachusetts Institute of Technology, Cambridge.
+1. Gavish, B., & Graves, S. C. (1978). The travelling salesman problem and related problems.
+2. Glover, F. (1989). Tabu Search—Part I.
+3. Lin, S., & Kernighan, B. W. (1973). An effective heuristic algorithm for the TSP.

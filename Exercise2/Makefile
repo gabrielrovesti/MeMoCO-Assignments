@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -O2
+CXXFLAGS = -std=c++17 -Wall -O2 -DIL_STD
 
 # Directories
 SRC_DIR = src
@@ -11,6 +11,9 @@ BIN_DIR = $(BUILD_DIR)/bin
 DATA_DIR = data
 RESULTS_DIR = results
 VIS_DIR = visualizations
+
+# C++17 filesystem support
+LDFLAGS = -lstdc++fs
 
 # Include paths
 INCLUDES = -I$(INC_DIR)
@@ -24,11 +27,19 @@ TARGET = $(BIN_DIR)/ilolpex1
 $(shell mkdir -p $(OBJ_DIR) $(BIN_DIR) $(DATA_DIR) $(RESULTS_DIR) $(VIS_DIR))
 
 # Main target
-all: $(TARGET)
+all: directories $(TARGET)
+
+# Create necessary directories
+directories:
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(BIN_DIR)
+	@mkdir -p $(DATA_DIR)
+	@mkdir -p $(RESULTS_DIR)
+	@mkdir -p $(VIS_DIR)
 
 # Linking
 $(TARGET): $(OBJS)
-	$(CXX) $(OBJS) -o $(TARGET)
+	$(CXX) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
 # Compilation
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -42,4 +53,13 @@ clean:
 distclean: clean
 	rm -rf $(DATA_DIR)/* $(RESULTS_DIR)/* $(VIS_DIR)/*
 
-.PHONY: all clean distclean
+# Print debugging information
+debug:
+	@echo "Compiler: $(CXX)"
+	@echo "Compiler flags: $(CXXFLAGS)"
+	@echo "Source files: $(SRCS)"
+	@echo "Object files: $(OBJS)"
+	@echo "Include paths: $(INCLUDES)"
+	@echo "Libraries: $(LDFLAGS)"
+
+.PHONY: all clean distclean debug directories
