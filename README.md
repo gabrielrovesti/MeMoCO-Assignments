@@ -68,19 +68,51 @@ part2/
 - IBM ILOG CPLEX Optimization Studio (22.1.1 or higher)
 - C++11 compatible compiler
 - CMake 3.10+ (optional)
-- Linux environment (tested on x86-64)
 
-### Compilation 
-For both parts, execute in order:
+### Windows Build
+1. Install Visual Studio IDE 2022 (Community Version)
+2. Install a C++ compiler:
+   - Either MinGW or MSVC (the latter is installed when selecting "Develop C++ applications" during Visual Studio installation)
+3. Install CPLEX Studio (current version is 22.11)
+4. Import the pre-configured solution file `ilolpex1.vcxproj`
+5. Open in Visual Studio via "Open a project or a solution"
+6. Build and run the project through the Visual Studio interface
+
+### Linux Build
+The project has been tested on LabTA PCs with:
+- Ubuntu 18.04.6 LTS
+- Intel(R) Core(TM) i5-7500 CPU @3.40GHz
+- 8.0 GB RAM
+
+Use the provided Makefile with the following commands:
+
 ```bash
-make clean       # Clean previous build
-# or
-make distclean  # Full clean including data/results
+# Compile the project
+make
 
-make            # Build project
+# Clean build files
+make clean
 
-./build/bin/ilolpex1  # Run executable
+# Clean everything including data/results/visualizations
+make distclean
+
+# Run the executable
+./build/bin/ilolpex1
 ```
+
+The Makefile is configured for the lab environment with proper CPLEX directories (include/CPLEX/concert). It automatically creates necessary directories including:
+- build/
+- data/
+- results/
+- visualizations/
+
+**Note**: New instances are created in their respective folders without overwriting previous ones. Using `make distclean` removes all folders and instances, allowing a fresh start.
+
+The project maintains separate organizational structures for both parts:
+- Part 1 (Exact Method): CPLEX implementation 
+- Part 2 (Tabu Search): Metaheuristic implementation
+
+Each part contains its own data generation and results documentation while sharing common utility classes and headers.
 
 ## Results Summary
 - Small instances (≤20 holes): Both methods find optimal solutions, CPLEX faster
