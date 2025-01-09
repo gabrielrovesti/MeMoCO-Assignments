@@ -3,28 +3,40 @@
 <g transform="translate(0,0)">
 <rect x="-218.182" y="-218.182" width="800" height="800" fill="white"/>
 <g>
-<line x1="24.2424" y1="24.2424" x2="147.184" y2="47.4431" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="147.184" y1="47.4431" x2="157.622" y2="266.19" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="157.622" y1="266.19" x2="299.65" y2="171.769" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="299.65" y1="171.769" x2="110.239" y2="47.4431" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="110.239" y1="47.4431" x2="132.992" y2="266.19" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="132.992" y1="266.19" x2="157.622" y2="260.033" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="157.622" y1="260.033" x2="336.596" y2="171.769" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="336.596" y1="171.769" x2="339.394" y2="24.2424" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="339.394" y1="24.2424" x2="287.335" y2="171.769" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="287.335" y1="171.769" x2="339.394" y2="339.394" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="339.394" y1="339.394" x2="132.992" y2="272.348" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="132.992" y1="272.348" x2="134.869" y2="47.4431" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="134.869" y1="47.4431" x2="157.622" y2="272.348" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="157.622" y1="272.348" x2="157.622" y2="253.875" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="157.622" y1="253.875" x2="324.281" y2="171.769" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="324.281" y1="171.769" x2="97.9236" y2="47.4431" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="97.9236" y1="47.4431" x2="132.992" y2="253.875" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="132.992" y1="253.875" x2="24.2424" y2="339.394" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="24.2424" y1="339.394" x2="132.992" y2="260.033" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="132.992" y1="260.033" x2="311.965" y2="171.769" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="311.965" y1="171.769" x2="122.554" y2="47.4431" stroke="rgb(128,0,127)" stroke-width="2"/>
-<line x1="122.554" y1="47.4431" x2="24.2424" y2="24.2424" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="24.2424" y1="24.2424" x2="292.306" y2="256.377" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="292.306" y1="256.377" x2="66.7363" y2="189.051" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="66.7363" y1="189.051" x2="339.394" y2="24.2424" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="339.394" y1="24.2424" x2="284.71" y2="80.1729" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="80.1729" x2="316.936" y2="262.535" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="316.936" y1="262.535" x2="316.936" y2="268.692" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="316.936" y1="268.692" x2="66.7363" y2="182.893" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="66.7363" y1="182.893" x2="66.7363" y2="201.366" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="66.7363" y1="201.366" x2="91.3666" y2="195.208" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="91.3666" y1="195.208" x2="247.765" y2="104.803" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="104.803" x2="247.765" y2="43.2275" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="43.2275" x2="24.2424" y2="339.394" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="24.2424" y1="339.394" x2="339.394" y2="339.394" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="339.394" y1="339.394" x2="292.306" y2="274.85" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="292.306" y1="274.85" x2="247.765" y2="80.1729" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="80.1729" x2="316.936" y2="256.377" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="316.936" y1="256.377" x2="284.71" y2="55.5426" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="55.5426" x2="316.936" y2="274.85" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="316.936" y1="274.85" x2="284.71" y2="92.4881" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="92.4881" x2="284.71" y2="43.2275" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="43.2275" x2="91.3666" y2="182.893" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="91.3666" y1="182.893" x2="91.3666" y2="189.051" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="91.3666" y1="189.051" x2="284.71" y2="117.118" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="117.118" x2="247.765" y2="92.4881" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="92.4881" x2="247.765" y2="117.118" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="117.118" x2="91.3666" y2="201.366" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="91.3666" y1="201.366" x2="292.306" y2="268.692" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="292.306" y1="268.692" x2="66.7363" y2="195.208" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="66.7363" y1="195.208" x2="284.71" y2="67.8578" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="67.8578" x2="292.306" y2="262.535" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="292.306" y1="262.535" x2="247.765" y2="67.8578" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="67.8578" x2="284.71" y2="104.803" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="284.71" y1="104.803" x2="247.765" y2="55.5426" stroke="rgb(128,0,127)" stroke-width="2"/>
+<line x1="247.765" y1="55.5426" x2="24.2424" y2="24.2424" stroke="rgb(128,0,127)" stroke-width="2"/>
 </g>
 <g>
 <circle cx="24.2424" cy="24.2424" r="8" fill="blue"/>
@@ -35,69 +47,105 @@
 <text x="39.2424" y="344.394" font-family="Arial" font-size="12" fill="black">2</text>
 <circle cx="339.394" cy="339.394" r="8" fill="blue"/>
 <text x="354.394" y="344.394" font-family="Arial" font-size="12" fill="black">3</text>
-<circle cx="132.992" cy="253.875" r="8" fill="blue"/>
-<text x="147.992" y="258.875" font-family="Arial" font-size="12" fill="black">4</text>
-<circle cx="132.992" cy="260.033" r="8" fill="blue"/>
-<text x="147.992" y="265.033" font-family="Arial" font-size="12" fill="black">5</text>
-<circle cx="132.992" cy="266.19" r="8" fill="blue"/>
-<text x="147.992" y="271.19" font-family="Arial" font-size="12" fill="black">6</text>
-<circle cx="132.992" cy="272.348" r="8" fill="blue"/>
-<text x="147.992" y="277.348" font-family="Arial" font-size="12" fill="black">7</text>
-<circle cx="157.622" cy="253.875" r="8" fill="blue"/>
-<text x="172.622" y="258.875" font-family="Arial" font-size="12" fill="black">8</text>
-<circle cx="157.622" cy="260.033" r="8" fill="blue"/>
-<text x="172.622" y="265.033" font-family="Arial" font-size="12" fill="black">9</text>
-<circle cx="157.622" cy="266.19" r="8" fill="blue"/>
-<text x="172.622" y="271.19" font-family="Arial" font-size="12" fill="black">10</text>
-<circle cx="157.622" cy="272.348" r="8" fill="blue"/>
-<text x="172.622" y="277.348" font-family="Arial" font-size="12" fill="black">11</text>
-<circle cx="97.9236" cy="47.4431" r="8" fill="blue"/>
-<text x="112.924" y="52.4431" font-family="Arial" font-size="12" fill="black">12</text>
-<circle cx="110.239" cy="47.4431" r="8" fill="blue"/>
-<text x="125.239" y="52.4431" font-family="Arial" font-size="12" fill="black">13</text>
-<circle cx="122.554" cy="47.4431" r="8" fill="blue"/>
-<text x="137.554" y="52.4431" font-family="Arial" font-size="12" fill="black">14</text>
-<circle cx="134.869" cy="47.4431" r="8" fill="blue"/>
-<text x="149.869" y="52.4431" font-family="Arial" font-size="12" fill="black">15</text>
-<circle cx="147.184" cy="47.4431" r="8" fill="blue"/>
-<text x="162.184" y="52.4431" font-family="Arial" font-size="12" fill="black">16</text>
-<circle cx="287.335" cy="171.769" r="8" fill="blue"/>
-<text x="302.335" y="176.769" font-family="Arial" font-size="12" fill="black">17</text>
-<circle cx="299.65" cy="171.769" r="8" fill="blue"/>
-<text x="314.65" y="176.769" font-family="Arial" font-size="12" fill="black">18</text>
-<circle cx="311.965" cy="171.769" r="8" fill="blue"/>
-<text x="326.965" y="176.769" font-family="Arial" font-size="12" fill="black">19</text>
-<circle cx="324.281" cy="171.769" r="8" fill="blue"/>
-<text x="339.281" y="176.769" font-family="Arial" font-size="12" fill="black">20</text>
-<circle cx="336.596" cy="171.769" r="8" fill="blue"/>
-<text x="351.596" y="176.769" font-family="Arial" font-size="12" fill="black">21</text>
+<circle cx="292.306" cy="256.377" r="8" fill="blue"/>
+<text x="307.306" y="261.377" font-family="Arial" font-size="12" fill="black">4</text>
+<circle cx="292.306" cy="262.535" r="8" fill="blue"/>
+<text x="307.306" y="267.535" font-family="Arial" font-size="12" fill="black">5</text>
+<circle cx="292.306" cy="268.692" r="8" fill="blue"/>
+<text x="307.306" y="273.692" font-family="Arial" font-size="12" fill="black">6</text>
+<circle cx="292.306" cy="274.85" r="8" fill="blue"/>
+<text x="307.306" y="279.85" font-family="Arial" font-size="12" fill="black">7</text>
+<circle cx="316.936" cy="256.377" r="8" fill="blue"/>
+<text x="331.936" y="261.377" font-family="Arial" font-size="12" fill="black">8</text>
+<circle cx="316.936" cy="262.535" r="8" fill="blue"/>
+<text x="331.936" y="267.535" font-family="Arial" font-size="12" fill="black">9</text>
+<circle cx="316.936" cy="268.692" r="8" fill="blue"/>
+<text x="331.936" y="273.692" font-family="Arial" font-size="12" fill="black">10</text>
+<circle cx="316.936" cy="274.85" r="8" fill="blue"/>
+<text x="331.936" y="279.85" font-family="Arial" font-size="12" fill="black">11</text>
+<circle cx="247.765" cy="43.2275" r="8" fill="blue"/>
+<text x="262.765" y="48.2275" font-family="Arial" font-size="12" fill="black">12</text>
+<circle cx="247.765" cy="55.5426" r="8" fill="blue"/>
+<text x="262.765" y="60.5426" font-family="Arial" font-size="12" fill="black">13</text>
+<circle cx="247.765" cy="67.8578" r="8" fill="blue"/>
+<text x="262.765" y="72.8578" font-family="Arial" font-size="12" fill="black">14</text>
+<circle cx="247.765" cy="80.1729" r="8" fill="blue"/>
+<text x="262.765" y="85.1729" font-family="Arial" font-size="12" fill="black">15</text>
+<circle cx="247.765" cy="92.4881" r="8" fill="blue"/>
+<text x="262.765" y="97.4881" font-family="Arial" font-size="12" fill="black">16</text>
+<circle cx="247.765" cy="104.803" r="8" fill="blue"/>
+<text x="262.765" y="109.803" font-family="Arial" font-size="12" fill="black">17</text>
+<circle cx="247.765" cy="117.118" r="8" fill="blue"/>
+<text x="262.765" y="122.118" font-family="Arial" font-size="12" fill="black">18</text>
+<circle cx="284.71" cy="43.2275" r="8" fill="blue"/>
+<text x="299.71" y="48.2275" font-family="Arial" font-size="12" fill="black">19</text>
+<circle cx="284.71" cy="55.5426" r="8" fill="blue"/>
+<text x="299.71" y="60.5426" font-family="Arial" font-size="12" fill="black">20</text>
+<circle cx="284.71" cy="67.8578" r="8" fill="blue"/>
+<text x="299.71" y="72.8578" font-family="Arial" font-size="12" fill="black">21</text>
+<circle cx="284.71" cy="80.1729" r="8" fill="blue"/>
+<text x="299.71" y="85.1729" font-family="Arial" font-size="12" fill="black">22</text>
+<circle cx="284.71" cy="92.4881" r="8" fill="blue"/>
+<text x="299.71" y="97.4881" font-family="Arial" font-size="12" fill="black">23</text>
+<circle cx="284.71" cy="104.803" r="8" fill="blue"/>
+<text x="299.71" y="109.803" font-family="Arial" font-size="12" fill="black">24</text>
+<circle cx="284.71" cy="117.118" r="8" fill="blue"/>
+<text x="299.71" y="122.118" font-family="Arial" font-size="12" fill="black">25</text>
+<circle cx="66.7363" cy="182.893" r="8" fill="blue"/>
+<text x="81.7363" y="187.893" font-family="Arial" font-size="12" fill="black">26</text>
+<circle cx="66.7363" cy="189.051" r="8" fill="blue"/>
+<text x="81.7363" y="194.051" font-family="Arial" font-size="12" fill="black">27</text>
+<circle cx="66.7363" cy="195.208" r="8" fill="blue"/>
+<text x="81.7363" y="200.208" font-family="Arial" font-size="12" fill="black">28</text>
+<circle cx="66.7363" cy="201.366" r="8" fill="blue"/>
+<text x="81.7363" y="206.366" font-family="Arial" font-size="12" fill="black">29</text>
+<circle cx="91.3666" cy="182.893" r="8" fill="blue"/>
+<text x="106.367" y="187.893" font-family="Arial" font-size="12" fill="black">30</text>
+<circle cx="91.3666" cy="189.051" r="8" fill="blue"/>
+<text x="106.367" y="194.051" font-family="Arial" font-size="12" fill="black">31</text>
+<circle cx="91.3666" cy="195.208" r="8" fill="blue"/>
+<text x="106.367" y="200.208" font-family="Arial" font-size="12" fill="black">32</text>
+<circle cx="91.3666" cy="201.366" r="8" fill="blue"/>
+<text x="106.367" y="206.366" font-family="Arial" font-size="12" fill="black">33</text>
 </g>
-<text x="-193.182" y="-193.182" font-family="Arial" font-size="14.4" fill="black"> Cost: 784.91</text>
+<text x="-193.182" y="-193.182" font-family="Arial" font-size="14.4" fill="black"> Cost: 1170.81</text>
 </g>
 <g transform="translate(880.00,0)">
 <rect x="-218.18" y="-218.18" width="800.00" height="800.00" fill="white"/>
 <g>
-<line x1="24.24" y1="339.39" x2="132.99" y2="272.35" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="132.99" y1="272.35" x2="132.99" y2="266.19" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="132.99" y1="266.19" x2="132.99" y2="260.03" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="132.99" y1="260.03" x2="132.99" y2="253.88" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="132.99" y1="253.88" x2="157.62" y2="253.88" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="157.62" y1="253.88" x2="157.62" y2="260.03" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="157.62" y1="260.03" x2="157.62" y2="266.19" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="157.62" y1="266.19" x2="157.62" y2="272.35" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="157.62" y1="272.35" x2="339.39" y2="339.39" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="339.39" y1="339.39" x2="287.34" y2="171.77" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="287.34" y1="171.77" x2="299.65" y2="171.77" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="299.65" y1="171.77" x2="311.97" y2="171.77" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="311.97" y1="171.77" x2="324.28" y2="171.77" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="324.28" y1="171.77" x2="336.60" y2="171.77" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="336.60" y1="171.77" x2="339.39" y2="24.24" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="339.39" y1="24.24" x2="147.18" y2="47.44" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="147.18" y1="47.44" x2="134.87" y2="47.44" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="134.87" y1="47.44" x2="122.55" y2="47.44" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="122.55" y1="47.44" x2="110.24" y2="47.44" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="110.24" y1="47.44" x2="97.92" y2="47.44" stroke="rgb(128,0,127)" stroke-width="2.00"/>
-<line x1="97.92" y1="47.44" x2="24.24" y2="24.24" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="117.12" x2="247.77" y2="104.80" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="104.80" x2="247.77" y2="92.49" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="92.49" x2="247.77" y2="80.17" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="80.17" x2="247.77" y2="67.86" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="67.86" x2="247.77" y2="55.54" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="55.54" x2="247.77" y2="43.23" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="247.77" y1="43.23" x2="284.71" y2="43.23" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="43.23" x2="339.39" y2="24.24" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="339.39" y1="24.24" x2="284.71" y2="55.54" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="55.54" x2="284.71" y2="67.86" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="67.86" x2="284.71" y2="80.17" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="80.17" x2="284.71" y2="92.49" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="92.49" x2="284.71" y2="104.80" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="104.80" x2="284.71" y2="117.12" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="284.71" y1="117.12" x2="292.31" y2="256.38" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="292.31" y1="256.38" x2="292.31" y2="262.53" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="292.31" y1="262.53" x2="292.31" y2="268.69" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="292.31" y1="268.69" x2="292.31" y2="274.85" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="292.31" y1="274.85" x2="316.94" y2="262.53" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="316.94" y1="262.53" x2="316.94" y2="256.38" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="316.94" y1="256.38" x2="316.94" y2="268.69" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="316.94" y1="268.69" x2="316.94" y2="274.85" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="316.94" y1="274.85" x2="339.39" y2="339.39" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="339.39" y1="339.39" x2="24.24" y2="339.39" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="24.24" y1="339.39" x2="66.74" y2="201.37" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="66.74" y1="201.37" x2="66.74" y2="182.89" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="66.74" y1="182.89" x2="66.74" y2="189.05" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="66.74" y1="189.05" x2="66.74" y2="195.21" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="66.74" y1="195.21" x2="91.37" y2="201.37" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="91.37" y1="201.37" x2="91.37" y2="195.21" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="91.37" y1="195.21" x2="91.37" y2="189.05" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="91.37" y1="189.05" x2="91.37" y2="182.89" stroke="rgb(128,0,127)" stroke-width="2.00"/>
+<line x1="91.37" y1="182.89" x2="24.24" y2="24.24" stroke="rgb(128,0,127)" stroke-width="2.00"/>
 <line x1="24.24" y1="24.24" x2="24.24" y2="24.24" stroke="rgb(128,0,127)" stroke-width="2.00"/>
 </g>
 <g>
@@ -109,43 +157,67 @@
 <text x="39.24" y="344.39" font-family="Arial" font-size="12.00" fill="black">2</text>
 <circle cx="339.39" cy="339.39" r="8.00" fill="blue"/>
 <text x="354.39" y="344.39" font-family="Arial" font-size="12.00" fill="black">3</text>
-<circle cx="132.99" cy="253.88" r="8.00" fill="blue"/>
-<text x="147.99" y="258.88" font-family="Arial" font-size="12.00" fill="black">4</text>
-<circle cx="132.99" cy="260.03" r="8.00" fill="blue"/>
-<text x="147.99" y="265.03" font-family="Arial" font-size="12.00" fill="black">5</text>
-<circle cx="132.99" cy="266.19" r="8.00" fill="blue"/>
-<text x="147.99" y="271.19" font-family="Arial" font-size="12.00" fill="black">6</text>
-<circle cx="132.99" cy="272.35" r="8.00" fill="blue"/>
-<text x="147.99" y="277.35" font-family="Arial" font-size="12.00" fill="black">7</text>
-<circle cx="157.62" cy="253.88" r="8.00" fill="blue"/>
-<text x="172.62" y="258.88" font-family="Arial" font-size="12.00" fill="black">8</text>
-<circle cx="157.62" cy="260.03" r="8.00" fill="blue"/>
-<text x="172.62" y="265.03" font-family="Arial" font-size="12.00" fill="black">9</text>
-<circle cx="157.62" cy="266.19" r="8.00" fill="blue"/>
-<text x="172.62" y="271.19" font-family="Arial" font-size="12.00" fill="black">10</text>
-<circle cx="157.62" cy="272.35" r="8.00" fill="blue"/>
-<text x="172.62" y="277.35" font-family="Arial" font-size="12.00" fill="black">11</text>
-<circle cx="97.92" cy="47.44" r="8.00" fill="blue"/>
-<text x="112.92" y="52.44" font-family="Arial" font-size="12.00" fill="black">12</text>
-<circle cx="110.24" cy="47.44" r="8.00" fill="blue"/>
-<text x="125.24" y="52.44" font-family="Arial" font-size="12.00" fill="black">13</text>
-<circle cx="122.55" cy="47.44" r="8.00" fill="blue"/>
-<text x="137.55" y="52.44" font-family="Arial" font-size="12.00" fill="black">14</text>
-<circle cx="134.87" cy="47.44" r="8.00" fill="blue"/>
-<text x="149.87" y="52.44" font-family="Arial" font-size="12.00" fill="black">15</text>
-<circle cx="147.18" cy="47.44" r="8.00" fill="blue"/>
-<text x="162.18" y="52.44" font-family="Arial" font-size="12.00" fill="black">16</text>
-<circle cx="287.34" cy="171.77" r="8.00" fill="blue"/>
-<text x="302.34" y="176.77" font-family="Arial" font-size="12.00" fill="black">17</text>
-<circle cx="299.65" cy="171.77" r="8.00" fill="blue"/>
-<text x="314.65" y="176.77" font-family="Arial" font-size="12.00" fill="black">18</text>
-<circle cx="311.97" cy="171.77" r="8.00" fill="blue"/>
-<text x="326.97" y="176.77" font-family="Arial" font-size="12.00" fill="black">19</text>
-<circle cx="324.28" cy="171.77" r="8.00" fill="blue"/>
-<text x="339.28" y="176.77" font-family="Arial" font-size="12.00" fill="black">20</text>
-<circle cx="336.60" cy="171.77" r="8.00" fill="blue"/>
-<text x="351.60" y="176.77" font-family="Arial" font-size="12.00" fill="black">21</text>
+<circle cx="292.31" cy="256.38" r="8.00" fill="blue"/>
+<text x="307.31" y="261.38" font-family="Arial" font-size="12.00" fill="black">4</text>
+<circle cx="292.31" cy="262.53" r="8.00" fill="blue"/>
+<text x="307.31" y="267.53" font-family="Arial" font-size="12.00" fill="black">5</text>
+<circle cx="292.31" cy="268.69" r="8.00" fill="blue"/>
+<text x="307.31" y="273.69" font-family="Arial" font-size="12.00" fill="black">6</text>
+<circle cx="292.31" cy="274.85" r="8.00" fill="blue"/>
+<text x="307.31" y="279.85" font-family="Arial" font-size="12.00" fill="black">7</text>
+<circle cx="316.94" cy="256.38" r="8.00" fill="blue"/>
+<text x="331.94" y="261.38" font-family="Arial" font-size="12.00" fill="black">8</text>
+<circle cx="316.94" cy="262.53" r="8.00" fill="blue"/>
+<text x="331.94" y="267.53" font-family="Arial" font-size="12.00" fill="black">9</text>
+<circle cx="316.94" cy="268.69" r="8.00" fill="blue"/>
+<text x="331.94" y="273.69" font-family="Arial" font-size="12.00" fill="black">10</text>
+<circle cx="316.94" cy="274.85" r="8.00" fill="blue"/>
+<text x="331.94" y="279.85" font-family="Arial" font-size="12.00" fill="black">11</text>
+<circle cx="247.77" cy="43.23" r="8.00" fill="blue"/>
+<text x="262.77" y="48.23" font-family="Arial" font-size="12.00" fill="black">12</text>
+<circle cx="247.77" cy="55.54" r="8.00" fill="blue"/>
+<text x="262.77" y="60.54" font-family="Arial" font-size="12.00" fill="black">13</text>
+<circle cx="247.77" cy="67.86" r="8.00" fill="blue"/>
+<text x="262.77" y="72.86" font-family="Arial" font-size="12.00" fill="black">14</text>
+<circle cx="247.77" cy="80.17" r="8.00" fill="blue"/>
+<text x="262.77" y="85.17" font-family="Arial" font-size="12.00" fill="black">15</text>
+<circle cx="247.77" cy="92.49" r="8.00" fill="blue"/>
+<text x="262.77" y="97.49" font-family="Arial" font-size="12.00" fill="black">16</text>
+<circle cx="247.77" cy="104.80" r="8.00" fill="blue"/>
+<text x="262.77" y="109.80" font-family="Arial" font-size="12.00" fill="black">17</text>
+<circle cx="247.77" cy="117.12" r="8.00" fill="blue"/>
+<text x="262.77" y="122.12" font-family="Arial" font-size="12.00" fill="black">18</text>
+<circle cx="284.71" cy="43.23" r="8.00" fill="blue"/>
+<text x="299.71" y="48.23" font-family="Arial" font-size="12.00" fill="black">19</text>
+<circle cx="284.71" cy="55.54" r="8.00" fill="blue"/>
+<text x="299.71" y="60.54" font-family="Arial" font-size="12.00" fill="black">20</text>
+<circle cx="284.71" cy="67.86" r="8.00" fill="blue"/>
+<text x="299.71" y="72.86" font-family="Arial" font-size="12.00" fill="black">21</text>
+<circle cx="284.71" cy="80.17" r="8.00" fill="blue"/>
+<text x="299.71" y="85.17" font-family="Arial" font-size="12.00" fill="black">22</text>
+<circle cx="284.71" cy="92.49" r="8.00" fill="blue"/>
+<text x="299.71" y="97.49" font-family="Arial" font-size="12.00" fill="black">23</text>
+<circle cx="284.71" cy="104.80" r="8.00" fill="blue"/>
+<text x="299.71" y="109.80" font-family="Arial" font-size="12.00" fill="black">24</text>
+<circle cx="284.71" cy="117.12" r="8.00" fill="blue"/>
+<text x="299.71" y="122.12" font-family="Arial" font-size="12.00" fill="black">25</text>
+<circle cx="66.74" cy="182.89" r="8.00" fill="blue"/>
+<text x="81.74" y="187.89" font-family="Arial" font-size="12.00" fill="black">26</text>
+<circle cx="66.74" cy="189.05" r="8.00" fill="blue"/>
+<text x="81.74" y="194.05" font-family="Arial" font-size="12.00" fill="black">27</text>
+<circle cx="66.74" cy="195.21" r="8.00" fill="blue"/>
+<text x="81.74" y="200.21" font-family="Arial" font-size="12.00" fill="black">28</text>
+<circle cx="66.74" cy="201.37" r="8.00" fill="blue"/>
+<text x="81.74" y="206.37" font-family="Arial" font-size="12.00" fill="black">29</text>
+<circle cx="91.37" cy="182.89" r="8.00" fill="blue"/>
+<text x="106.37" y="187.89" font-family="Arial" font-size="12.00" fill="black">30</text>
+<circle cx="91.37" cy="189.05" r="8.00" fill="blue"/>
+<text x="106.37" y="194.05" font-family="Arial" font-size="12.00" fill="black">31</text>
+<circle cx="91.37" cy="195.21" r="8.00" fill="blue"/>
+<text x="106.37" y="200.21" font-family="Arial" font-size="12.00" fill="black">32</text>
+<circle cx="91.37" cy="201.37" r="8.00" fill="blue"/>
+<text x="106.37" y="206.37" font-family="Arial" font-size="12.00" fill="black">33</text>
 </g>
-<text x="-193.18" y="-193.18" font-family="Arial" font-size="14.40" fill="black"> Cost: 221.83</text>
+<text x="-193.18" y="-193.18" font-family="Arial" font-size="14.40" fill="black"> Cost: 263.64</text>
 </g>
 </svg>

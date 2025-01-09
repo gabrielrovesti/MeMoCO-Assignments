@@ -188,11 +188,6 @@ public:
             }
         }
 
-        // Save board info for debugging/visualization
-        saveToFile("board_layout.txt", costs,
-            "Board dimensions: " + std::to_string(board_width) + "x" +
-            std::to_string(board_height) + " mm\n" + board_info);
-
         last_generated_points = hole_positions;
 
         return costs;
